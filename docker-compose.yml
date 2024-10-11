@@ -1,0 +1,13 @@
+version: '3'
+services:
+  backend:
+    build: ./backend
+    working_dir: '/root/volumes'
+    tty: true
+    volumes:
+      - ./backend/volumes:/root/volumes
+      - ./docs/backend:/root/docs/backend
+    network_mode: "host"
+    env_file:
+      - ./backend/.env
+  # rdb

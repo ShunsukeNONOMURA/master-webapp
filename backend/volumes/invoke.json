@@ -1,0 +1,6 @@
+{
+    "resource": "/{proxy+}",
+    "path": "/health",
+    "httpMethod": "GET",
+    "requestContext": {}
+}
