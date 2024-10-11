@@ -1,13 +1,8 @@
 """このモジュールの説明
 """
-from contextlib import contextmanager
 
-from sqlalchemy.orm import declarative_base, relationship, sessionmaker
-from sqlalchemy import DATETIME, Column, ForeignKey, String, create_engine, select
 
 from migrations.db import *
-
-
 
 
 # RDBの初期化

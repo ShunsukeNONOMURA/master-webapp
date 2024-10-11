@@ -1,7 +1,6 @@
-from pydantic import BaseModel, ConfigDict, Field, RootModel, SecretStr
-from abc import ABCMeta, abstractmethod
-
+from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
+
 
 # Request, Response間でケース変換するとき
 class BaseRequest(BaseModel):

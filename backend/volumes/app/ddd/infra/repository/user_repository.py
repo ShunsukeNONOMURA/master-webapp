@@ -1,14 +1,10 @@
-import json
 from abc import ABCMeta, abstractmethod
 from datetime import datetime
 from enum import Enum, unique
 
-from fastapi import APIRouter
-from pydantic import BaseModel, ConfigDict, Field, RootModel, SecretStr
-from pydantic.alias_generators import to_camel
+from pydantic import ConfigDict, Field, RootModel, SecretStr
 
 from app.core import *
-
 from migrations.model import *
 
 
@@ -98,6 +94,7 @@ class IUserRepository(ABCMeta):
     #     pass
 
 from app.ddd.infra.database.db import create_session
+
 
 class UserRepository:
     def find_by_id(self, user_id: str):

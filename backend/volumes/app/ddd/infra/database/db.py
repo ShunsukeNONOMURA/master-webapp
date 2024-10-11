@@ -1,7 +1,7 @@
 from contextlib import contextmanager
-from sqlalchemy.orm import declarative_base, relationship, sessionmaker
-from sqlalchemy import DATETIME, Column, ForeignKey, String, create_engine, select
 
+from sqlalchemy import create_engine
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 SQLALCHEMY_DATABASE_URI = "sqlite:///./dev.sqlite3"
 # SQLALCHEMY_DATABASE_URI = "postgresql://user:password@postgresserver/db"

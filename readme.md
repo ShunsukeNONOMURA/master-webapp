@@ -48,7 +48,10 @@ webアプリ開発用のマスタ。
 | ossライセンスチェック                | `docker compose exec backend pip-licenses --order=license --format=csv --with-urls  --with-description`                                            |
 | ossライセンスチェック（csv出力）     | `docker compose exec backend pip-licenses --order=license --format=csv --with-urls  --with-description --output-file=/root/docs/backend/oss.csv`   |
 | ossライセンスチェック（html出力）    | `docker compose exec backend pip-licenses --order=license --format=html --with-urls  --with-description --output-file=/root/docs/backend/oss.html` |
-| lint, format, typecheck              | ``                                                                                                                                                 |
+| lint, format, typecheck              | `docker compose exec backend poetry run ruff .`                                                                                                    |
+| lint, format, typecheck              | `docker compose exec backend poetry run ruff . --fix`                                                                                              |
+| er                                   | `docker compose -f docker-compose-spy.yml run --rm schemaspy -configFile /config/schemaspy_sqlite.properties -debug`                               |
+|                                      |                                                                                                                                                    |
 
 
 ```

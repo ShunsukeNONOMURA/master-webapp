@@ -1,16 +1,22 @@
 import asyncio
 import json
+import time
 import uuid
+from typing import Callable
 
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from fastapi import (
+    APIRouter,
+    Request,
+    Response,
+    WebSocket,
+    WebSocketDisconnect,
+)
 from fastapi.responses import HTMLResponse
+from fastapi.routing import APIRoute
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 
-from fastapi import APIRouter, FastAPI, Request, Response
-from fastapi.routing import APIRoute
-from typing import Callable
-import time
+
 class TimedRoute(APIRoute):
     def get_route_handler(self) -> Callable:
         original_route_handler = super().get_route_handler()

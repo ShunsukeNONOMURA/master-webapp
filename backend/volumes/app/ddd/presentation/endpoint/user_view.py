@@ -1,9 +1,9 @@
 from fastapi import APIRouter
+
 from app.ddd.infra.repository import *
 
 router = APIRouter()
 
-from app.ddd.infra.database import get_db
 
 @router.get("/users/{user_id}", tags=["user"])
 def get_user(user_id: str):

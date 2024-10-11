@@ -29,6 +29,7 @@ ruff = "^0.4.3"
 pip-licenses = "^5.0.0"
 pipdeptree = "^2.23.4"
 pylint = "^3.3.1"
+mypy = "^1.11.2"
 
 [tool.ruff]
 # Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.

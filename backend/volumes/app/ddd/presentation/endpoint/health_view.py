@@ -1,7 +1,9 @@
-from fastapi import APIRouter, FastAPI, Request, Response
-from fastapi.routing import APIRoute
-from typing import Callable
 import time
+from typing import Callable
+
+from fastapi import APIRouter, Request, Response
+from fastapi.routing import APIRoute
+
 
 class TimedRoute(APIRoute):
     def get_route_handler(self) -> Callable:

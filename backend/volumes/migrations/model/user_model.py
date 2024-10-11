@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from sqlalchemy import DATETIME, Column, ForeignKey, String, create_engine, select
-from sqlalchemy.orm import declarative_base, relationship, sessionmaker
+from sqlalchemy import DATETIME, Column, ForeignKey, String, select
+from sqlalchemy.orm import declarative_base, relationship
 from sqlalchemy_utils import create_view
 
 table_args = {}

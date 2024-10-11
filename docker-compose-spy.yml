@@ -1,0 +1,8 @@
+version: '3'
+services:
+  schemaspy:
+    build: ./schemaspy
+    volumes:
+      - ./docs/rdb:/output
+      - ./schemaspy/config:/config
+      - ./backend/volumes:/backend/volumes

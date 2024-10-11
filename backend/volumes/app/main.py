@@ -2,7 +2,6 @@ from fastapi import FastAPI
 from gradio import mount_gradio_app
 from mangum import Mangum
 
-from .core.middleware import AuthMiddleware, LoggingMiddleware
 from .ddd import *
 
 app = FastAPI()
@@ -12,12 +11,13 @@ app = FastAPI()
 # app.add_middleware(LoggingMiddleware)
 
 # カスタムHTTPミドルウェア
-from fastapi import FastAPI, WebSocket
-from starlette.middleware.base import BaseHTTPMiddleware
-from starlette.middleware.base import RequestResponseEndpoint
+from fastapi import FastAPI
+from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
+
+
 class CustomMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
-        print('customr')
+        print("customr")
         # WebSocket接続への特別な対応が必要な場合
         if "websocket" in request.url.path:
             # WebSocketのミドルウェアに関連する処理をここで行います
@@ -33,17 +33,20 @@ class ASGIMiddleware:
         self.app = app
 
     async def __call__(self, scope, receive, send):
-        print('asgi')
+        print("asgi")
         print(scope["type"])
         response = await self.app(scope, receive, send)
         print(response)
 # app.add_middleware(ASGIMiddleware)
 
 
+import time
+from typing import Callable
+
 from fastapi import APIRouter, FastAPI, Request, Response
 from fastapi.routing import APIRoute
-from typing import Callable
-import time
+
+
 class TimedRoute(APIRoute):
     def get_route_handler(self) -> Callable:
         original_route_handler = super().get_route_handler()
@@ -233,10 +236,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 </body>
 </html>
 """
-path_output_html = '/root/docs/backend/api.html'
+path_output_html = "/root/docs/backend/api.html"
 with open(path_output_html, "w") as fd:
     print(HTML_TEMPLATE % json.dumps(app.openapi()), file=fd)
-path_output_openapi_json = '/root/docs/backend/openapi.json'
+path_output_openapi_json = "/root/docs/backend/openapi.json"
 with open(path_output_openapi_json, "w") as f:
     api_spec = app.openapi()
     f.write(json.dumps(api_spec))
