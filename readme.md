@@ -3,6 +3,11 @@
 webアプリ開発用のマスタ。
 できるだけ一般知識で更新ができるように、独自実装せずにossは担げる場合は担ぐ方針。
 
+## Links
+- https://github.com/ShunsukeNONOMURA/master-webapp
+- https://shunsukenonomura.github.io/master-webapp/backend/api.html
+- https://shunsukenonomura.github.io/master-webapp/backend/oss.html
+
 ## 構成
 | サービス | 主要ライブラリ |
 | -------- | -------------- |
