@@ -3,6 +3,6 @@ services:
   schemaspy:
     build: ./schemaspy
     volumes:
-      - ./docs/rdb:/output
+      - ./docs/rdb/schemaspy:/output # export先
       - ./schemaspy/config:/config
-      - ./backend/volumes:/backend/volumes
+      - ./backend/volumes:/backend/volumes # 参照先（sqlite）

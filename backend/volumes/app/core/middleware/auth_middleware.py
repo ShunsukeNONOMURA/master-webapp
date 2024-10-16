@@ -11,5 +11,5 @@ class AuthMiddleware(BaseHTTPMiddleware):
         if check_permission():
             response: Response = await call_next(request)
         else:
-            raise Exception
+            raise Exception # ログインサービスドメインエラー
         return response

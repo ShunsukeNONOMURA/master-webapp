@@ -5,6 +5,7 @@ from enum import Enum, unique
 from pydantic import ConfigDict, Field, RootModel, SecretStr
 
 from app.core import *
+from app.ddd.infra.database.db import create_session
 from migrations.model import *
 
 
@@ -93,7 +94,7 @@ class IUserRepository(ABCMeta):
     # def refresh_to_entity(self, model: StudentModel) -> User:
     #     pass
 
-from app.ddd.infra.database.db import create_session
+
 
 
 class UserRepository:

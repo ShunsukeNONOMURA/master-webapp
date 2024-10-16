@@ -7,7 +7,7 @@ webアプリ開発用のマスタ。
 - https://github.com/ShunsukeNONOMURA/master-webapp
 - https://shunsukenonomura.github.io/master-webapp/backend/api.html
 - https://shunsukenonomura.github.io/master-webapp/backend/oss.html
-- https://shunsukenonomura.github.io/master-webapp/rdb/index.html
+- https://shunsukenonomura.github.io/master-webapp/rdb/schemaspy/index.html
 
 ## 構成
 | サービス | 主要ライブラリ |

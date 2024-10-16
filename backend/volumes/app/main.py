@@ -1,73 +1,47 @@
+import json
+
 from fastapi import FastAPI
 from gradio import mount_gradio_app
 from mangum import Mangum
 
-from .ddd import *
+# from .ddd import *
+# カスタムHTTPミドルウェア
+from app.core.exception import AuthMiddleware, LoggingMiddleware
+from app.ddd.infra.router import main_router
+
+# class CustomMiddleware(BaseHTTPMiddleware):
+#     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
+#         print("customr")
+#         # WebSocket接続への特別な対応が必要な場合
+#         if "websocket" in request.url.path:
+#             # WebSocketのミドルウェアに関連する処理をここで行います
+#             print("WebSocket connection processing")
+#         # その他のHTTPリクエストに対する処理
+#         response = await call_next(request)
+#         return response
+
+# # ws, http両方
+# class ASGIMiddleware:
+#     def __init__(self, app) -> None:
+#         self.app = app
+
+#     async def __call__(self, scope, receive, send):
+#         print("asgi")
+#         print(scope["type"])
+#         response = await self.app(scope, receive, send)
+#         print(response)
+
+
 
 app = FastAPI()
 
-# # middlewareは逆順にコールされる
-# app.add_middleware(AuthMiddleware)
-# app.add_middleware(LoggingMiddleware)
-
-# カスタムHTTPミドルウェア
-from fastapi import FastAPI
-from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
-
-
-class CustomMiddleware(BaseHTTPMiddleware):
-    async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
-        print("customr")
-        # WebSocket接続への特別な対応が必要な場合
-        if "websocket" in request.url.path:
-            # WebSocketのミドルウェアに関連する処理をここで行います
-            print("WebSocket connection processing")
-        # その他のHTTPリクエストに対する処理
-        response = await call_next(request)
-        return response
+# ミドルウェア登録（middlewareは逆順にコールされる）
+app.add_middleware(AuthMiddleware)
+app.add_middleware(LoggingMiddleware)
 # app.add_middleware(CustomMiddleware)
-
-# ws, http両方
-class ASGIMiddleware:
-    def __init__(self, app):
-        self.app = app
-
-    async def __call__(self, scope, receive, send):
-        print("asgi")
-        print(scope["type"])
-        response = await self.app(scope, receive, send)
-        print(response)
 # app.add_middleware(ASGIMiddleware)
 
-
-import time
-from typing import Callable
-
-from fastapi import APIRouter, FastAPI, Request, Response
-from fastapi.routing import APIRoute
-
-
-class TimedRoute(APIRoute):
-    def get_route_handler(self) -> Callable:
-        original_route_handler = super().get_route_handler()
-
-        async def custom_route_handler(request: Request) -> Response:
-            before = time.time()
-            response: Response = await original_route_handler(request)
-            duration = time.time() - before
-            response.headers["X-Response-Time"] = str(duration)
-            print(f"route duration: {duration}")
-            print(f"route response: {response}")
-            print(f"route response headers: {response.headers}")
-            return response
-
-        return custom_route_handler
-
-main_router = APIRouter(route_class=TimedRoute)
-main_router.include_router(health_view.router)
-main_router.include_router(user_view.router)
-main_router.include_router(conversation_view.router)
-
+# ルーター登録
 app.include_router(main_router)
 
 # gradio
