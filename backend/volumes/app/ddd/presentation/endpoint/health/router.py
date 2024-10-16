@@ -22,7 +22,3 @@ class TimedRoute(APIRoute):
         return custom_route_handler
 
 router = APIRouter(route_class=TimedRoute)
-
-@router.get("/health", tags=["health"])
-def get_health():
-    return {"msg": "ok"}

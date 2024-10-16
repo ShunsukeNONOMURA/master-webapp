@@ -35,12 +35,7 @@ class TimedRoute(APIRoute):
 
 router = APIRouter(route_class=TimedRoute)
 
-# class BaseSchema(BaseModel):
-#     model_config = ConfigDict(
-#         alias_generator=to_camel,
-#         populate_by_name=True,
-#         from_attributes=True,
-#     )
+
 
 class RequestConversation(BaseModel):
     message: str
@@ -131,6 +126,11 @@ async def websocket_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         manager.disconnect(websocket)
         await manager.broadcast(f"Client #{username} left the chat") # 全体通知
+
+
+"""
+以下、簡易フロントエンド
+"""
 
 html="""
 <html>

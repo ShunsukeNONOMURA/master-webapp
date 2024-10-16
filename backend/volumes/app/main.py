@@ -6,7 +6,7 @@ from mangum import Mangum
 
 # from .ddd import *
 # カスタムHTTPミドルウェア
-from app.core.exception import AuthMiddleware, LoggingMiddleware
+from app.core.middleware import AuthMiddleware, LoggingMiddleware
 from app.ddd.infra.router import main_router
 
 # class CustomMiddleware(BaseHTTPMiddleware):

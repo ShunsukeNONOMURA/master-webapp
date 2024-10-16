@@ -1,6 +1,16 @@
-from fastapi import APIRouter
+# from fastapi import APIRouter
 
-from app.ddd.presentation.endpoint import *
+import time
+from typing import Callable
+
+from fastapi import APIRouter, Request, Response
+from fastapi.routing import APIRoute
+
+from app.ddd.presentation.endpoint import (
+    conversation_view,
+    health,
+    users,
+)
 
 
 class TimedRoute(APIRoute):
@@ -21,6 +31,6 @@ class TimedRoute(APIRoute):
 
 main_router = APIRouter(route_class=TimedRoute)
 
-main_router.include_router(health_view.router)
-main_router.include_router(user_view.router)
+main_router.include_router(health.router, tags=["/health"])
+main_router.include_router(users.router, tags=["/users"])
 main_router.include_router(conversation_view.router)

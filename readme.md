@@ -8,6 +8,7 @@ webアプリ開発用のマスタ。
 - https://shunsukenonomura.github.io/master-webapp/backend/api.html
 - https://shunsukenonomura.github.io/master-webapp/backend/oss.html
 - https://shunsukenonomura.github.io/master-webapp/rdb/schemaspy/index.html
+- https://shunsukenonomura.github.io/mkdocs-development/volume/site/0400-example-ddd.html
 
 ## 構成
 | サービス | 主要ライブラリ |
@@ -33,6 +34,16 @@ webアプリ開発用のマスタ。
 | Linter           | ruff                   |
 | マイグレーション | SQLModel, Alembic      |
 
+## backend構成
+| パス           | 役割                               |
+| -------------- | ---------------------------------- |
+| app/core       | 共通で利用するモジュールなどを配置 |
+| app/ddd        | DDD（ドメイン駆動設計）を表現する  |
+| app/main.py    | 起動ファイル                       |
+| migrations     | ORMやマイグレーション              |
+| tests          | test関連                           |
+| pyproject.toml | poetry設定                         |
+
 ## コマンドシート
 | 操作                                 | コマンド                                                                                                                                           |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -43,16 +54,16 @@ webアプリ開発用のマスタ。
 | バックエンド起動                     | `docker compose exec backend poetry run uvicorn app.main:app --reload`                                                                             |
 | マイグレーション                     | ``                                                                                                                                                 |
 | テスト                               | `docker compose exec backend poetry run pytest`                                                                                                    |
-| テスト（カバレッジ表示）             | `docker compose exec backend poetry run pytest --cov=.`                                                                                            |
-| テスト（カバレッジhtml出力）         | `docker compose exec backend poetry run pytest --cov=. -v --cov-report=html`                                                                       |
+| テスト（カバレッジ表示）             | `docker compose exec backend poetry run pytest --cov=./app`                                                                                        |
+| テスト（カバレッジhtml出力）         | `docker compose exec backend poetry run pytest --cov=./app -v --cov-report=html`                                                                   |
 | oss依存チェック                      | `docker compose exec backend pipdeptree`                                                                                                           |
 | ossライセンスチェック                | `docker compose exec backend pip-licenses --order=license --format=csv --with-urls  --with-description`                                            |
 | ossライセンスチェック（csv出力）     | `docker compose exec backend pip-licenses --order=license --format=csv --with-urls  --with-description --output-file=/root/docs/backend/oss.csv`   |
 | ossライセンスチェック（html出力）    | `docker compose exec backend pip-licenses --order=license --format=html --with-urls  --with-description --output-file=/root/docs/backend/oss.html` |
 | lint, format, typecheck              | `docker compose exec backend poetry run ruff .`                                                                                                    |
 | lint, format, typecheck              | `docker compose exec backend poetry run ruff . --fix`                                                                                              |
-| er                                   | `docker compose -f docker-compose-spy.yml run --rm schemaspy -configFile /config/schemaspy_sqlite.properties -debug`                               |
-|                                      |                                                                                                                                                    |
+| ドキュメント生成（ER図）             | `docker compose -f docker-compose-spy.yml run --rm schemaspy -configFile /config/schemaspy_sqlite.properties -debug`                               |
+| backend tree                         | `tree backend/volumes/app -I __pycache__`                                                                                                          |
 
 
 ```
