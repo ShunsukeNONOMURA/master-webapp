@@ -4,10 +4,14 @@ from fastapi import FastAPI
 from gradio import mount_gradio_app
 from mangum import Mangum
 
+# CORSミドルウェア
+from fastapi.middleware.cors import CORSMiddleware
+
 # from .ddd import *
 # カスタムHTTPミドルウェア
-from app.core.middleware import AuthMiddleware, LoggingMiddleware
+from app.core.middleware import AuthMiddleware, LoggingMiddleware, ExceptionHandlingMiddleware
 from app.ddd.infra.router import main_router
+
 
 # class CustomMiddleware(BaseHTTPMiddleware):
 #     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
@@ -35,9 +39,25 @@ from app.ddd.infra.router import main_router
 
 app = FastAPI()
 
+# CORS設定
+origins = [
+    "http://localhost",
+    "http://localhost:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 # ミドルウェア登録（middlewareは逆順にコールされる）
-app.add_middleware(AuthMiddleware)
-app.add_middleware(LoggingMiddleware)
+app.add_middleware(AuthMiddleware) # 認証に関するミドルウェア
+app.add_middleware(ExceptionHandlingMiddleware) # エラーハンドリングに関するミドルウェア
+app.add_middleware(LoggingMiddleware) # ログに関するミドルウェア
+
 # app.add_middleware(CustomMiddleware)
 # app.add_middleware(ASGIMiddleware)
 

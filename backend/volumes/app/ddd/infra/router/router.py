@@ -29,7 +29,8 @@ class TimedRoute(APIRoute):
 
         return custom_route_handler
 
-main_router = APIRouter(route_class=TimedRoute)
+# main_router = APIRouter(route_class=TimedRoute)
+main_router = APIRouter()
 
 main_router.include_router(health.router, tags=["/health"])
 main_router.include_router(users.router, tags=["/users"])

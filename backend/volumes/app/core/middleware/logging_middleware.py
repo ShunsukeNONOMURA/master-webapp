@@ -9,7 +9,8 @@ from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoin
 class LoggingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
         start_datetime = datetime.now(timezone.utc)
-        print("api start")
+        print("logging middleware : api start")
+
         try:
             response: Response = await call_next(request)
         # except DomainException as e:
@@ -31,10 +32,13 @@ class LoggingMiddleware(BaseHTTPMiddleware):
                     },
                 },
             )
+        
         end_datetime = datetime.now(timezone.utc)
-        process_time = end_datetime - start_datetime
-        print(process_time)
+        duration = end_datetime - start_datetime
+        response.headers["X-Response-Time"] = str(duration)
+
+        print('log info')
         print(request.url)
-        print(response)
-        print("log http")
+        print(f"route response headers: {response.headers}")
+
         return response

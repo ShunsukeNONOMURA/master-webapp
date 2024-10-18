@@ -32,18 +32,18 @@ webアプリ開発用のマスタ。
 | アーキテクチャ   | オニオンアーキテクチャ |
 | DB               | SQLite                 |
 | テスト           | pytest                 |
-| Linter           | ruff                   |
+| Linter,Formatter | ruff                   |
 | マイグレーション | SQLModel, Alembic      |
 
 ## backend構成
-| パス           | 役割                               |
-| -------------- | ---------------------------------- |
-| app/core       | 共通で利用するモジュールなどを配置 |
-| app/ddd        | DDD（ドメイン駆動設計）を表現する  |
-| app/main.py    | 起動ファイル                       |
-| migrations     | ORMやマイグレーション              |
-| tests          | test関連                           |
-| pyproject.toml | poetry設定                         |
+| パス               | 役割                               |
+| ------------------ | ---------------------------------- |
+| app/core           | 共通で利用するモジュールなどを配置 |
+| app/ddd            | DDD（ドメイン駆動設計）を表現する  |
+| app/main.py        | 起動ファイル                       |
+| migrations         | ORMやマイグレーション              |
+| tests              | test関連                           |
+| pyproject.toml     | poetry設定                         |
 
 ## コマンドシート
 | 操作                                     | コマンド                                                                                                                                                          |
@@ -75,10 +75,10 @@ webアプリ開発用のマスタ。
         - ドキュメンテーション実行
 
 - ドキュメンテーション
-    - cov
-    - oss
-    - er
-    - api
+    - cov (pytest)
+    - oss (pip-lisenses)
+    - er (schemaspy)
+    - api (redoc)
 
 ```
 python db.py

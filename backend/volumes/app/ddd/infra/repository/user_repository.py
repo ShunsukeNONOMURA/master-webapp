@@ -95,6 +95,16 @@ class IUserRepository(ABCMeta):
     #     pass
 
 
+from fastapi import status
+from app.core.exception import DomainException
+
+class UserNotFoundException(DomainException):
+    def __init__(self):
+        super().__init__(
+            error_code='000',
+            status_code=status.HTTP_404_NOT_FOUND,
+            description="該当するユーザ情報が存在しません。",
+        )
 
 
 class UserRepository:
@@ -102,7 +112,10 @@ class UserRepository:
         with create_session() as session:
             orm = session.query(VUser).filter(VUser.user_id == user_id).first()
             # orm = session.query(TUser).filter(TUser.user_id == user_id).first()
-            return User.model_validate(orm) if orm is not None else None
+            model = User.model_validate(orm) if orm is not None else None
+        if model is None:
+            raise UserNotFoundException
+        return model
     def query(self):
         with create_session() as session:
             users = session.query(VUser).all()
