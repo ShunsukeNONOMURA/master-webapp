@@ -35,9 +35,32 @@ from app.ddd.infra.router import main_router
 #         response = await self.app(scope, receive, send)
 #         print(response)
 
+description = """
+Webアプリのバックエンドのベースラインコード実装
 
+## Health
+- ヘルスの取得
 
-app = FastAPI()
+## User
+- ユーザの作成
+- ユーザの取得
+- ユーザの一覧
+- ユーザの削除
+"""
+
+app = FastAPI(
+    description=description,
+    openapi_tags=[
+        {
+            "name": "/health",
+            "description": "ヘルスに関する操作。",
+        },
+        {
+            "name": "/users",
+            "description": "ユーザー管理に関する操作。",
+        },
+    ],
+)
 
 # CORS設定
 origins = [

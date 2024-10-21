@@ -5,7 +5,8 @@ from pydantic import BaseModel, ConfigDict
 
 
 class DDDModel(BaseModel, metaclass=ABCMeta):
-    def to_json(self):
+    # dict形式に変換する
+    def to_dict(self):
         return json.loads(self.json())
 
 class ValueObject(DDDModel, metaclass=ABCMeta):
@@ -25,3 +26,8 @@ class Entity(DDDModel, metaclass=ABCMeta):
         return self._id() == other._id()
     def __ne__(self, other: DDDModel)->bool:
         return not self.__eq__(other)
+    
+class BaseUsecase(metaclass=ABCMeta):
+    @abstractmethod
+    def execute(self):
+        raise NotImplementedError

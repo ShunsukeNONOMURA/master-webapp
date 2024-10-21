@@ -22,12 +22,7 @@ def test_query_user():
     # assert response.json() == {'q': q }
 
 def test_user():
-    user = {
-        "user_id": "test",
-        "user_name": "test",
-        "user_password": "test",
-        "user_role_code": "99",
-    }
+    # user投函する
     user = {
         "userId": "test",
         "userName": "test",
@@ -42,6 +37,7 @@ def test_user():
     )
     assert response.status_code == 200
 
+    # user投函確認する
     user_id = user["userId"]
     response = client.get(
         f"/users/{user_id}",
@@ -49,15 +45,17 @@ def test_user():
     assert response.status_code == 200
     assert response.json()["user_id"] == user_id
 
+    # user削除する
     response = client.delete(
         f"/users/{user_id}",
     )
     assert response.status_code == 200
     # assert response.json()["user_id"] == user_ide
 
+    # user削除確認する（見つからず404エラーになる）
     response = client.get(
         f"/users/{user_id}",
     )
-    assert response.status_code == 200
+    assert response.status_code == 404
     # assert response.json()["user_id"] == None
 

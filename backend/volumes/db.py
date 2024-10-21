@@ -1,9 +1,10 @@
-"""このモジュールの説明
-"""
+from migrations.model import (
+    Base,
+    TUser,
+    MUserRole,
+)
 
-
-from migrations.db import *
-
+from app.ddd.infra.database.db import create_session, engine
 
 # RDBの初期化
 def init_db(drop_all: bool=True) -> None:

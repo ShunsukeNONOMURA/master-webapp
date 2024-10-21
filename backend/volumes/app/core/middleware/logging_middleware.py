@@ -11,34 +11,25 @@ class LoggingMiddleware(BaseHTTPMiddleware):
         start_datetime = datetime.now(timezone.utc)
         print("logging middleware : api start")
 
-        try:
-            response: Response = await call_next(request)
-        # except DomainException as e:
-        #     response = JSONResponse(
-        #         status_code=e.status_code(),
-        #         content={"detail": e.message()},
-        #     )
-        # except UseCaseException as e:
-        #     response = JSONResponse(
-        #         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-        #         content={"detail": e.message()},
-        #     )
-        except Exception as e:
-            response = JSONResponse(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                content={
-                    "detail": {
-                        "description": f"{e}",
-                    },
-                },
-            )
+        response: Response = await call_next(request)
+
+        # error handling 後を含めた実行について保存する
         
         end_datetime = datetime.now(timezone.utc)
         duration = end_datetime - start_datetime
+
+        # ヘッダに情報をトレインケースで埋める
+        # 後で分けると思う
+        response.headers["X-Resource-Code"] = "RRRR"
+        response.headers["X-Error-Code"] = "EEE"
+        response.headers["X-Result-Code"] = 'S' + response.headers["X-Resource-Code"] + response.headers["X-Error-Code"]
         response.headers["X-Response-Time"] = str(duration)
 
+
+        # レスポンスについてのログを残す
         print('log info')
         print(request.url)
+        print(response.status_code)
         print(f"route response headers: {response.headers}")
 
         return response

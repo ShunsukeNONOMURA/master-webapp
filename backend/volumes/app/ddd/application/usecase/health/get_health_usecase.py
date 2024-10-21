@@ -1,0 +1,14 @@
+from app.core.abstract.ddd import (
+    BaseUsecase
+)
+
+from app.ddd.application.schema.health import (
+    GetHealthDto
+)
+
+class GetHealth(BaseUsecase):
+    def __init__(self):
+        pass
+
+    def execute(self) -> GetHealthDto:
+        return GetHealthDto(**{'msg': 'ok'})

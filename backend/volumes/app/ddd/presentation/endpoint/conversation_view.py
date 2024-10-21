@@ -16,26 +16,7 @@ from fastapi.routing import APIRoute
 from pydantic import BaseModel
 from sse_starlette.sse import EventSourceResponse
 
-
-class TimedRoute(APIRoute):
-    def get_route_handler(self) -> Callable:
-        original_route_handler = super().get_route_handler()
-
-        async def custom_route_handler(request: Request) -> Response:
-            before = time.time()
-            response: Response = await original_route_handler(request)
-            duration = time.time() - before
-            response.headers["X-Response-Time"] = str(duration)
-            print(f"route duration: {duration}")
-            print(f"route response: {response}")
-            print(f"route response headers: {response.headers}")
-            return response
-
-        return custom_route_handler
-
-router = APIRouter(route_class=TimedRoute)
-
-
+router = APIRouter()
 
 class RequestConversation(BaseModel):
     message: str
@@ -63,18 +44,6 @@ async def send_token(query: str):
         yield {"data": json_data}
         await asyncio.sleep(0.5)
     yield {"data": "[DONE]"}
-
-# async def send_token_openai(query: str):
-#     response = openai.ChatCompletion.create(
-#         model="gpt-3.5-turbo-0613",
-#         messages=[
-#             {'role': 'user', 'content': query}
-#         ],
-#         stream=True
-#     )
-#     for chunk in response:
-#         chunk_message = chunk['choices'][0]['delta'].get('content', '')
-#         yield chunk_message
 
 @router.post("/streaming")
 async def streaming_endpoint(request: StreamRequest) -> EventSourceResponse:
