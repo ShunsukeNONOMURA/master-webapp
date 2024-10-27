@@ -1,0 +1,1 @@
+docker compose exec backend poetry run ruff .

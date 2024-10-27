@@ -1,7 +1,6 @@
 
 # master webapp
 webアプリ開発用のマスタ。
-できるだけ一般知識で更新ができるように、独自実装せずにossは担げる場合は担ぐ方針。
 
 ## Links
 - https://github.com/ShunsukeNONOMURA/master-webapp
@@ -9,34 +8,49 @@ webアプリ開発用のマスタ。
 - https://shunsukenonomura.github.io/master-webapp/backend/oss.html
 - https://shunsukenonomura.github.io/master-webapp/backend/cov/index.html
 - https://shunsukenonomura.github.io/master-webapp/rdb/schemaspy/index.html
-- https://shunsukenonomura.github.io/mkdocs-development/volume/site/0400-example-ddd.html
+
+- mkdocs
+    - https://shunsukenonomura.github.io/mkdocs-development/volume/site/0300-design-api.html
+    - https://shunsukenonomura.github.io/mkdocs-development/volume/site/0350-design-ddd-cqrs.html
+    - https://shunsukenonomura.github.io/mkdocs-development/volume/site/0400-example-ddd.html
 
 ## 構成
-| サービス | 主要ライブラリ |
-| -------- | -------------- |
-| backend  | fastapi        |
-| frontend | vite           |
-| rdb      | postgresql     |
+| サービス  | 主要ライブラリ |
+| --------- | -------------- |
+| backend   | fastapi        |
+| frontend  | vite           |
+| rdb       | postgresql     |
+| migration | alembic        |
 
 ## backend
 | 基本機能 | ライブラリ |
 | -------- | ---------- |
-| API      | fastapi    |
 | lambda   | sls        |
-| DI       |            |
-| doc      | fastapi    |
 | test     | pytest     |
 
-| 機能             | 依存                          |
-| ---------------- | ----------------------------- |
-| フレームワーク   | FastAPI                       |
-| アーキテクチャ   | DDD（オニオンアーキテクチャ） |
-| API              | REST                          |
-| RDB              | SQLite                        |
-| マイグレーション | SQLModel, Alembic             |
-| テスト           | pytest                        |
-| Linter,Formatter | ruff                          |
-| 型チェック       | mypy                          |
+| 機能                 | 依存                                                                        |
+| -------------------- | --------------------------------------------------------------------------- |
+| パッケージマネージャ | [Poetry](https://python-poetry.org/)                                        |
+| フレームワーク       | [FastAPI](https://fastapi.tiangolo.com/ja/)                                 |
+| ASGI                 | uvicorn                                                                     |
+| DI                   | [FastAPI (Depends)](https://fastapi.tiangolo.com/ja/tutorial/dependencies/) |
+| ORM                  | [SQLModel](https://sqlmodel.tiangolo.com/)                                  |
+| RDB                  | [SQLite](https://www.sqlite.org/)                                           |
+| マイグレーション     | Alembic                                                                     |
+| APIテスト            | [Fastapi (TestClient)](https://fastapi.tiangolo.com/ja/tutorial/testing/)   |
+| 負荷テスト           | Locust?                                                                     |
+| Linter,Formatter     | [Ruff](https://docs.astral.sh/ruff/https://docs.astral.sh/ruff/)            |
+| 型チェック           | mypy                                                                        |
+| APIドキュメント      | [FastAPI (swagger, redoc)](https://fastapi.tiangolo.com/ja/features/)       |
+| DDLドキュメント      | [schemaspy](https://schemaspy.org/)                                         |
+
+できるだけ一般知識で更新ができるように、独自実装せずにossは担げる場合は担ぐ。
+
+### 設計
+| レイヤ         | 設計思想                                                                              |
+| -------------- | ------------------------------------------------------------------------------------- |
+| アーキテクチャ | DDD（オニオンアーキテクチャ）                                                         |
+| API設計        | REST（[参考：AWS RESTful API とは?](https://aws.amazon.com/jp/what-is/restful-api/)） |
 
 ## レイヤ勘所
 - presentation
@@ -50,7 +64,33 @@ webアプリ開発用のマスタ。
 - infra
     - 各サービスの実装
 
-## backendフロー
+### 基本処理フロー
+```mermaid
+sequenceDiagram
+
+  actor c as client
+  participant p as Presentation
+  participant u as UseCase
+  participant d as Domain
+  participant db as DB
+
+  c->>+p : Request
+  p->>p: middleware
+  p->>+u : usecase.execute(Param)
+
+  u->>+d : service(domain model)
+  d->>-u : domain model
+
+  u->>+d : service(domain model)
+  d->>+db : query
+  db->>-d : return
+  d->>-u : domain model
+
+  u->>-p : DTO
+  p->>-c: Response
+```
+
+### 構成
 ![](./docs/backend/flow.dio.png)
 
 ## backend構成
@@ -147,6 +187,29 @@ sls rollback --timestamp {timestamp} --stage {env}
 sls remove --stage {env}
 ```
 
-- []()
 - [DockerでPoetryを使って環境構築しよう](https://book.st-hakky.com/hakky/try-poetry-on-docker/)
 - [PythonでDDDやってみた](https://techtekt.persol-career.co.jp/entry/tech/231220_02)
+    - 全体構成参考：細かいところは不完全なため実装変更する。
+
+
+## 開発フロー
+- 要求解析
+- モデリング
+    - **情報設計 / 集約設計**
+    - ORM設計開発
+        - ドキュメント生成：ER図
+    - ドメインモデル実装
+- アプリ開発（ドメイン毎等）
+    - IF設計開発
+        - ドキュメント生成：API仕様書
+    - （テスト駆動：スタブ実装 / APIテスト実装）
+    - サービス実装
+    - ユースケース実装
+    - モジュール結合
+    - APIテスト実行
+        - ドキュメント生成：テストカバレッジ
+- 結合評価
+- リリース
+
+## 疑問
+### Util系どこに置くか

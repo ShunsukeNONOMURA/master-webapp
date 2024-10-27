@@ -1,9 +1,8 @@
-from datetime import date
 
-from sqlmodel import Field, SQLModel
+from sqlmodel import Field
 
-class __BaseResponse(SQLModel):
+from app.core.abstract.ddd import BaseResponse
+
+
+class GetHealthResponse(BaseResponse):
     msg: str | None = Field(default=None)
-
-class GetHealthResponse(__BaseResponse):
-    pass

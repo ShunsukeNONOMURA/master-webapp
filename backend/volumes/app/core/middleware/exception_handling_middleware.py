@@ -8,11 +8,11 @@ from app.core.exception import DomainException, UseCaseException
 class ExceptionHandlingMiddleware(BaseHTTPMiddleware):
 
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
-        print('exception handling middleware')
+        print("exception handling middleware")
         try:
             response: Response = await call_next(request)
         except DomainException as e:
-            print('domain error')
+            print("domain error")
             response = JSONResponse(
                 status_code=e.status_code(),
                 content={

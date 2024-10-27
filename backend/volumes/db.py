@@ -1,18 +1,17 @@
-from migrations.model import (
-    Base,
-    TUser,
+from app.ddd.infra.database.db import get_session, db_engine
+from sqlmodel import SQLModel
+from migrations.model.user_model import (
     MUserRole,
+    TUser,
 )
-
-from app.ddd.infra.database.db import create_session, engine
 
 # RDBの初期化
 def init_db(drop_all: bool=True) -> None:
     if drop_all:
-        Base.metadata.drop_all(engine)
-    Base.metadata.create_all(bind=engine)
+        SQLModel.metadata.drop_all(db_engine)
+    SQLModel.metadata.create_all(bind=db_engine)
 
-    with create_session() as session:
+    with get_session() as session:
         user_role = MUserRole(user_role_code="00", user_role_name="admin")
         session.add(user_role)
         user_role = MUserRole(user_role_code="99", user_role_name="guest")

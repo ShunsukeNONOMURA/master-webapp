@@ -1,21 +1,26 @@
-from datetime import date
+from datetime import datetime
 
-from sqlmodel import Field, SQLModel
+from pydantic import Field, SecretStr
+from sqlmodel import Field
 
-class __BaseResponse(SQLModel):
+from app.core.abstract.ddd import BaseResponse
+
+
+class __BaseResponse(BaseResponse):
     user_id: str = Field()
-    user_password: str = Field()
+    user_password: SecretStr = Field()
     user_name: str = Field()
     user_role_code: str = Field()
-    user_role_name: str = Field()
-    user_creation_datetime: str = Field()
-    user_update_datetime: str = Field()
+    # user_role_name: str = Field()
 
-class PostUsersResponse(__BaseResponse):
-    pass
+    # user_creation_datetime: datetime = Field()
+    # user_update_datetime: datetime = Field()
 
 class GetUsersUserResponse(__BaseResponse):
     pass
 
-class DeleteUsersResponse(__BaseResponse):
+class PostUsersResponse(__BaseResponse):
+    pass
+
+class DeleteUsersUserResponse(BaseResponse):
     user_id: str = Field()

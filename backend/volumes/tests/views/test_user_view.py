@@ -4,14 +4,6 @@ from app.main import app
 
 client = TestClient(app)
 
-def test_get_user():
-    user_id = "admin"
-    response = client.get(
-        f"/users/{user_id}",
-    )
-    assert response.status_code == 200
-    assert response.json()["user_id"] == user_id
-
 def test_query_user():
     q = "hoge"
     response = client.get(
@@ -21,7 +13,7 @@ def test_query_user():
     assert response.status_code == 200
     # assert response.json() == {'q': q }
 
-def test_user():
+def test_operate_user():
     # user投函する
     user = {
         "userId": "test",
@@ -43,19 +35,18 @@ def test_user():
         f"/users/{user_id}",
     )
     assert response.status_code == 200
-    assert response.json()["user_id"] == user_id
+    assert response.json()["userId"] == user_id
 
     # user削除する
     response = client.delete(
         f"/users/{user_id}",
     )
     assert response.status_code == 200
-    # assert response.json()["user_id"] == user_ide
+    assert response.json()["userId"] == user_id
 
     # user削除確認する（見つからず404エラーになる）
     response = client.get(
         f"/users/{user_id}",
     )
     assert response.status_code == 404
-    # assert response.json()["user_id"] == None
 

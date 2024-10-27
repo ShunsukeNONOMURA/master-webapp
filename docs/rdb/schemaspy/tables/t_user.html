@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>t_user - /config/dev.sqlite3.dummy</title>
+        <title>t_user - postgres.public</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="../favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="../index.html" class="navbar-brand"><b>/config/dev.sqlite3</b></a><span class="navbar-brand" style="padding-left: 0">.dummy</span>
+                            <a href="../index.html" class="navbar-brand"><b>postgres</b></a><span class="navbar-brand" style="padding-left: 0">.public</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -73,7 +73,7 @@
             <div class="content-wrapper">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
-                    <h1>t_user</h1><p><span id="recordNumber">2</span> rows</p><br />
+                    <h1>t_user</h1><p><span id="recordNumber">-1</span> rows</p><br />
                 </section>
                 <!-- Main content -->
                 <section class="content">
@@ -110,29 +110,24 @@
                                 <tbody>
                                 <tr>
                                     <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="user_id">user_id</span></td>
-                                    <td>VARCHAR</td>
+                                    <td>varchar</td>
                                     <td>20</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
-                                            <tr>
-                                                <td title="v_user.user_id&#39;s name implies that it&#39;s a child of t_user.user_id, but it doesn&#39;t reference that column."><a href='v_user.html'>v_user</a><span class='relatedKey'>.user_id</span></td>
-                                                <td class="constraint detail">Implied Constraint</td>
-                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
-                                            </tr>
                                         </table>
                                     </td>
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>ユーザID</p></td>
                                 </tr>
                                 <tr>
                                     <td><span id="user_name">user_name</span></td>
-                                    <td>VARCHAR</td>
+                                    <td>varchar</td>
                                     <td>20</td>
                                     <td title=''></td>
                                     <td title=''></td>
@@ -145,11 +140,11 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>ユーザ名</p></td>
                                 </tr>
                                 <tr>
                                     <td><span id="user_password">user_password</span></td>
-                                    <td>VARCHAR</td>
+                                    <td>varchar</td>
                                     <td>20</td>
                                     <td title=''></td>
                                     <td title=''></td>
@@ -162,12 +157,12 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>ユーザパスワード</p></td>
                                 </tr>
                                 <tr>
                                     <td><span id="user_creation_datetime">user_creation_datetime</span></td>
-                                    <td>DATETIME</td>
-                                    <td>2000000000,10</td>
+                                    <td>timestamp</td>
+                                    <td>29,6</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -179,12 +174,12 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>ユーザ作成日</p></td>
                                 </tr>
                                 <tr>
                                     <td><span id="user_update_datetime">user_update_datetime</span></td>
-                                    <td>DATETIME</td>
-                                    <td>2000000000,10</td>
+                                    <td>timestamp</td>
+                                    <td>29,6</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -196,12 +191,12 @@
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>ユーザ更新日</p></td>
                                 </tr>
                                 <tr>
                                     <td class='foreignKey' title='Foreign Key'><i class='icon ion-key iconkey' style='padding-left: 5px;'></i><span id="user_role_code">user_role_code</span></td>
-                                    <td>VARCHAR</td>
-                                    <td>2</td>
+                                    <td>varchar</td>
+                                    <td>20</td>
                                     <td title=''></td>
                                     <td title=''></td>
                                     <td>null</td>
@@ -212,13 +207,13 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
-                                                <td title="t_user.user_role_code references m_user_role.user_role_code via "><a href='m_user_role.html'>m_user_role</a><span class='relatedKey'>.user_role_code</span></td>
-                                                <td class="constraint detail"></td>
+                                                <td title="t_user.user_role_code references m_user_role.user_role_code via t_user_user_role_code_fkey"><a href='m_user_role.html'>m_user_role</a><span class='relatedKey'>.user_role_code</span></td>
+                                                <td class="constraint detail">t_user_user_role_code_fkey</td>
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
                                             </tr>
                                         </table>
                                     </td>
-                                    <td></td>
+                                    <td><p>ユーザロールコード</p></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -251,14 +246,8 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> t_user_s_pk</td>
+                                    <td class='primaryKey' title='Primary Key'><i class='icon ion-key iconkey'></i> t_user_pkey</td>
                                     <td>Primary key</td>
-                                    <td><span title='Ascending'>Asc</span></td>
-                                    <td>user_id</td>
-                                </tr>
-                                <tr>
-                                    <td class='uniqueKey' title='Unique Key'><i class='icon ion-key iconkey'></i> sqlite_autoindex_t_user_1</td>
-                                    <td>Must be unique</td>
                                     <td><span title='Ascending'>Asc</span></td>
                                     <td>user_id</td>
                                 </tr>
@@ -280,23 +269,14 @@
                                 <h5>Close relationships within degrees of separation</h5>
                                 <ul class="nav nav-tabs pull-left ui-sortable-handle">
                                     <li class="active"><a href="#oneDegreeImg-chart" data-toggle="tab" aria-expanded="true">One</a></li>
-                                    <li class=""><a href="#oneimpliedDegreeImg-chart" data-toggle="tab" aria-expanded="true">One implied</a></li>
                                 </ul>
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="t_user.html" target="_top" title="t_user" alt="" coords="224,5,647,251">
+<area shape="rect" id="node1" href="t_user.html" target="_top" title="t_user" alt="" coords="224,5,588,251">
 <area shape="rect" id="node2" href="m_user_role.html" target="_top" title="m_user_role" alt="" coords="5,155,180,272">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/t_user.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
-                                    </div>
-                                    <div class="chart tab-pane " id="oneimpliedDegreeImg-chart" style="position: relative; overflow-x:auto;">
-                                        <map id="oneDegreeRelationshipsDiagramImplied" name="oneDegreeRelationshipsDiagramImplied">
-<area shape="rect" id="node1" href="t_user.html" target="_top" title="t_user" alt="" coords="224,5,647,251">
-<area shape="rect" id="node2" href="m_user_role.html" target="_top" title="m_user_role" alt="" coords="5,192,180,309">
-<area shape="rect" id="node3" href="v_user.html" target="_top" title="v_user" alt="" coords="691,104,928,227">
-</map>
-                                        <a name='diagram'><img id="oneimpliedDegreeImg" src="../diagrams/tables/t_user.implied1degrees.png" usemap="#oneDegreeRelationshipsDiagramImplied" class="diagram" border="0" align="left"></a>
                                     </div>
                                 </div>
                             </div>

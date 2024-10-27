@@ -1,7 +1,7 @@
-from datetime import date, datetime
 
 from sqlmodel import SQLModel
 
+from pydantic import SecretStr
 
 class __BaseDto(SQLModel):
     pass
@@ -13,9 +13,14 @@ class __BaseDto(SQLModel):
     # user_creation_datetime: str
     # user_update_datetime: str
 
-# class CreateStudentDto(__BaseDto):
-#     pass
+class GetUserParam(SQLModel):
+    user_id: str
 
+class CreateUserParam(SQLModel):
+    user_id: str
+    user_password: SecretStr
+    user_name: str
+    user_role_code: str
 
-class GetUserParam(__BaseDto):
-    pass
+class DeleteUserParam(SQLModel):
+    user_id: str

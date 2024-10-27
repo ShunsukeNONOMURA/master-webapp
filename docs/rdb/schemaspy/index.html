@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>/config/dev.sqlite3.dummy</title>
+        <title>postgres.public</title>
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
@@ -46,7 +46,7 @@
                 <nav class="navbar navbar-static-top">
                     <div class="container">
                         <div class="navbar-header">
-                            <a href="index.html" class="navbar-brand"><b>/config/dev.sqlite3</b></a><span class="navbar-brand" style="padding-left: 0">.dummy</span>
+                            <a href="index.html" class="navbar-brand"><b>postgres</b></a><span class="navbar-brand" style="padding-left: 0">.public</span>
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse"><i class="fa fa-bars"></i></button>
                         </div>
 
@@ -77,12 +77,12 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="callout callout-info">
-                                <h4>SchemaSpy Analysis of /config/dev.sqlite3.dummy</h4>
-                                <p>Generated on Mon Oct 21 06:15 GMT 2024</p>
+                                <h4>SchemaSpy Analysis of postgres.public</h4>
+                                <p>Generated on Wed Oct 23 23:27 GMT 2024</p>
                             </div>
                         </div>
                     </div>
-                    <a href="/config/dev.sqlite3.dummy.xml" title="XML Representation">XML Representation</a><br />
+                    <a href="postgres.public.xml" title="XML Representation">XML Representation</a><br />
                     <a href="insertionOrder.txt" title="Useful for loading data into a database">Insertion Order</a>
                     <a href="deletionOrder.txt" title="Useful for purging data from a database">Deletion Order</a>
                 </section>
@@ -94,7 +94,7 @@
                                 <span class="info-box-icon bg-aqua"><i class="fa fa-table"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">TABLES</span>
-                                    <span class="info-box-number">2</span>
+                                    <span class="info-box-number">3</span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -106,7 +106,7 @@
                                 <span class="info-box-icon bg-teal"><i class="fa fa-table"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">VIEWS</span>
-                                    <span class="info-box-number">1</span>
+                                    <span class="info-box-number">0</span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -118,7 +118,7 @@
                                 <span class="info-box-icon bg-green"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">COLUMNS</span>
-                                    <span class="info-box-number">15</span>
+                                    <span class="info-box-number">9</span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -142,7 +142,7 @@
                                 <span class="info-box-icon bg-red-active"><i class="fa fa-question" aria-hidden="true"></i></span>
                                 <div class="info-box-content">
                                     <span class="info-box-text">Anomalies</span>
-                                    <span class="info-box-number">0</span>
+                                    <span class="info-box-number">1</span>
                                 </div>
                                 <!-- /.info-box-content -->
                             </div>
@@ -168,7 +168,16 @@
                             <span class="label label-primary pull-right"><i class="fa fa-cog fa-2x"></i></span>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-                            <p>Database Type: SQLite - 3.44.1</p>
+                            <p>Database Type: PostgreSQL - 14.13 (Debian 14.13-1.pgdg120+1)</p>
+                        </div><!-- /.box-body -->
+                    </div>
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Schema public</h3>
+                            <span class="label label-primary pull-right"><i class="fa fa-cog fa-2x"></i></span>
+                        </div><!-- /.box-header -->
+                        <div class="box-body">
+                            <p> <p>standard public schema</p> </p>
                         </div><!-- /.box-body -->
                     </div>
                     <div class="box box-primary">
@@ -198,29 +207,29 @@
                                 <tbody>
                                     <tr class="tbl even" valign="top">
                                         <td class="detail"><a href="tables/m_user_role.html">m_user_role</a></td>
-                                        <td class="detail" align="right">2</td>
+                                        <td class="detail" align="right">1</td>
                                         <td class="detail" align="right">0</td>
                                         <td class="detail" align="right">2</td>
-                                        <td class="detail" align="right">2</td>
+                                        <td class="detail" align="right">-1</td>
+                                        <td class="detail" align="right">Table</td>
+                                        <td class="comment detail" style="display: table-cell;"></td>
+                                    </tr>
+                                    <tr class="tbl even" valign="top">
+                                        <td class="detail"><a href="tables/alembic_version.html">alembic_version</a></td>
+                                        <td class="detail" align="right">0</td>
+                                        <td class="detail" align="right">0</td>
+                                        <td class="detail" align="right">1</td>
+                                        <td class="detail" align="right">-1</td>
                                         <td class="detail" align="right">Table</td>
                                         <td class="comment detail" style="display: table-cell;"></td>
                                     </tr>
                                     <tr class="tbl even" valign="top">
                                         <td class="detail"><a href="tables/t_user.html">t_user</a></td>
-                                        <td class="detail" align="right">1</td>
+                                        <td class="detail" align="right">0</td>
                                         <td class="detail" align="right">1</td>
                                         <td class="detail" align="right">6</td>
-                                        <td class="detail" align="right">2</td>
+                                        <td class="detail" align="right">-1</td>
                                         <td class="detail" align="right">Table</td>
-                                        <td class="comment detail" style="display: table-cell;"></td>
-                                    </tr>
-                                    <tr class="tbl even" valign="top">
-                                        <td class="detail"><a href="tables/v_user.html">v_user</a></td>
-                                        <td class="detail" align="right">0</td>
-                                        <td class="detail" align="right">2</td>
-                                        <td class="detail" align="right">7</td>
-                                        <td class="detail" align="right">0</td>
-                                        <td class="detail" align="right">View</td>
                                         <td class="comment detail" style="display: table-cell;"></td>
                                     </tr>
                             </table>

@@ -1,7 +1,6 @@
 import json
 
 
-
 class DomainException(Exception):
 
     def __init__(self, error_code: str, status_code: int, description: str, **kwargs) -> None:
@@ -17,7 +16,7 @@ class DomainException(Exception):
 
     def __str__(self) -> str:
         return json.dumps(self.__detail)
-    
+
     def error_code(self) -> str:
         return self.__error_code
 

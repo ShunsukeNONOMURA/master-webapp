@@ -1,39 +1,21 @@
 import json
 
 from fastapi import FastAPI
-from gradio import mount_gradio_app
-from mangum import Mangum
 
 # CORSミドルウェア
 from fastapi.middleware.cors import CORSMiddleware
+from gradio import mount_gradio_app
+from mangum import Mangum
 
 # from .ddd import *
 # カスタムHTTPミドルウェア
-from app.core.middleware import AuthMiddleware, LoggingMiddleware, ExceptionHandlingMiddleware
+from app.core.middleware import (
+    ASGIMiddleware,
+    AuthMiddleware,
+    ExceptionHandlingMiddleware,
+    LoggingMiddleware,
+)
 from app.ddd.infra.router import main_router
-
-
-# class CustomMiddleware(BaseHTTPMiddleware):
-#     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
-#         print("customr")
-#         # WebSocket接続への特別な対応が必要な場合
-#         if "websocket" in request.url.path:
-#             # WebSocketのミドルウェアに関連する処理をここで行います
-#             print("WebSocket connection processing")
-#         # その他のHTTPリクエストに対する処理
-#         response = await call_next(request)
-#         return response
-
-# # ws, http両方
-# class ASGIMiddleware:
-#     def __init__(self, app) -> None:
-#         self.app = app
-
-#     async def __call__(self, scope, receive, send):
-#         print("asgi")
-#         print(scope["type"])
-#         response = await self.app(scope, receive, send)
-#         print(response)
 
 description = """
 Webアプリのバックエンドのベースラインコード実装
@@ -49,7 +31,7 @@ Webアプリのバックエンドのベースラインコード実装
 """
 
 app = FastAPI(
-    description=description,
+    # description=description,
     openapi_tags=[
         {
             "name": "/health",
@@ -62,27 +44,26 @@ app = FastAPI(
     ],
 )
 
-# CORS設定
+# CORSのオリジン
 origins = [
     "http://localhost",
     "http://localhost:8080",
 ]
 
+# ミドルウェア登録（middlewareは逆順にコールされる）
+app.add_middleware(AuthMiddleware) # 認証に関するミドルウェア
+# app.add_middleware(ExceptionHandlingMiddleware) # エラーハンドリングに関するミドルウェア
+app.add_middleware(LoggingMiddleware) # ログに関するミドルウェア
+
+app.add_middleware(ASGIMiddleware) # ASGIに関するミドルウェア
+
 app.add_middleware(
-    CORSMiddleware,
+    CORSMiddleware, # CORSに関するミドルウェア
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# ミドルウェア登録（middlewareは逆順にコールされる）
-app.add_middleware(AuthMiddleware) # 認証に関するミドルウェア
-app.add_middleware(ExceptionHandlingMiddleware) # エラーハンドリングに関するミドルウェア
-app.add_middleware(LoggingMiddleware) # ログに関するミドルウェア
-
-# app.add_middleware(CustomMiddleware)
-# app.add_middleware(ASGIMiddleware)
 
 # ルーター登録
 app.include_router(main_router)
