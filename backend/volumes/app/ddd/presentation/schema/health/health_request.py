@@ -1,8 +1,6 @@
-from sqlmodel import SQLModel
+
+from app.core.base import BaseRequest
 
 
-class __BaseRequest(SQLModel):
-    pass
-
-class GetHealthRequest(__BaseRequest):
+class GetHealthRequest(BaseRequest):
     pass

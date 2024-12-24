@@ -2,6 +2,18 @@
 # master webapp
 webアプリ開発用のマスタ。
 
+## Todo
+- 共通型
+    - enum
+- エラーハンドリング
+    - エラーモデル
+    - API
+- ドキュメンテーション
+    - sphinx
+    - (mkdocs)
+- CI
+    - github action
+
 ## Links
 - https://github.com/ShunsukeNONOMURA/master-webapp
 - https://shunsukenonomura.github.io/master-webapp/backend/api.html
@@ -67,6 +79,7 @@ webアプリ開発用のマスタ。
 ### 基本処理フロー
 ```mermaid
 sequenceDiagram
+  autonumber
 
   actor c as client
   participant p as Presentation
@@ -75,7 +88,7 @@ sequenceDiagram
   participant db as DB
 
   c->>+p : Request
-  p->>p: middleware
+  p->>p: depends : check_access_token
   p->>+u : usecase.execute(Param)
 
   u->>+d : service(domain model)
@@ -87,8 +100,11 @@ sequenceDiagram
   d->>-u : domain model
 
   u->>-p : DTO
+  p->>p: middleware : logging
   p->>-c: Response
 ```
+
+
 
 ### 構成
 ![](./docs/backend/flow.dio.png)
@@ -213,3 +229,11 @@ sls remove --stage {env}
 
 ## 疑問
 ### Util系どこに置くか
+- infra層処理なら`app/ddd/infra`に共通処理を固める
+
+### Entityがidが等しければ同じものであることをどのように周知するか
+
+### keycloak連携
+- https://fastapi-keycloak-middleware.readthedocs.io/en/latest/usage.html
+- https://qiita.com/KWS_0901/items/bdf60a725064900eaad1
+

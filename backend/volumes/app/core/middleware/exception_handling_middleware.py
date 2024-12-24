@@ -1,39 +1,18 @@
-from fastapi import Request, Response, status
-from fastapi.responses import JSONResponse
+from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 
-from app.core.exception import DomainException, UseCaseException
 
-
-class ExceptionHandlingMiddleware(BaseHTTPMiddleware):
-
+class ErrorHandlingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
-        print("exception handling middleware")
         try:
             response: Response = await call_next(request)
-        except DomainException as e:
-            print("domain error")
-            response = JSONResponse(
-                status_code=e.status_code(),
-                content={
-                    "head": {
-                        "error_code": e.error_code(),
-                        "detail": e.message()
-                    }
-                },
-            )
-        except UseCaseException as e:
-            response = JSONResponse(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                content={"detail": e.message()},
-            )
         except Exception as e:
-            response = JSONResponse(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                content={
-                    "detail": {
-                        "description": f"{e}",
-                    },
-                },
-            )
+            print(e)
+            print("on error")
+            # TODO(nonomura): エラー設計後
+            # response = JSONResponse(
+            #     status_code=500,
+            #     content={"detail": "An internal server error occurred."},
+            # )
+            raise
         return response

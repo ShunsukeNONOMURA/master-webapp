@@ -1,8 +1,16 @@
-version: '3'
 services:
   schemaspy:
-    build: ./schemaspy
+    build: ./documentation/schemaspy
     volumes:
       - ./docs/rdb/schemaspy:/output # export先
+      # - ./documentation/schemaspy/config:/config
       - ./schemaspy/config:/config
-      - ./backend/volumes:/backend/volumes # 参照先（sqlite）
+      # - ./backend/volumes:/backend/volumes # 参照先（sqlite）
+    extra_hosts: # linux環境の場合にhost.docker.internalでhost上にアクセスするために必要
+      - "host.docker.internal:host-gateway"
+    networks:
+      - master-webapp_master_webapp_network
+
+networks:
+  master-webapp_master_webapp_network:
+    external: true

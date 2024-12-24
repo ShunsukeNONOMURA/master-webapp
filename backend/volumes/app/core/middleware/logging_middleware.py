@@ -1,4 +1,4 @@
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 
 from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
@@ -7,14 +7,14 @@ from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoin
 
 class LoggingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
-        start_datetime = datetime.now(timezone.utc)
+        start_datetime = datetime.now(UTC)
         print("logging middleware : api start")
 
         response: Response = await call_next(request)
 
         # error handling 後を含めた実行について保存する
 
-        end_datetime = datetime.now(timezone.utc)
+        end_datetime = datetime.now(UTC)
         duration = end_datetime - start_datetime
 
         # ヘッダに情報をトレインケースで埋める

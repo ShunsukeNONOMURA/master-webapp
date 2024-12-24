@@ -1,1 +1,0 @@
-docker compose exec backend poetry run python3 db.py

@@ -1,4 +1,3 @@
-version: '3'
 services:
   backend:
     build: ./backend
@@ -7,10 +6,16 @@ services:
     volumes:
       - ./backend/volumes:/root/volumes
       - ./docs/backend:/root/docs/backend
-    network_mode: "host"
+    # network_mode: "host"
+    ports:
+      - 8000:8000
     env_file:
       - ./backend/.env
-  rdb:
+    extra_hosts: # linux環境の場合にhost.docker.internalでhost上にアクセスするために必要
+      - "host.docker.internal:host-gateway"
+    networks:
+      - master_webapp_network
+  postgres:
     build: ./rdb/postgresql
     # restart: always
     ports: 
@@ -21,3 +26,15 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+    networks:
+      - master_webapp_network
+  # tika: 
+  #   image: imixs/tika
+  #   ports:
+  #     - "9998:9998"
+  #   networks:
+  #     - master_webapp_network
+
+networks:
+  master_webapp_network:
+    driver: bridge

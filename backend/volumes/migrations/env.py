@@ -1,11 +1,10 @@
 from logging.config import fileConfig
 
-from sqlalchemy import engine_from_config
-from sqlalchemy import pool
-
-from sqlmodel import SQLModel
 from alembic import context
-from migrations.model import *  # Import your SQLModel models here
+from sqlalchemy import engine_from_config, pool
+from sqlmodel import SQLModel
+
+from migrations.models import *  # Import your SQLModel models here
 
 target_metadata = SQLModel.metadata
 
@@ -31,7 +30,8 @@ if config.config_file_name is not None:
 
 
 def run_migrations_offline() -> None:
-    """Run migrations in 'offline' mode.
+    """
+    Run migrations in 'offline' mode.
 
     This configures the context with just a URL
     and not an Engine, though an Engine is acceptable
@@ -56,7 +56,8 @@ def run_migrations_offline() -> None:
 
 
 def run_migrations_online() -> None:
-    """Run migrations in 'online' mode.
+    """
+    Run migrations in 'online' mode.
 
     In this scenario we need to create an Engine
     and associate a connection with the context.

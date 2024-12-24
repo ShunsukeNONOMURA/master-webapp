@@ -1,27 +1,15 @@
-from app.core.abstract.ddd import BaseUsecase
-from app.ddd.application.schema.user import GetUserParam, GetUserDto
-from app.ddd.infra.repository.user_repository import (
-    UserRepository, 
-    UserId,
+from app.ddd.application.dto.user import (
+    GetUserInputDTO,
+    GetUserOutputDTO,
 )
-from fastapi import APIRouter, HTTPException, Depends
-from sqlmodel import Session
+from app.ddd.application.usecase.user.base_user_usecase import (
+    BaseUserUseCase,
+)
+from app.ddd.domain import User, UserId
 
-class GetUsersUseCase(BaseUsecase):
-    def __init__(self, user_repository: UserRepository):
-        self.__user_repository = user_repository
 
-    def execute(self) -> GetUserDto:
-        users = self.__user_repository.query()
-        return users
-        # return GetUserDto(**users.to_dict())
-
-class GetUserUseCase(BaseUsecase):
-    def __init__(self, user_repository: UserRepository):
-        self.__user_repository = user_repository
-
-    def execute(self, param: GetUserParam) -> GetUserDto:
-        user_id = UserId(root=param.user_id)
-        user = self.__user_repository.find_by_id(user_id)
-        # print(user.model_dump())
-        return GetUserDto(**user.model_dump())
+class GetUserUseCase(BaseUserUseCase[GetUserInputDTO, GetUserOutputDTO]):
+    def execute(self, input_dto: GetUserInputDTO) -> GetUserOutputDTO:
+        user_id: UserId = UserId(root=input_dto.user_id)
+        user: User = self._uow.user_repository.find_by_id(user_id)
+        return GetUserOutputDTO(user = user)
