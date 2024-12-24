@@ -111,18 +111,46 @@
                 <script>
                     var tableData = [
     {
-        "tableName": "m_user_role",
-        "tableFileName": "m_user_role",
+        "tableName": "t_user",
+        "tableFileName": "t_user",
         "tableType": "Table",
-        "keyClass": "primaryKey",
-        "keyTitle": "Primary Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_role_code",
-        "type": "varchar",
-        "length": 2,
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "updated_at",
+        "type": "timestamp",
+        "length": 29,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>ユーザロールコード<\/p>"
+        "comments": "<p>更新日時（UTC）<\/p>"
+    },
+    {
+        "tableName": "m_user_role",
+        "tableFileName": "m_user_role",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "user_role_name",
+        "type": "varchar",
+        "length": 30,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>ユーザロール名<\/p>"
+    },
+    {
+        "tableName": "t_user",
+        "tableFileName": "t_user",
+        "tableType": "Table",
+        "keyClass": "primaryKey",
+        "keyTitle": "Primary Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_id",
+        "type": "varchar",
+        "length": 20,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>ユーザID<\/p>"
     },
     {
         "tableName": "t_user",
@@ -153,32 +181,32 @@
         "comments": "<p>更新日時（UTC）<\/p>"
     },
     {
-        "tableName": "m_user_role",
-        "tableFileName": "m_user_role",
-        "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "user_role_name",
-        "type": "varchar",
-        "length": 30,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>ユーザロール名<\/p>"
-    },
-    {
         "tableName": "t_user",
         "tableFileName": "t_user",
         "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "created_at",
-        "type": "timestamp",
-        "length": 29,
+        "keyClass": "foreignKey",
+        "keyTitle": "Foreign Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_role_code",
+        "type": "varchar",
+        "length": 20,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>作成日時（UTC）<\/p>"
+        "comments": "<p>ユーザロールコード<\/p>"
+    },
+    {
+        "tableName": "m_user_role",
+        "tableFileName": "m_user_role",
+        "tableType": "Table",
+        "keyClass": "primaryKey",
+        "keyTitle": "Primary Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_role_code",
+        "type": "varchar",
+        "length": 2,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>ユーザロールコード<\/p>"
     },
     {
         "tableName": "t_user",
@@ -195,20 +223,6 @@
         "comments": "<p>ユーザパスワード<\/p>"
     },
     {
-        "tableName": "t_user",
-        "tableFileName": "t_user",
-        "tableType": "Table",
-        "keyClass": "primaryKey",
-        "keyTitle": "Primary Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_id",
-        "type": "varchar",
-        "length": 20,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>ユーザID<\/p>"
-    },
-    {
         "tableName": "m_user_role",
         "tableFileName": "m_user_role",
         "tableType": "Table",
@@ -228,27 +242,13 @@
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "updated_at",
+        "name": "created_at",
         "type": "timestamp",
         "length": 29,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>更新日時（UTC）<\/p>"
-    },
-    {
-        "tableName": "t_user",
-        "tableFileName": "t_user",
-        "tableType": "Table",
-        "keyClass": "foreignKey",
-        "keyTitle": "Foreign Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_role_code",
-        "type": "varchar",
-        "length": 20,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>ユーザロールコード<\/p>"
+        "comments": "<p>作成日時（UTC）<\/p>"
     }
 ];
                     var config = {

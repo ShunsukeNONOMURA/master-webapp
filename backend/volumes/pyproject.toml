@@ -93,4 +93,5 @@ filterwarnings = [
 exclude_lines = [
     "pass",
     "raise NotImplementedError",
+    "if TYPE_CHECKING:",
 ]
