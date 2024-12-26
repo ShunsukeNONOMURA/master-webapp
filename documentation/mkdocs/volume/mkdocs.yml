@@ -1,0 +1,124 @@
+site_name: FastAPI Master MkDocs
+# mkdocsをルートとする
+site_url: http://0.0.0.0/mkdocs
+theme:
+  name: 'material'
+  palette:
+    primary: teal
+  # サイトの言語
+  language: ja
+  font:
+    # 通常のフォント
+    text: Roboto
+    # codeの等幅フォント設定
+    code: Roboto Mono
+  features:
+    # ページナビゲーションを折りたたみ可能なリンクで左側に配置します。
+    - navigation.expand
+    # トップへ戻るボタン
+    - navigation.top
+    # スクロールしたときヘッダーを自動的に非表示にする
+    - header.autohide
+    # 検索の候補リスト表示を表示する
+    - search.suggest
+    # 検索で一致した結果をハイライトする
+    - search.highlight
+    # コンテンツタブ表示を有効にする
+    - content.tabs.link
+# [プラグイン]
+plugins:
+  # 検索機能
+  - search:
+      lang: ja
+  - autolinks
+  - awesome-pages
+  # - tags:
+  #     tags_file: tag.md
+  - macros
+# [拡張機能]
+markdown_extensions:
+  # 目次
+  - toc:
+      # 自動生成を有効にする
+      permalink: true
+      # 目次の上に表示する文言
+      title: 目次
+      # 見出しにする深さ
+      toc_depth: 3
+  # 数式
+  - mdx_math:
+      enable_dollar_delimiter: true
+  # コードハイライトの設定（デフォルトのcodehiliteを使わずに拡張機能を使用）
+  - pymdownx.highlight:
+      # (auto_titleなどの他の機能を有効にするためtrue)
+      use_pygments: true
+      # タイトルが設定されていないと自動的に言語名を表示する
+      auto_title: true
+      # 行番号を表示する
+      linenums: true
+      # 行を選択できアンカーリンクを生成可能にする
+      anchor_linenums: true
+  # コードハイライトの設定(インラインブロック版)
+  - pymdownx.inlinehilite
+  # アラート修飾(Note修飾)を有効化
+  - admonition
+  # コンテンツの折りたたみを有効化
+  - pymdownx.details
+  # 打ち消し線の追加
+  - pymdownx.tilde
+  # 下付き文字と上付き文字の追加（tilde拡張も必要）
+  - pymdownx.caret
+  # テキストの強調表示が可能になる（tilde,caret拡張も必要）
+  - pymdownx.mark
+  # URL を書くだけで、リンク扱いにする。（デフォルトだと不可）
+  - pymdownx.magiclink
+  # ドキュメント内の追加、削除、または更新されたセクションを強調表示
+  - pymdownx.critic
+  # キーボードアイコンの追加
+  - pymdownx.keys
+  # 略語
+  - abbr
+  # 参照
+  - attr_list
+  # HTML内にMarkdownを記述できる
+  - md_in_html
+  # 注釈の追加
+  - footnotes
+  # 定義リスト
+  - def_list
+  # タスクのチェックリストを追加
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  # グリッド表示の有効化
+  - tables
+  # 任意のファイルのコンテンツを他のドキュメントやソースファイルを含むドキュメントに埋め込む機能
+  - pymdownx.snippets
+  # コンテンツタブ表示の有効化
+  - pymdownx.tabbed:
+      alternate_style: true
+  # mermaidの表示設定
+  - pymdownx.superfences:
+      custom_fences:
+          - name: mermaid
+            class: mermaid
+            format: !!python/name:pymdownx.superfences.fence_code_format
+  # # 絵文字
+  # - pymdownx.emoji:
+  #     emoji_index: !!python/name:materialx.emoji.twemoji
+  #     emoji_generator: !!python/name:materialx.emoji.to_svg
+extra:
+  # このサイトのバージョン
+  version: 1.0
+  # フッターのソーシャルリンク
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ShunsukeNONOMURA
+      name: shunsuke_nonomura on Github
+extra_javascript: 
+  - https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
+# [フッター] 著作権表示
+copyright: Copyright &copy; 2024 shunsuke_nonomura
+# ローカル環境で表示する場合はfalse、Webサーバー経由ならTrue。リソース参照のタグが変わるので気を付ける。
+use_directory_urls: false
+# 公開するページのPort番号を指定
+dev_addr: '0.0.0.0:48080'

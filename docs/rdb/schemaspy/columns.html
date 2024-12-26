@@ -87,7 +87,7 @@
                                     id="column_table"
                                     class="table table-bordered table-striped dataTable"
                                     role="grid"
-                                    data-paging="true"
+                                    data-paging="false"
                                     data-page-length="50"
                                     data-length-change="false">
                                 <thead align='left'>
@@ -111,18 +111,18 @@
                 <script>
                     var tableData = [
     {
-        "tableName": "t_user",
-        "tableFileName": "t_user",
+        "tableName": "m_user_role",
+        "tableFileName": "m_user_role",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "updated_at",
+        "name": "created_at",
         "type": "timestamp",
         "length": 29,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>更新日時（UTC）<\/p>"
+        "comments": "<p>作成日時（UTC）<\/p>"
     },
     {
         "tableName": "m_user_role",
@@ -142,20 +142,6 @@
         "tableName": "t_user",
         "tableFileName": "t_user",
         "tableType": "Table",
-        "keyClass": "primaryKey",
-        "keyTitle": "Primary Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_id",
-        "type": "varchar",
-        "length": 20,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>ユーザID<\/p>"
-    },
-    {
-        "tableName": "t_user",
-        "tableFileName": "t_user",
-        "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
         "name": "user_name",
@@ -167,8 +153,8 @@
         "comments": "<p>ユーザ名<\/p>"
     },
     {
-        "tableName": "m_user_role",
-        "tableFileName": "m_user_role",
+        "tableName": "t_user",
+        "tableFileName": "t_user",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
@@ -179,6 +165,20 @@
         "autoUpdated": "",
         "defaultValue": "null",
         "comments": "<p>更新日時（UTC）<\/p>"
+    },
+    {
+        "tableName": "t_user",
+        "tableFileName": "t_user",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "user_password",
+        "type": "varchar",
+        "length": 20,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>ユーザパスワード<\/p>"
     },
     {
         "tableName": "t_user",
@@ -214,20 +214,6 @@
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "user_password",
-        "type": "varchar",
-        "length": 20,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>ユーザパスワード<\/p>"
-    },
-    {
-        "tableName": "m_user_role",
-        "tableFileName": "m_user_role",
-        "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
         "name": "created_at",
         "type": "timestamp",
         "length": 29,
@@ -240,19 +226,33 @@
         "tableName": "t_user",
         "tableFileName": "t_user",
         "tableType": "Table",
+        "keyClass": "primaryKey",
+        "keyTitle": "Primary Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_id",
+        "type": "varchar",
+        "length": 20,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>ユーザID<\/p>"
+    },
+    {
+        "tableName": "m_user_role",
+        "tableFileName": "m_user_role",
+        "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "created_at",
+        "name": "updated_at",
         "type": "timestamp",
         "length": 29,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>作成日時（UTC）<\/p>"
+        "comments": "<p>更新日時（UTC）<\/p>"
     }
 ];
                     var config = {
-                        pagination: true
+                        pagination: false
                     };
                 </script>
             </div>

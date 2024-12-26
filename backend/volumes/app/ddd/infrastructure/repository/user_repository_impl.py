@@ -8,6 +8,7 @@ from app.ddd.domain import (
     UserId,
     UserNotFoundError,
     UserRepository,
+    UserUpdateConflictError,
 )
 from migrations.models import TUser
 
@@ -29,27 +30,29 @@ class UserRepositoryImpl(UserRepository):
     def find_by_id(self, _id: UserId) -> User:
         model: TUser | None = self._fetch_by_id(_id.root)
         if model is None:
-            raise UserNotFoundError
+            raise UserNotFoundError(_id.root)
         return User.model_validate(model)
 
     def insert(self, user: User) -> None:
         model: TUser | None = self._fetch_by_id(user.user_id)
         if model is not None: # 重複判定
             raise UserDuplicationError
-        model = TUser.model_validate(user.dict(exclude={"created_at", "updated_at"}))
+        model = TUser.model_validate(user.dict(exclude={"created_at", "updated_at"})) # 新規作成
         self._apply(model)
 
     def update(self, user: User) -> None:
         model: TUser | None = self._fetch_by_id(user.user_id)
         if model is None: # ない場合更新できない 現在のユースケースでは基本的に発生しない
-            raise UserNotFoundError
-        model.sqlmodel_update(user)
+            raise UserNotFoundError(user.user_id)
+        if user.updated_at != model.updated_at: # 更新日検証による楽観的ロックの確認
+            raise UserUpdateConflictError
+        model.sqlmodel_update(user) # 更新データの統合
         self._apply(model)
 
     def delete(self, _id: UserId) -> None:
         model: TUser | None = self._fetch_by_id(_id.root)
         if model is None:
-            raise UserNotFoundError
+            raise UserNotFoundError(_id.root)
 
         # TODO(nonomura): 論理削除する場合
         # model.updated_at = datetime.now()

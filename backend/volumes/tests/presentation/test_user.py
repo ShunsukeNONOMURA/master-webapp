@@ -1,24 +1,22 @@
 from fastapi.testclient import TestClient
 import pytest
 
+from pydantic import ValidationError
+
 from tests.fixture.db import db
 
-from app.ddd.domain.error import UserNotFoundError, UserDuplicationError
+from app.ddd.domain.error import UserNotFoundError, UserDuplicationError, UserUpdateConflictError
 
 from app.main import app
 
 client = TestClient(app)
 
-# def test_query_user():
-#     q = "hoge"
-#     response = client.get(
-#         "/query/users",
-#         params={"q": q},
-#     )
-#     assert response.status_code == 200
-#     # assert response.json() == {'q': q }
-
 def test_get_me(db):
+    """
+    meの取得を行う
+
+    TODO(nonomura): jwt関連設計後
+    """
     user_id = "guest"
     response = client.get(
         f"/users/me",
@@ -29,6 +27,17 @@ def test_get_me(db):
     assert response.json()["user"]["userId"] == user_id
 
 def test_operate_user(db):
+    """
+    ユーザ操作のテスト
+    - テストユーザを作成する
+    - 再度テストユーザ作成して失敗させる
+    - ユーザ更新を失敗させる（無効なパラメータ）
+    - ユーザを更新する
+    - 再度ユーザを更新して失敗させる（楽観的ロックの確認）
+    - ユーザを削除する
+    - 再度ユーザを削除しようとして失敗させる
+    - 存在しないテストユーザに対して取得/削除/更新をしようとして失敗させる
+    """
     test_user = {
         "userId": "test",
         "userName": "test",
@@ -36,15 +45,7 @@ def test_operate_user(db):
         "userRoleCode": "99",
     }
 
-    # user取得する
-    with pytest.raises(UserNotFoundError):
-        response = client.get(
-            f"/users/{test_user['userId']}",
-        )
-        # assert response.status_code == 200
-        # assert response.json()["user"]["userId"] == user_id
-
-    # user投函する
+    # テストユーザを作成する
     response = client.post(
         "/users",
         json=test_user,
@@ -58,6 +59,7 @@ def test_operate_user(db):
     )
     assert response.status_code == 200
     # assert response.json()["user"]["userId"] == test_user['userId']
+    updated_at = response.json()["user"]["updatedAt"]
 
     # user投函をコンフリさせる
     with pytest.raises(UserDuplicationError):
@@ -67,9 +69,21 @@ def test_operate_user(db):
             headers={"Content-Type": "application/json"}
         )
 
-    # user更新に成功する
-    # ValidationError
+    # テストユーザ更新に失敗する（無効なデータ）
+    patch_false_user = {
+        "updatedAt": updated_at,
+        "userRoleCode": "999", # 存在しない
+        "userName": None, # Noneを指定する
+    }
+    with pytest.raises(ValidationError):
+        response = client.patch(
+            f"/users/{test_user['userId']}",
+            json=patch_false_user,
+        )
+
+    # テストユーザ更新に成功する
     patch_user = {
+        "updatedAt": updated_at,
         "userRoleCode": "00", # 存在する
         # "userName": None, # Noneを指定する
         "userName": "new_name",
@@ -80,28 +94,41 @@ def test_operate_user(db):
     )
     assert response.status_code == 200
     # assert response.json()["user"]["userId"] == test_user['userId']
-    # assert response.json()["userName"] == patch_user['userName'] # 更新されているかチェック
+    # assert response.json()["user"]["userName"] == patch_user['userName'] # 更新されているかチェック
+
+    # テストユーザ更新に失敗する（古い日付で更新に失敗する(楽観的ロックの確認)）
+    with pytest.raises(UserUpdateConflictError):
+        response = client.patch(
+            f"/users/{test_user['userId']}",
+            json=patch_user,
+        )
 
     # user削除する
     response = client.delete(
         f"/users/{test_user['userId']}",
     )
     assert response.status_code == 200
-    # assert response.json()["user"]["userId"] == test_user['userId']
-
-    # 再度user削除確認する（見つからず404エラーになる）
-    with pytest.raises(UserNotFoundError):
-        response = client.delete(
+    
+    # 削除されたテストユーザに対して各操作が失敗する
+    with pytest.raises(UserNotFoundError): # 取得
+        response = client.get(
             f"/users/{test_user['userId']}",
         )
-
-    # 再度user更新する（見つからず404エラーになる）
-    with pytest.raises(UserNotFoundError):
+    with pytest.raises(UserNotFoundError): # 更新
         response = client.patch(
             f"/users/{test_user['userId']}",
             json=patch_user,
         )
-
+    with pytest.raises(UserNotFoundError): # 削除
+        response = client.delete(
+            f"/users/{test_user['userId']}",
+        )
+    
+def test_query_user(db):
+    """
+    ユーザクエリのテスト
+    - ユーザのクエリを行う
+    """
     # userにクエリする
     response = client.post(
         "/query/users",

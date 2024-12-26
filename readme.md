@@ -1,113 +1,10 @@
 
 # master webapp
-webアプリ開発用のマスタ。
-
-## Todo
-- 共通型
-    - enum
-- エラーハンドリング
-    - エラーモデル
-    - API
-- ドキュメンテーション
-    - sphinx
-    - (mkdocs)
-- CI
-    - github action
+python(fastapi)によるwebアプリ開発用のマスタ。
 
 ## Links
-- https://github.com/ShunsukeNONOMURA/master-webapp
-- https://shunsukenonomura.github.io/master-webapp/backend/api.html
-- https://shunsukenonomura.github.io/master-webapp/backend/oss.html
-- https://shunsukenonomura.github.io/master-webapp/backend/pytest_cov/index.html
-- https://shunsukenonomura.github.io/master-webapp/rdb/schemaspy/index.html
-
-- mkdocs
-    - https://shunsukenonomura.github.io/mkdocs-development/volume/site/0300-design-api.html
-    - https://shunsukenonomura.github.io/mkdocs-development/volume/site/0350-design-ddd-cqrs.html
-    - https://shunsukenonomura.github.io/mkdocs-development/volume/site/0400-example-ddd.html
-
-## 構成
-| サービス  | 主要ライブラリ |
-| --------- | -------------- |
-| backend   | fastapi        |
-| frontend  | vite           |
-| rdb       | postgresql     |
-| migration | alembic        |
-
-## backend
-| 基本機能 | ライブラリ |
-| -------- | ---------- |
-| lambda   | sls        |
-| test     | pytest     |
-
-| 機能                 | 依存                                                                        |
-| -------------------- | --------------------------------------------------------------------------- |
-| パッケージマネージャ | [Poetry](https://python-poetry.org/)                                        |
-| フレームワーク       | [FastAPI](https://fastapi.tiangolo.com/ja/)                                 |
-| ASGI                 | uvicorn                                                                     |
-| DI                   | [FastAPI (Depends)](https://fastapi.tiangolo.com/ja/tutorial/dependencies/) |
-| ORM                  | [SQLModel](https://sqlmodel.tiangolo.com/)                                  |
-| RDB                  | [SQLite](https://www.sqlite.org/)                                           |
-| マイグレーション     | Alembic                                                                     |
-| APIテスト            | [Fastapi (TestClient)](https://fastapi.tiangolo.com/ja/tutorial/testing/)   |
-| 負荷テスト           | Locust?                                                                     |
-| Linter,Formatter     | [Ruff](https://docs.astral.sh/ruff/https://docs.astral.sh/ruff/)            |
-| 型チェック           | mypy                                                                        |
-| APIドキュメント      | [FastAPI (swagger, redoc)](https://fastapi.tiangolo.com/ja/features/)       |
-| DDLドキュメント      | [schemaspy](https://schemaspy.org/)                                         |
-
-できるだけ一般知識で更新ができるように、独自実装せずにossは担げる場合は担ぐ。
-
-### 設計
-| レイヤ         | 設計思想                                                                              |
-| -------------- | ------------------------------------------------------------------------------------- |
-| アーキテクチャ | DDD（オニオンアーキテクチャ）                                                         |
-| API設計        | REST（[参考：AWS RESTful API とは?](https://aws.amazon.com/jp/what-is/restful-api/)） |
-
-## レイヤ勘所
-- presentation
-    - クライアント通信の入出力とユースケース層の橋渡し
-    - クライアント通信時の共通処理実行（middleware）
-- usecase
-    - ユースケース層で使うサービス初期構築 (\_\_init\_\_)
-    - ユースケースに沿った一連の処理の流れ (Param -> execute -> DTO)
-- domain
-    - 各サービスIFや利用するモデルの記述
-- infra
-    - 各サービスの実装
-
-### 基本処理フロー
-```mermaid
-sequenceDiagram
-  autonumber
-
-  actor c as client
-  participant p as Presentation
-  participant u as UseCase
-  participant d as Domain
-  participant db as DB
-
-  c->>+p : Request
-  p->>p: depends : check_access_token
-  p->>+u : usecase.execute(Param)
-
-  u->>+d : service(domain model)
-  d->>-u : domain model
-
-  u->>+d : service(domain model)
-  d->>+db : query
-  db->>-d : return
-  d->>-u : domain model
-
-  u->>-p : DTO
-  p->>p: middleware : logging
-  p->>-c: Response
-```
-
-
-
-### 構成
-![](./docs/backend/flow.dio.png)
+- https://shunsukenonomura.github.io/master-webapp/mkdocs/index.html
+    - mkdocsの外部サイト
 
 ## backend構成
 | パス                          | 役割                                      |
@@ -133,16 +30,6 @@ sequenceDiagram
 | migrations/model              | ORM                                       |
 | tests                         | test関連                                  |
 | pyproject.toml                | poetry設定                                |
-
-## middleware
-上から順にラップされる
-- auth
-    - 認証に関する実装
-- error_handling
-    - 認証やユースケース以下におけるエラー時のハンドリング
-- logging
-    - 通信に関する記録
-    - カスタムヘッダ追記（移動予定）
 
 ## コマンドシート
 | 操作                                     | コマンド                                                                                                                                                          |
@@ -226,14 +113,3 @@ sls remove --stage {env}
         - ドキュメント生成：テストカバレッジ
 - 結合評価
 - リリース
-
-## 疑問
-### Util系どこに置くか
-- infra層処理なら`app/ddd/infra`に共通処理を固める
-
-### Entityがidが等しければ同じものであることをどのように周知するか
-
-### keycloak連携
-- https://fastapi-keycloak-middleware.readthedocs.io/en/latest/usage.html
-- https://qiita.com/KWS_0901/items/bdf60a725064900eaad1
-

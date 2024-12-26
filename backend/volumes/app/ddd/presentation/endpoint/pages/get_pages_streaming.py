@@ -68,7 +68,7 @@ html_streaming="""
 </html>
 """
 
-@router.get("/pages/streaming")
+@router.get("/pages/streaming", include_in_schema=False)
 async def get_page_streaming() -> HTMLResponse:
     """SSE通信用."""
     return HTMLResponse(html_streaming)

@@ -35,6 +35,24 @@ services:
   #   networks:
   #     - master_webapp_network
 
+  mkdocs:
+    build:
+      context: ./documentation/mkdocs
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
+    ports:
+      - "48080:48080"
+    working_dir: /root/projects/volume
+    command: mkdocs serve
+    volumes:
+      - type: bind
+        source: "./documentation/mkdocs/volume"
+        target: "/root/projects/volume"
+      - type: bind # build先
+        source: "./docs/mkdocs"
+        target: "/root/projects/volume/site"
+
 networks:
   master_webapp_network:
     driver: bridge

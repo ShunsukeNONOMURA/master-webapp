@@ -24,3 +24,8 @@ class TransactionTable(BaseTable):
             "comment": "更新日時（UTC）"
         },
     )
+
+
+    # __mapper_args__ = {
+    #     'version_id_col': updated_at
+    # }

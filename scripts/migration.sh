@@ -10,6 +10,3 @@ docker compose exec backend alembic upgrade head
 
 docker compose exec backend python db.py
 
-# schemaspy
-# docker compose -f docker-compose-spy.yml run --rm schemaspy -configFile /config/schemaspy_sqlite.properties -debug
-docker compose -f docker-compose-spy.yml run --rm schemaspy -configFile /config/schemaspy_pgsql.properties -debug

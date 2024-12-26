@@ -4,7 +4,7 @@ services:
     volumes:
       - ./docs/rdb/schemaspy:/output # export先
       # - ./documentation/schemaspy/config:/config
-      - ./schemaspy/config:/config
+      - ./documentation/schemaspy/config:/config
       # - ./backend/volumes:/backend/volumes # 参照先（sqlite）
     extra_hosts: # linux環境の場合にhost.docker.internalでhost上にアクセスするために必要
       - "host.docker.internal:host-gateway"

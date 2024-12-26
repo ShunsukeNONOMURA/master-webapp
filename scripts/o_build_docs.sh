@@ -7,3 +7,6 @@ docker compose exec backend pip-licenses --order=license --format=html --with-ur
 
 # ER
 docker compose -f docker-compose-spy.yml run --rm schemaspy -configFile /config/config_postgres.properties -debug
+
+# docs
+docker compose exec mkdocs mkdocs build

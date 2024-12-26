@@ -2,6 +2,8 @@
 # from pydantic import SecretStr
 
 
+from datetime import datetime
+
 from sqlmodel import Field
 
 from app.core.base import BaseInputDTO
@@ -18,6 +20,7 @@ class CreateUserInputDTO(BaseInputDTO):
 
 class PatchUserInputDTO(BaseInputDTO):
     user_id: str
+    updated_at: datetime
     user_password: str | None = Field(None)
     user_name: str | None = Field(None)
     user_role_code: str | None = Field(None)
