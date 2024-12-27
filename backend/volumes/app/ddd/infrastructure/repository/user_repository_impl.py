@@ -9,8 +9,9 @@ from app.ddd.domain import (
     UserNotFoundError,
     UserRepository,
     UserUpdateConflictError,
+    # UserReportDuplicationError,
 )
-from migrations.models import TUser
+from migrations.models import TUser, TUserReport
 
 
 class UserRepositoryImpl(UserRepository):
@@ -21,7 +22,11 @@ class UserRepositoryImpl(UserRepository):
         statement = select(TUser).where(TUser.user_id == _id)
         return self.__session.exec(statement).first()
 
-    def _apply(self, model: TUser) -> None:
+    def _fetch_user_report_by_id(self, _id: str) -> TUserReport | None:
+        statement = select(TUserReport).where(TUserReport.user_report_id == _id)
+        return self.__session.exec(statement).first()
+
+    def _apply(self, model: TUser | TUserReport) -> None:
         self.__session.add(model)
 
     def _delete(self, model: TUser) -> None:
@@ -40,13 +45,25 @@ class UserRepositoryImpl(UserRepository):
         model = TUser.model_validate(user.model_dump(exclude={"created_at", "updated_at"})) # 新規作成
         self._apply(model)
 
+    def insert_user_report(self, user: User) -> None:
+        for user_report in user.user_reports:
+            _id = user_report.user_report_id
+            model: TUserReport | None = self._fetch_user_report_by_id(_id)
+            print(_id)
+            print(model)
+            if model is not None: # 重複判定
+                # raise UserReportDuplicationError(_id)
+                continue
+            model = TUserReport.model_validate(user_report.model_dump(exclude={"created_at", "updated_at"})) # 新規作成
+            self._apply(model)
+
     def update(self, user: User) -> None:
         model: TUser | None = self._fetch_by_id(user.user_id)
         if model is None: # ない場合更新できない 現在のユースケースでは基本的に発生しない
             raise UserNotFoundError(user.user_id)
         if user.updated_at != model.updated_at: # 更新日検証による楽観的ロックの確認
             raise UserUpdateConflictError(user_id=user.user_id)
-        model.sqlmodel_update(user) # 更新データの統合
+        model.sqlmodel_update(user.model_dump(exclude={"created_at", "updated_at", "user_reports"})) # 更新データの統合
         self._apply(model)
 
     def delete(self, _id: UserId) -> None:

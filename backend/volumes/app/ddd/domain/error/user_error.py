@@ -22,7 +22,8 @@ class UserNotFoundError(BaseError):
             error_code=ErrorCode.NOT_FOUND.str_value,
             status_code=status.HTTP_404_NOT_FOUND,
             description=message,
-            user_id=user_id,
+            # user_id=user_id,
+            parameters={"user_id": user_id}  # 修正
         )
 
 class UserDuplicationError(BaseError):
@@ -32,7 +33,11 @@ class UserDuplicationError(BaseError):
             error_code=ErrorCode.CONFLICT.str_value,
             status_code=status.HTTP_409_CONFLICT,
             description=message,
-            user_id=user_id,
+            # user_id=user_id,
+            parameters={
+                "user_id": user_id,
+                "hoge": "huga",
+            }  # 修正
         )
 
 class UserUpdateConflictError(BaseError):
@@ -42,5 +47,17 @@ class UserUpdateConflictError(BaseError):
             error_code=ErrorCode.CONFLICT.str_value,
             status_code=status.HTTP_409_CONFLICT,
             description=message,
-            user_id=user_id,
+            # user_id=user_id,
+            parameters={"user_id": user_id}  # 修正
         )
+
+
+# class UserReportDuplicationError(BaseError):
+#     def __init__(self, user_report_id: str) -> None:
+#         message = "User Report with ID '{user_report_id}' already exists."
+#         super().__init__(
+#             error_code=ErrorCode.CONFLICT.str_value,
+#             status_code=status.HTTP_409_CONFLICT,
+#             description=message,
+#             user_report_id=user_report_id,
+#         )

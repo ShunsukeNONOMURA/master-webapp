@@ -31,14 +31,20 @@ def test_get_me(db):
 def test_operate_user(db):
     """
     ユーザ操作のテスト
-    - テストユーザを作成する
-    - 再度テストユーザ作成して失敗させる
-    - ユーザ更新を失敗させる（無効なパラメータ）
-    - ユーザを更新する
-    - 再度ユーザを更新して失敗させる（楽観的ロックの確認）
-    - ユーザを削除する
-    - 再度ユーザを削除しようとして失敗させる
-    - 存在しないテストユーザに対して取得/削除/更新をしようとして失敗させる
+    - 作成に関する操作
+        - テストユーザを作成する
+        - 再度テストユーザ作成してコンフリ失敗させる
+        - ユーザレポートを追加する
+
+    - 更新に関する操作
+        - ユーザ更新を失敗させる（無効なパラメータ）
+        - ユーザを更新する
+        - 再度ユーザを更新して失敗させる（楽観的ロックの確認）
+
+    - 削除に関する操作
+        - ユーザを削除する
+        - 再度ユーザを削除しようとして失敗させる
+        - 存在しないテストユーザに対して取得/削除/更新をしようとして失敗させる
     """
     test_user = {
         "userId": "test",
@@ -47,6 +53,7 @@ def test_operate_user(db):
         "userRoleCode": "99",
     }
 
+    ### 作成のテスト ########################################################
     # テストユーザを作成する
     response = client.post(
         "/users",
@@ -71,6 +78,28 @@ def test_operate_user(db):
     )
     assert response.status_code == status.HTTP_409_CONFLICT
 
+    # レポートを2回記述する
+    response = client.post(
+        f"/users/{test_user['userId']}/user-reports",
+        json={
+            "title": "title",
+            "content": "content"
+        },
+        headers={"Content-Type": "application/json"}
+    )
+    assert response.status_code == 200
+    response = client.post(
+        f"/users/{test_user['userId']}/user-reports",
+        json={
+            "title": "title",
+            "content": "content"
+        },
+        headers={"Content-Type": "application/json"}
+    )
+    assert response.status_code == 200
+
+
+    ### 更新のテスト ########################################################
     # テストユーザ更新に失敗する（無効なデータ）
     patch_false_user = {
         "updatedAt": updated_at,
@@ -105,6 +134,7 @@ def test_operate_user(db):
     )
     assert response.status_code == status.HTTP_409_CONFLICT 
 
+    ### 削除のテスト ########################################################
     # user削除する
     response = client.delete(
         f"/users/{test_user['userId']}",
@@ -142,5 +172,3 @@ def test_query_user(db):
         headers={"Content-Type": "application/json"}
     )
     assert response.status_code == 200
-
-

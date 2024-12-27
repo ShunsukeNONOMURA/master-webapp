@@ -22,6 +22,11 @@ class UserRepository(metaclass=ABCMeta):
         raise NotImplementedError
 
     @abstractmethod
+    def insert_user_report(self, user: User) -> None:
+        raise NotImplementedError
+
+
+    @abstractmethod
     def update(self, user: User) -> None:
         raise NotImplementedError
 

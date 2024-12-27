@@ -1,4 +1,8 @@
+# from app.ddd.domain.factory import UserReportFactory
+import uuid
+from collections.abc import Mapping
 from datetime import datetime
+from typing import Any
 
 from pydantic import Field, SecretStr
 
@@ -7,7 +11,7 @@ from app.ddd.domain import UserRoleEnum
 
 
 class UserReport(BaseEntity):
-    user_report_id: str
+    user_report_id: str = Field(default_factory=lambda: str(uuid.uuid4())) # デフォルトでアプリID採番
     title: str
     content: str
     created_user_id: str
@@ -36,6 +40,11 @@ class User(BaseEntity):
     def _id(self) -> str:
         return self.user_id
 
-    # def add_report(self, report: UserReport) -> None:
-    #     self.user_reports.append(report)
+    def add_report(self, **kwargs: Mapping[str, Any]) -> UserReport:
+        user_report = UserReport(
+            created_user_id = self.user_id,
+            **kwargs
+        )
+        self.user_reports.append(user_report)
+        return user_report
 

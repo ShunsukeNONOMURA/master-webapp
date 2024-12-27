@@ -31,7 +31,7 @@
       <table name="t_user_report" remarks="" schema="public" type="TABLE">
          <column autoUpdated="false" defaultValue="null" digits="6" id="0" name="created_at" nullable="false" remarks="作成日時（UTC）" size="29" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="6" id="1" name="updated_at" nullable="false" remarks="更新日時（UTC）" size="29" type="timestamp" typeCode="93"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_report_id" nullable="false" remarks="ユーザレポートID" size="20" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_report_id" nullable="false" remarks="ユーザレポートID" size="36" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="title" nullable="false" remarks="ユーザレポートタイトル" size="20" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="content" nullable="false" remarks="ユーザレポート内容" size="20" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_user_id" nullable="false" remarks="外部キー：ユーザID" size="20" type="varchar" typeCode="12">

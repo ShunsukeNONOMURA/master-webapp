@@ -1,13 +1,11 @@
-from typing import Any, TypedDict, Unpack
+# from collections.abc import Mapping
+from typing import Any
 
 from app.ddd.infrastructure.util import recursive_to_camel
 
 
-class ErrorParams(TypedDict, total=False):
-    user_id: str
-
 class BaseError(Exception):
-    def __init__(self, error_code: str, status_code: int, description: str, **kwargs: Unpack[ErrorParams]) -> None:
+    def __init__(self, error_code: str, status_code: int, description: str, parameters: dict[str, Any] | None = None) -> None:
         """
         BaseError.
 
@@ -17,15 +15,16 @@ class BaseError(Exception):
             error_code: ERROR CODE
             status_code: HTTP STATUS CODE
             description: エラーメッセージ
-            kwargs: その他パラメータ（エラーメッセージに追加する文言など）
+            parameters: その他パラメータ（エラーメッセージに追加する文言など）
 
         """
         super().__init__(description)
         self.__error_code: str = error_code # application error code
         self.__status_code: int = status_code # http status code
+        self.__parameter: dict[str, Any] = parameters or {}
         self.__message: dict[str, Any] = {
-            "description": description.format(**kwargs),
-        } | kwargs
+            "description": description.format(**self.__parameter),
+        } | self.__parameter
         self.__detail: dict[str, Any] = {
             "error_code": self.__error_code,
             "status_code": self.__status_code,

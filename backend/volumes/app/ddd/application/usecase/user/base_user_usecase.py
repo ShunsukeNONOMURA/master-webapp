@@ -15,3 +15,5 @@ class BaseUserUseCase(BaseUsecase[BaseInputDTOType, BaseOutputDTOType]):
         self._uow = uow
         # self._auth_payload = auth_payload
 
+
+

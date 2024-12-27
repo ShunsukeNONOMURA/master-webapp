@@ -10,7 +10,7 @@ from migrations.models.base import MasterTable, TransactionTable
 class TUserReport(TransactionTable, table=True):
     __tablename__ = "t_user_report"
 
-    user_report_id: str = Field(primary_key=True, max_length=20, sa_column_kwargs={"comment": "ユーザレポートID"})
+    user_report_id: str = Field(primary_key=True, max_length=36, sa_column_kwargs={"comment": "ユーザレポートID"})
     title: str = Field(max_length=20, sa_column_kwargs={"comment": "ユーザレポートタイトル"})
     content: str = Field(max_length=20, sa_column_kwargs={"comment": "ユーザレポート内容"})
     created_user_id: str = Field(

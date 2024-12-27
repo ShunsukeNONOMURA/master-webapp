@@ -54,8 +54,8 @@
             </div>
         </aside>
         <h2>
-            <span class="text">0 statements &nbsp;</span>
-            <button type="button" class="run button_toggle_run" value="run" data-shortcut="r" title="Toggle lines run">0<span class="text"> run</span></button>
+            <span class="text">16 statements &nbsp;</span>
+            <button type="button" class="run button_toggle_run" value="run" data-shortcut="r" title="Toggle lines run">16<span class="text"> run</span></button>
             <button type="button" class="mis show_mis button_toggle_mis" value="mis" data-shortcut="m" title="Toggle lines missing">0<span class="text"> missing</span></button>
             <button type="button" class="exc show_exc button_toggle_exc" value="exc" data-shortcut="x" title="Toggle lines excluded">0<span class="text"> excluded</span></button>
         </h2>
@@ -65,7 +65,7 @@
             <a id="nextFileLink" class="nav" href="z_04889c708d7aec3a_router_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.6.10">coverage.py v7.6.10</a>,
-            created at 2024-12-27 14:09 +0000
+            created at 2024-12-27 17:35 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -80,37 +80,45 @@
     </div>
 </header>
 <main id="source">
-    <p class="pln"><span class="n"><a id="t1" href="#t1">1</a></span><span class="t"><span class="com"># from fastapi import Depends, status</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t2" href="#t2">2</a></span><span class="t"><span class="com"># from sqlmodel import Session</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t1" href="#t1">1</a></span><span class="t"><span class="key">from</span> <span class="nam">fastapi</span> <span class="key">import</span> <span class="nam">Depends</span><span class="op">,</span> <span class="nam">Path</span><span class="op">,</span> <span class="nam">status</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t2" href="#t2">2</a></span><span class="t"><span class="key">from</span> <span class="nam">sqlmodel</span> <span class="key">import</span> <span class="nam">Session</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t3" href="#t3">3</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t4" href="#t4">4</a></span><span class="t"><span class="com"># from app.ddd.application.dto.user import CreateUserReportInputDTO, CreateUserReportOutputDTO</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t5" href="#t5">5</a></span><span class="t"><span class="com"># from app.ddd.application.usecase.user import CreateUserReportUseCase</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t"><span class="com"># from app.ddd.domain import UserDuplicationError</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t7" href="#t7">7</a></span><span class="t"><span class="com"># from app.ddd.infrastructure.database.db import get_session</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t"><span class="com"># from app.ddd.infrastructure.uow import UserUnitOfWorkImpl</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t"><span class="com"># from app.ddd.presentation.endpoint.user_report.router import router</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t"><span class="com"># from app.ddd.presentation.schema.user import CreateUserReportRequest, CreateUsersResponse</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t13" href="#t13">13</a></span><span class="t"><span class="com"># def __usecase(session: Session = Depends(get_session)) -> CreateUserReportUseCase:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t"><span class="com">#     return CreateUserReportUseCase(uow=UserUnitOfWorkImpl(session))</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t"><span class="com"># @router.post(</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t18" href="#t18">18</a></span><span class="t"><span class="com">#     path="/users/{userId}/user-reports",</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t19" href="#t19">19</a></span><span class="t"><span class="com">#     response_model=CreateUsersResponse,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t20" href="#t20">20</a></span><span class="t"><span class="com">#     responses={</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t21" href="#t21">21</a></span><span class="t"><span class="com">#         # status.HTTP_409_CONFLICT: UserDuplicationError(user_id="dammy").response(),</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t22" href="#t22">22</a></span><span class="t"><span class="com">#     },</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t23" href="#t23">23</a></span><span class="t"><span class="com"># )</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t24" href="#t24">24</a></span><span class="t"><span class="com"># def create_users(</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t25" href="#t25">25</a></span><span class="t"><span class="com">#     request: CreateUserReportRequest,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t26" href="#t26">26</a></span><span class="t"><span class="com">#     usecase: CreateUserReportUseCase = Depends(__usecase),</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t27" href="#t27">27</a></span><span class="t"><span class="com"># ) -> CreateUsersResponse:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t28" href="#t28">28</a></span><span class="t"><span class="com">#     """&#12518;&#12540;&#12470;&#12434;&#20316;&#25104;&#12377;&#12427;."""</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t29" href="#t29">29</a></span><span class="t"><span class="com">#     input_dto: CreateUserReportInputDTO = CreateUserReportInputDTO.model_validate(request)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t30" href="#t30">30</a></span><span class="t"><span class="com">#     dto: CreateUserReportOutputDTO = usecase.execute(input_dto)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t31" href="#t31">31</a></span><span class="t"><span class="com">#     return CreateUsersResponse.model_validate(dto)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t4" href="#t4">4</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">application</span><span class="op">.</span><span class="nam">dto</span><span class="op">.</span><span class="nam">user</span> <span class="key">import</span> <span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t5" href="#t5">5</a></span><span class="t">    <span class="nam">CreateUserReportInputDTO</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t">    <span class="nam">CreateUserReportOutputDTO</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t7" href="#t7">7</a></span><span class="t"><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">application</span><span class="op">.</span><span class="nam">usecase</span><span class="op">.</span><span class="nam">user</span> <span class="key">import</span> <span class="nam">CreateUserReportUseCase</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">domain</span> <span class="key">import</span> <span class="nam">UserNotFoundError</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">infrastructure</span><span class="op">.</span><span class="nam">database</span><span class="op">.</span><span class="nam">db</span> <span class="key">import</span> <span class="nam">get_session</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">infrastructure</span><span class="op">.</span><span class="nam">uow</span> <span class="key">import</span> <span class="nam">UserUnitOfWorkImpl</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">presentation</span><span class="op">.</span><span class="nam">endpoint</span><span class="op">.</span><span class="nam">user_report</span><span class="op">.</span><span class="nam">router</span> <span class="key">import</span> <span class="nam">router</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t13" href="#t13">13</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">presentation</span><span class="op">.</span><span class="nam">schema</span><span class="op">.</span><span class="nam">user_report</span> <span class="key">import</span> <span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t">    <span class="nam">CreateUserReportRequest</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t">    <span class="nam">CreateUserReportResponse</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t"><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t18" href="#t18">18</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t19" href="#t19">19</a></span><span class="t"><span class="key">def</span> <span class="nam">__usecase</span><span class="op">(</span><span class="nam">session</span><span class="op">:</span> <span class="nam">Session</span> <span class="op">=</span> <span class="nam">Depends</span><span class="op">(</span><span class="nam">get_session</span><span class="op">)</span><span class="op">)</span> <span class="op">-></span> <span class="nam">CreateUserReportUseCase</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t20" href="#t20">20</a></span><span class="t">    <span class="key">return</span> <span class="nam">CreateUserReportUseCase</span><span class="op">(</span><span class="nam">uow</span><span class="op">=</span><span class="nam">UserUnitOfWorkImpl</span><span class="op">(</span><span class="nam">session</span><span class="op">)</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t21" href="#t21">21</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t22" href="#t22">22</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t23" href="#t23">23</a></span><span class="t"><span class="op">@</span><span class="nam">router</span><span class="op">.</span><span class="nam">post</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t24" href="#t24">24</a></span><span class="t">    <span class="nam">path</span><span class="op">=</span><span class="str">"/users/{userId}/user-reports"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t25" href="#t25">25</a></span><span class="t">    <span class="nam">response_model</span><span class="op">=</span><span class="nam">CreateUserReportResponse</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t26" href="#t26">26</a></span><span class="t">    <span class="nam">responses</span><span class="op">=</span><span class="op">{</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t27" href="#t27">27</a></span><span class="t">        <span class="nam">status</span><span class="op">.</span><span class="nam">HTTP_404_NOT_FOUND</span><span class="op">:</span> <span class="nam">UserNotFoundError</span><span class="op">(</span><span class="nam">user_id</span><span class="op">=</span><span class="str">"dammy"</span><span class="op">)</span><span class="op">.</span><span class="nam">response</span><span class="op">(</span><span class="op">)</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t28" href="#t28">28</a></span><span class="t">        <span class="com"># status.HTTP_409_CONFLICT: UserDuplicationError(user_id="dammy").response(),</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t29" href="#t29">29</a></span><span class="t">    <span class="op">}</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t30" href="#t30">30</a></span><span class="t"><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t31" href="#t31">31</a></span><span class="t"><span class="key">def</span> <span class="nam">create_users</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t32" href="#t32">32</a></span><span class="t">    <span class="nam">request</span><span class="op">:</span> <span class="nam">CreateUserReportRequest</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t33" href="#t33">33</a></span><span class="t">    <span class="nam">user_id</span><span class="op">:</span> <span class="nam">str</span> <span class="op">=</span> <span class="nam">Path</span><span class="op">(</span><span class="op">...</span><span class="op">,</span> <span class="nam">alias</span><span class="op">=</span><span class="str">"userId"</span><span class="op">)</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t34" href="#t34">34</a></span><span class="t">    <span class="nam">usecase</span><span class="op">:</span> <span class="nam">CreateUserReportUseCase</span> <span class="op">=</span> <span class="nam">Depends</span><span class="op">(</span><span class="nam">__usecase</span><span class="op">)</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t35" href="#t35">35</a></span><span class="t"><span class="op">)</span> <span class="op">-></span> <span class="nam">CreateUserReportResponse</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t36" href="#t36">36</a></span><span class="t">    <span class="str">"""&#12518;&#12540;&#12470;&#12434;&#20316;&#25104;&#12377;&#12427;."""</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t37" href="#t37">37</a></span><span class="t">    <span class="nam">input_dto</span><span class="op">:</span> <span class="nam">CreateUserReportInputDTO</span> <span class="op">=</span> <span class="nam">CreateUserReportInputDTO</span><span class="op">.</span><span class="nam">model_validate</span><span class="op">(</span><span class="op">{</span><span class="str">"user_id"</span><span class="op">:</span> <span class="nam">user_id</span><span class="op">,</span> <span class="op">**</span><span class="nam">request</span><span class="op">.</span><span class="nam">model_dump</span><span class="op">(</span><span class="nam">exclude_unset</span><span class="op">=</span><span class="key">True</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t38" href="#t38">38</a></span><span class="t">    <span class="nam">dto</span><span class="op">:</span> <span class="nam">CreateUserReportOutputDTO</span> <span class="op">=</span> <span class="nam">usecase</span><span class="op">.</span><span class="nam">execute</span><span class="op">(</span><span class="nam">input_dto</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t39" href="#t39">39</a></span><span class="t">    <span class="key">return</span> <span class="nam">CreateUserReportResponse</span><span class="op">.</span><span class="nam">model_validate</span><span class="op">(</span><span class="nam">dto</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
 </main>
 <footer>
     <div class="content">
@@ -120,7 +128,7 @@
             <a class="nav" href="z_04889c708d7aec3a_router_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.6.10">coverage.py v7.6.10</a>,
-            created at 2024-12-27 14:09 +0000
+            created at 2024-12-27 17:35 +0000
         </p>
     </div>
 </footer>
