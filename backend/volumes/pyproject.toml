@@ -67,6 +67,10 @@ exclude = [".venv", "venv", "tests/"]
 # FastAPI仕様の"B008"対策
 extend-immutable-calls = ["fastapi.Depends", "fastapi.params.Depends", "fastapi.Query", "fastapi.params.Query"]
 
+[tool.ruff.lint.pep8-naming]
+# pydanticのvalidatorによる"N805"対応
+classmethod-decorators = ["classmethod", "pydantic.validator"]
+
 [tool.mypy]
 # チェックするファイルまたはディレクトリを指定
 files = ["./app", "./migrations"]

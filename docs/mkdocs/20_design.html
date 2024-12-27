@@ -312,6 +312,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      アプリ開発で主に作成するもの
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -426,6 +444,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      アプリ開発で主に作成するもの
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -505,6 +541,67 @@ end
   p-&gt;&gt;p: middleware : construct response 
   p-&gt;&gt;p: middleware : logging
   p-&gt;&gt;-c: Response</code></pre>
+<h2 id="_4">アプリ開発で主に作成するもの<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>app.core.base</code>のクラスを継承して実装するものが多い。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>パス</th>
+<th>機能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>app.ddd.presentation.endpoint</td>
+<td>エンドポイント</td>
+</tr>
+<tr>
+<td>app.ddd.presentation.schema</td>
+<td>エンドポイントで使うスキーマ</td>
+</tr>
+<tr>
+<td>app.ddd.application.usecase</td>
+<td>ユースケース</td>
+</tr>
+<tr>
+<td>app.ddd.application.dto</td>
+<td>ユースケースで使うDTO</td>
+</tr>
+<tr>
+<td>app.ddd.application.uow</td>
+<td>ユースケースで使うUOW</td>
+</tr>
+<tr>
+<td>app.ddd.domain.repository</td>
+<td>リポジトリ（IF）</td>
+</tr>
+<tr>
+<td>app.ddd.domain.model</td>
+<td>ドメインモデル</td>
+</tr>
+<tr>
+<td>app.ddd.domain.enum</td>
+<td>ドメインの列挙型</td>
+</tr>
+<tr>
+<td>app.ddd.domain.error</td>
+<td>ドメインエラー</td>
+</tr>
+<tr>
+<td>app.ddd.infrastructure</td>
+<td>各実装クラス</td>
+</tr>
+</tbody>
+</table>
+<h2 id="_5">参考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://techtekt.persol-career.co.jp/entry/tech/231220_02">PythonでDDDやってみた</a><ul>
+<li>fastapiでオニオンアーキテクチャする例</li>
+</ul>
+</li>
+</ul>
 
 
 

@@ -12,6 +12,7 @@ class LoggingMiddleware(BaseHTTPMiddleware):
 
         response: Response = await call_next(request)
 
+
         # error handling 後を含めた実行について保存する
 
         end_datetime = datetime.now(UTC)
@@ -25,6 +26,10 @@ class LoggingMiddleware(BaseHTTPMiddleware):
 
         # exception_handling_middlewareでX-Error-Codeは設定する
         response.headers["X-Result-Code"] = "S" + response.headers["X-Resource-Code"] + response.headers["X-Action-Code"]  + response.headers["X-Error-Code"]
+
+        # 時間に関する記載
+        response.headers["X-Response-Start-Datetime"] = str(start_datetime)
+        response.headers["X-Response-End-Datetime"] = str(end_datetime)
         response.headers["X-Response-Time"] = str(duration)
 
 

@@ -1,11 +1,10 @@
 from abc import ABCMeta
 
 from pydantic import BaseModel
+from sqlmodel._compat import SQLModelConfig
 
 
-class BaseValueObject(BaseModel, frozen=True, metaclass=ABCMeta):
-    pass
-
-# TODO(nonomura): pydanticとSQLModelの使い分け整理後
-# class BaseValueObject(SQLModel, frozen=True, metaclass=ABCMeta):
-#     pass
+class BaseValueObject(BaseModel, metaclass=ABCMeta):
+    model_config = SQLModelConfig(
+        frozen=True,
+    )

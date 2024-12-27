@@ -1,4 +1,3 @@
-
 # master webapp
 python(fastapi)によるwebアプリ開発用のマスタ。
 

@@ -3,6 +3,7 @@
 
 
 from datetime import datetime
+from typing import Any
 
 from sqlmodel import Field
 
@@ -28,6 +29,7 @@ class PatchUserInputDTO(BaseInputDTO):
 class DeleteUserInputDTO(BaseInputDTO):
     user_id: str
 
-
 class QueryUserInputDTO(BaseInputDTO):
-    pass
+    offset: int
+    limit: int
+    query: dict[str, Any]

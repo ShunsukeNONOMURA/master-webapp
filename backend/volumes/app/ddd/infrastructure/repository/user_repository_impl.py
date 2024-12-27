@@ -36,8 +36,8 @@ class UserRepositoryImpl(UserRepository):
     def insert(self, user: User) -> None:
         model: TUser | None = self._fetch_by_id(user.user_id)
         if model is not None: # 重複判定
-            raise UserDuplicationError
-        model = TUser.model_validate(user.dict(exclude={"created_at", "updated_at"})) # 新規作成
+            raise UserDuplicationError(user.user_id)
+        model = TUser.model_validate(user.model_dump(exclude={"created_at", "updated_at"})) # 新規作成
         self._apply(model)
 
     def update(self, user: User) -> None:
@@ -45,7 +45,7 @@ class UserRepositoryImpl(UserRepository):
         if model is None: # ない場合更新できない 現在のユースケースでは基本的に発生しない
             raise UserNotFoundError(user.user_id)
         if user.updated_at != model.updated_at: # 更新日検証による楽観的ロックの確認
-            raise UserUpdateConflictError
+            raise UserUpdateConflictError(user_id=user.user_id)
         model.sqlmodel_update(user) # 更新データの統合
         self._apply(model)
 

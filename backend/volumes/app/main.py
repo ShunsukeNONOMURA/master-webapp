@@ -29,7 +29,7 @@ app = FastAPI(
     # version="1", # バージョンを記述する場合
     openapi_tags=[
         {
-            "name": "/health",
+            "name": "health",
             "description": "ヘルスに関する操作。",
         },
         # {
@@ -37,8 +37,12 @@ app = FastAPI(
         #     "description": "トークンに関する操作",
         # },
         {
-            "name": "/users",
-            "description": "ユーザー管理に関する操作。",
+            "name": "user",
+            "description": "ユーザーに関する操作。",
+        },
+        {
+            "name": "user-report",
+            "description": "ユーザーレポートに関する操作。",
         },
         # {
         #     "name": "/conversation",
@@ -48,10 +52,6 @@ app = FastAPI(
         #     "name": "/file",
         #     "description": "ファイルに関する操作。",
         # },
-        {
-            "name": "/pages",
-            "description": "api試用ページ",
-        },
     ],
 )
 

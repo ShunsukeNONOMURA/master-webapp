@@ -1,6 +1,7 @@
 from sqlalchemy import text
 from sqlmodel import SQLModel
 
+from app.ddd.domain import UserRoleEnum
 from app.ddd.infrastructure.database.db import db_engine, db_name, get_session_context
 from migrations.models.user_model import (
     MUserRole,
@@ -28,10 +29,10 @@ def init_ddl() -> None:
 # レコードの初期化
 def init_records() -> None:
     with get_session_context() as session:
-        user_role = MUserRole(user_role_code="00", user_role_name="admin")
-        session.add(user_role)
-        user_role = MUserRole(user_role_code="99", user_role_name="guest")
-        session.add(user_role)
+        for user_role in UserRoleEnum:
+            session.add(
+                MUserRole(user_role_code=user_role.value, user_role_name=user_role.name)
+            )
         user = TUser(
             user_id = "admin",
             user_name = "admin",

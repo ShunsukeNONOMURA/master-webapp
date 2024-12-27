@@ -1,12 +1,13 @@
-from fastapi import Depends
+from fastapi import Depends, status
 from sqlmodel import Session
 
 from app.ddd.application.dto.user import CreateUserInputDTO, CreateUserOutputDTO
 from app.ddd.application.usecase.user import CreateUserUseCase
+from app.ddd.domain import UserDuplicationError
 from app.ddd.infrastructure.database.db import get_session
 from app.ddd.infrastructure.uow import UserUnitOfWorkImpl
 from app.ddd.presentation.endpoint.user.router import router
-from app.ddd.presentation.schema.user import CreateUsersRequest, PostUsersResponse
+from app.ddd.presentation.schema.user import CreateUserRequest, CreateUsersResponse
 
 
 def __usecase(session: Session = Depends(get_session)) -> CreateUserUseCase:
@@ -15,13 +16,16 @@ def __usecase(session: Session = Depends(get_session)) -> CreateUserUseCase:
 
 @router.post(
     path="/users",
-    response_model=PostUsersResponse
+    response_model=CreateUsersResponse,
+    responses={
+        status.HTTP_409_CONFLICT: UserDuplicationError(user_id="dammy").response(),
+    },
 )
 def create_users(
-    request: CreateUsersRequest,
+    request: CreateUserRequest,
     usecase: CreateUserUseCase = Depends(__usecase),
-) -> PostUsersResponse:
+) -> CreateUsersResponse:
     """ユーザを作成する."""
     input_dto: CreateUserInputDTO = CreateUserInputDTO.model_validate(request)
     dto: CreateUserOutputDTO = usecase.execute(input_dto)
-    return PostUsersResponse.model_validate(dto)
+    return CreateUsersResponse.model_validate(dto)

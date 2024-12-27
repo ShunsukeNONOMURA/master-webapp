@@ -1,6 +1,6 @@
 from fastapi.responses import HTMLResponse
 
-from app.ddd.presentation.endpoint.pages.router import router
+from app.ddd.presentation.endpoint.page.router import router
 
 """
 簡易フロントエンド

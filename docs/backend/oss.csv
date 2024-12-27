@@ -1,5 +1,5 @@
 "Name","Version","License","URL","Description"
-"coverage","7.6.9","Apache Software License","https://github.com/nedbat/coveragepy","Code coverage measurement for Python"
+"coverage","7.6.10","Apache Software License","https://github.com/nedbat/coveragepy","Code coverage measurement for Python"
 "python-multipart","0.0.20","Apache Software License","https://github.com/Kludex/python-multipart","A streaming multipart parser for Python"
 "rsa","4.9","Apache Software License","https://stuvel.eu/rsa","Pure-Python RSA implementation"
 "packaging","24.2","Apache Software License; BSD License","https://github.com/pypa/packaging","Core utilities for Python packages"

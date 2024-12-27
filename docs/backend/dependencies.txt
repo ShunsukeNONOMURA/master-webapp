@@ -77,7 +77,7 @@ pydantic-settings==2.7.0
 └── python-dotenv [required: >=0.21.0, installed: 1.0.1]
 PyJWT==2.10.1
 pytest-cov==6.0.0
-├── coverage [required: >=7.5, installed: 7.6.9]
+├── coverage [required: >=7.5, installed: 7.6.10]
 └── pytest [required: >=4.6, installed: 8.3.4]
     ├── iniconfig [required: Any, installed: 2.0.0]
     ├── packaging [required: Any, installed: 24.2]

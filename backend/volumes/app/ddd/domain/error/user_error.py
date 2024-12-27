@@ -4,25 +4,43 @@ from fastapi import status
 
 from app.core.base import BaseError
 
+# status.HTTP_400_BAD_REQUEST
+# status.HTTP_409_CONFLICT
+from app.ddd.domain import ErrorCode
+
 
 # Enumでエラー情報を定義
-class ErrorInfo(Enum):
-    INVALID_INPUT = (4001, "Invalid input provided")
-    USER_NOT_FOUND = (1404, "User with ID {user_id} was not found.")
-    SERVER_ERROR = (5000, "Internal server error")
+class ErrorEnum(Enum):
+    INVALID_INPUT = (4001, status.HTTP_404_NOT_FOUND, "Invalid input provided")
+    USER_NOT_FOUND = (1404, status.HTTP_404_NOT_FOUND, "User with ID {user_id} was not found.")
+    SERVER_ERROR = (5000, status.HTTP_404_NOT_FOUND, "Internal server error")
 
 class UserNotFoundError(BaseError):
     def __init__(self, user_id: str) -> None:
-        message = f"User with ID {user_id} was not found."
+        message = "User with ID '{user_id}' was not found."
         super().__init__(
-            error_code="999",
+            error_code=ErrorCode.NOT_FOUND.str_value,
             status_code=status.HTTP_404_NOT_FOUND,
-            description=message
+            description=message,
+            user_id=user_id,
         )
 
-class UserDuplicationError(Exception):
-    pass
+class UserDuplicationError(BaseError):
+    def __init__(self, user_id: str) -> None:
+        message = "User with ID '{user_id}' already exists."
+        super().__init__(
+            error_code=ErrorCode.CONFLICT.str_value,
+            status_code=status.HTTP_409_CONFLICT,
+            description=message,
+            user_id=user_id,
+        )
 
-
-class UserUpdateConflictError(Exception):
-    pass
+class UserUpdateConflictError(BaseError):
+    def __init__(self, user_id: str) -> None:
+        message = "User with ID '{user_id}' update conlict."
+        super().__init__(
+            error_code=ErrorCode.CONFLICT.str_value,
+            status_code=status.HTTP_409_CONFLICT,
+            description=message,
+            user_id=user_id,
+        )

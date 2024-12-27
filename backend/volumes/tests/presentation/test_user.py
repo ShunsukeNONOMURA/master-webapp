@@ -1,4 +1,6 @@
+from fastapi import status
 from fastapi.testclient import TestClient
+
 import pytest
 
 from pydantic import ValidationError
@@ -21,7 +23,7 @@ def test_get_me(db):
     response = client.get(
         f"/users/me",
     )
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_200_OK 
     print('response')
     # print(response.json()["user"]["user_id"])
     assert response.json()["user"]["userId"] == user_id
@@ -51,23 +53,23 @@ def test_operate_user(db):
         json=test_user,
         headers={"Content-Type": "application/json"}
     )
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_200_OK 
 
     # user投函確認する
     response = client.get(
         f"/users/{test_user['userId']}",
     )
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_200_OK 
     # assert response.json()["user"]["userId"] == test_user['userId']
     updated_at = response.json()["user"]["updatedAt"]
 
     # user投函をコンフリさせる
-    with pytest.raises(UserDuplicationError):
-        response = client.post(
-            "/users",
-            json=test_user,
-            headers={"Content-Type": "application/json"}
-        )
+    response = client.post(
+        "/users",
+        json=test_user,
+        headers={"Content-Type": "application/json"}
+    )
+    assert response.status_code == status.HTTP_409_CONFLICT
 
     # テストユーザ更新に失敗する（無効なデータ）
     patch_false_user = {
@@ -92,37 +94,37 @@ def test_operate_user(db):
         f"/users/{test_user['userId']}",
         json=patch_user,
     )
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_200_OK 
     # assert response.json()["user"]["userId"] == test_user['userId']
     # assert response.json()["user"]["userName"] == patch_user['userName'] # 更新されているかチェック
 
     # テストユーザ更新に失敗する（古い日付で更新に失敗する(楽観的ロックの確認)）
-    with pytest.raises(UserUpdateConflictError):
-        response = client.patch(
-            f"/users/{test_user['userId']}",
-            json=patch_user,
-        )
+    response = client.patch(
+        f"/users/{test_user['userId']}",
+        json=patch_user,
+    )
+    assert response.status_code == status.HTTP_409_CONFLICT 
 
     # user削除する
     response = client.delete(
         f"/users/{test_user['userId']}",
     )
-    assert response.status_code == 200
+    assert response.status_code == status.HTTP_200_OK 
     
-    # 削除されたテストユーザに対して各操作が失敗する
-    with pytest.raises(UserNotFoundError): # 取得
-        response = client.get(
-            f"/users/{test_user['userId']}",
-        )
-    with pytest.raises(UserNotFoundError): # 更新
-        response = client.patch(
-            f"/users/{test_user['userId']}",
-            json=patch_user,
-        )
-    with pytest.raises(UserNotFoundError): # 削除
-        response = client.delete(
-            f"/users/{test_user['userId']}",
-        )
+    # 削除されたテストユーザに対して各操作(取得/更新/削除)が失敗する
+    response = client.get(
+        f"/users/{test_user['userId']}",
+    )
+    assert response.status_code == status.HTTP_404_NOT_FOUND 
+    response = client.patch(
+        f"/users/{test_user['userId']}",
+        json=patch_user,
+    )
+    assert response.status_code == status.HTTP_404_NOT_FOUND 
+    response = client.delete(
+        f"/users/{test_user['userId']}",
+    )
+    assert response.status_code == status.HTTP_404_NOT_FOUND 
     
 def test_query_user(db):
     """
@@ -132,7 +134,11 @@ def test_query_user(db):
     # userにクエリする
     response = client.post(
         "/query/users",
-        json={},
+        json={
+            "filters": {
+                "userId": "guest"
+            }
+        },
         headers={"Content-Type": "application/json"}
     )
     assert response.status_code == 200

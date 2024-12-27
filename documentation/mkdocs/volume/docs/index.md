@@ -21,7 +21,7 @@ FastAPIのベースラインリポジトリに関するドキュメント
     - https://qiita.com/tatsurou313/items/053cffdfe940a89d7f5a
 - 共通型
     - enum
-- エラーハンドリング
+- エラーハンドリング＋ロギング
     - エラーモデル
     - API
 - ドキュメンテーション
