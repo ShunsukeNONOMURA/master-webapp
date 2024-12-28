@@ -111,18 +111,32 @@
                 <script>
                     var tableData = [
     {
-        "tableName": "t_user",
-        "tableFileName": "t_user",
+        "tableName": "m_user_role",
+        "tableFileName": "m_user_role",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "updated_at",
+        "name": "created_at",
         "type": "timestamp",
         "length": 29,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>更新日時（UTC）<\/p>"
+        "comments": "<p>作成日時（UTC）<\/p>"
+    },
+    {
+        "tableName": "t_user_report",
+        "tableFileName": "t_user_report",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "title",
+        "type": "varchar",
+        "length": 20,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>ユーザレポートタイトル<\/p>"
     },
     {
         "tableName": "m_user_role",
@@ -130,13 +144,55 @@
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "updated_at",
+        "name": "user_role_name",
+        "type": "varchar",
+        "length": 30,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>ユーザロール名<\/p>"
+    },
+    {
+        "tableName": "t_user",
+        "tableFileName": "t_user",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "created_at",
         "type": "timestamp",
         "length": 29,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>更新日時（UTC）<\/p>"
+        "comments": "<p>作成日時（UTC）<\/p>"
+    },
+    {
+        "tableName": "t_user_report",
+        "tableFileName": "t_user_report",
+        "tableType": "Table",
+        "keyClass": "primaryKey",
+        "keyTitle": "Primary Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_report_id",
+        "type": "varchar",
+        "length": 36,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>ユーザレポートID<\/p>"
+    },
+    {
+        "tableName": "t_user_report",
+        "tableFileName": "t_user_report",
+        "tableType": "Table",
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "created_at",
+        "type": "timestamp",
+        "length": 29,
+        "nullable": "",
+        "autoUpdated": "",
+        "defaultValue": "null",
+        "comments": "<p>作成日時（UTC）<\/p>"
     },
     {
         "tableName": "t_user_report",
@@ -167,18 +223,18 @@
         "comments": "<p>ユーザパスワード(BCrypt)<\/p>"
     },
     {
-        "tableName": "m_user_role",
-        "tableFileName": "m_user_role",
+        "tableName": "t_user",
+        "tableFileName": "t_user",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "user_role_name",
-        "type": "varchar",
-        "length": 30,
+        "name": "updated_at",
+        "type": "timestamp",
+        "length": 29,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>ユーザロール名<\/p>"
+        "comments": "<p>更新日時（UTC）<\/p>"
     },
     {
         "tableName": "t_user",
@@ -195,32 +251,18 @@
         "comments": "<p>ユーザロールコード<\/p>"
     },
     {
-        "tableName": "t_user_report",
-        "tableFileName": "t_user_report",
-        "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "title",
-        "type": "varchar",
-        "length": 20,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>ユーザレポートタイトル<\/p>"
-    },
-    {
         "tableName": "m_user_role",
         "tableFileName": "m_user_role",
         "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "created_at",
-        "type": "timestamp",
-        "length": 29,
+        "keyClass": "primaryKey",
+        "keyTitle": "Primary Key",
+        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_role_code",
+        "type": "varchar",
+        "length": 2,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>作成日時（UTC）<\/p>"
+        "comments": "<p>ユーザロールコード<\/p>"
     },
     {
         "tableName": "t_user_report",
@@ -237,34 +279,6 @@
         "comments": "<p>外部キー：ユーザID<\/p>"
     },
     {
-        "tableName": "t_user_report",
-        "tableFileName": "t_user_report",
-        "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "created_at",
-        "type": "timestamp",
-        "length": 29,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>作成日時（UTC）<\/p>"
-    },
-    {
-        "tableName": "t_user_report",
-        "tableFileName": "t_user_report",
-        "tableType": "Table",
-        "keyClass": "primaryKey",
-        "keyTitle": "Primary Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_report_id",
-        "type": "varchar",
-        "length": 36,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>ユーザレポートID<\/p>"
-    },
-    {
         "tableName": "t_user",
         "tableFileName": "t_user",
         "tableType": "Table",
@@ -279,32 +293,18 @@
         "comments": "<p>ユーザ名<\/p>"
     },
     {
-        "tableName": "t_user_report",
-        "tableFileName": "t_user_report",
+        "tableName": "m_user_role",
+        "tableFileName": "m_user_role",
         "tableType": "Table",
         "keyClass": "",
         "keyTitle": "",
-        "name": "content",
-        "type": "text",
-        "length": 2147483647,
-        "nullable": "",
-        "autoUpdated": "",
-        "defaultValue": "null",
-        "comments": "<p>ユーザレポート内容<\/p>"
-    },
-    {
-        "tableName": "t_user",
-        "tableFileName": "t_user",
-        "tableType": "Table",
-        "keyClass": "",
-        "keyTitle": "",
-        "name": "created_at",
+        "name": "updated_at",
         "type": "timestamp",
         "length": 29,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>作成日時（UTC）<\/p>"
+        "comments": "<p>更新日時（UTC）<\/p>"
     },
     {
         "tableName": "t_user",
@@ -321,18 +321,18 @@
         "comments": "<p>ユーザID<\/p>"
     },
     {
-        "tableName": "m_user_role",
-        "tableFileName": "m_user_role",
+        "tableName": "t_user_report",
+        "tableFileName": "t_user_report",
         "tableType": "Table",
-        "keyClass": "primaryKey",
-        "keyTitle": "Primary Key",
-        "name": "<i class='icon ion-key iconkey' style='padding-left: 5px;'><\/i>user_role_code",
-        "type": "varchar",
-        "length": 2,
+        "keyClass": "",
+        "keyTitle": "",
+        "name": "content",
+        "type": "text",
+        "length": 2147483647,
         "nullable": "",
         "autoUpdated": "",
         "defaultValue": "null",
-        "comments": "<p>ユーザロールコード<\/p>"
+        "comments": "<p>ユーザレポート内容<\/p>"
     }
 ];
                     var config = {

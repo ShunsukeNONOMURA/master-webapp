@@ -61,3 +61,15 @@ class UserUpdateConflictError(BaseError):
 #             description=message,
 #             user_report_id=user_report_id,
 #         )
+
+
+class UserAuthError(BaseError):
+    def __init__(self) -> None:
+        message = "auth error."
+        super().__init__(
+            error_code=ErrorCode.UNAUTHORIZED.str_value,
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            description=message,
+            # user_id=user_id,
+            # parameters={"user_id": user_id}  # 修正
+        )

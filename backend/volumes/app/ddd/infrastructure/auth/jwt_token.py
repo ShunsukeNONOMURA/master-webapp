@@ -1,4 +1,4 @@
-import os
+import secrets
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
@@ -6,8 +6,10 @@ import jwt
 from fastapi import HTTPException, status
 from jwt.exceptions import InvalidTokenError
 
-SECRET_KEY = os.environ["SECRET_KEY"]
-ALGORITHM = "HS256"
+# 32バイトの秘密鍵を生成
+SECRET_KEY = secrets.token_hex(32) # 開発用途の毎回作成キー
+# SECRET_KEY = os.environ["SECRET_KEY"]
+ALGORITHM = "HS256" # 秘密鍵方式
 # ACCESS_TOKEN_EXPIRE_MINUTES = 5
 
 credentials_exception = HTTPException(
@@ -29,6 +31,6 @@ def create_access_token(data: dict[str, Any], expires_delta: timedelta) -> str:
 def get_jwt_data(access_token: str) -> dict[str, Any]:
     try:
         payload: dict[str, Any] = jwt.decode(access_token, SECRET_KEY, algorithms=[ALGORITHM])
-    except InvalidTokenError:
-        raise credentials_exception from None
+    except InvalidTokenError as e:
+        raise credentials_exception from e
     return payload

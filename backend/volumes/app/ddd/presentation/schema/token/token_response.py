@@ -1,10 +1,8 @@
-from pydantic import BaseModel, Field
+from pydantic import Field
 
-# from app.core.base import BaseResponse
+from app.core.base import BaseResponse
 
-# class CreateTokenResponse(BaseResponse):
-class CreateTokenResponse(BaseModel):
-    """TODO(nonomura): case変換対応."""
 
+class CreateTokenResponse(BaseResponse):
     access_token: str
     token_type: str = Field(default="bearer")

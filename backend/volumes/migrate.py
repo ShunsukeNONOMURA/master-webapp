@@ -3,11 +3,13 @@ from sqlmodel import SQLModel
 
 from app.ddd.domain import UserRoleEnum
 from app.ddd.infrastructure.database.db import db_engine, db_name, get_session_context
+from app.ddd.infrastructure.service import AuthServiceImpl
 from migrations.models.user_model import (
     MUserRole,
     TUser,
 )
 
+auth_service = AuthServiceImpl()
 
 ## extentionの有効化
 def init_extention() -> None:
@@ -36,14 +38,14 @@ def init_records() -> None:
         user = TUser(
             user_id = "admin",
             user_name = "admin",
-            user_password = "admin", # noqa: S106 (ダミーパスワードの手動設定に関するエラーを無視)
+            user_password = auth_service.create_hashed_password("admin"),
             user_role_code = "00",
         )
         session.add(user)
         user = TUser(
             user_id = "guest",
             user_name = "guest",
-            user_password = "guest", # noqa: S106 (ダミーパスワードの手動設定に関するエラーを無視)
+            user_password = auth_service.create_hashed_password("guest"),
             user_role_code = "99",
         )
         session.add(user)
