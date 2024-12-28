@@ -28,12 +28,12 @@ def __usecase(session: Session = Depends(get_session)) -> CreateUserReportUseCas
         # status.HTTP_409_CONFLICT: UserDuplicationError(user_id="dammy").response(),
     },
 )
-def create_users(
+def create_user_report(
     request: CreateUserReportRequest,
     user_id: str = Path(..., alias="userId"),
     usecase: CreateUserReportUseCase = Depends(__usecase),
 ) -> CreateUserReportResponse:
-    """ユーザを作成する."""
+    """ユーザレポートを作成する."""
     input_dto: CreateUserReportInputDTO = CreateUserReportInputDTO.model_validate({"user_id": user_id, **request.model_dump(exclude_unset=True)})
     dto: CreateUserReportOutputDTO = usecase.execute(input_dto)
     return CreateUserReportResponse.model_validate(dto)

@@ -65,7 +65,7 @@
             <a id="nextFileLink" class="nav" href="z_7c66ddcc68815347_router_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.6.10">coverage.py v7.6.10</a>,
-            created at 2024-12-28 00:30 +0000
+            created at 2024-12-28 01:21 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -88,7 +88,7 @@
     <p class="run"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">infrastructure</span><span class="op">.</span><span class="nam">database</span><span class="op">.</span><span class="nam">db</span> <span class="key">import</span> <span class="nam">get_session</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t7" href="#t7">7</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">infrastructure</span><span class="op">.</span><span class="nam">uow</span> <span class="key">import</span> <span class="nam">UserUnitOfWorkImpl</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">presentation</span><span class="op">.</span><span class="nam">endpoint</span><span class="op">.</span><span class="nam">user</span><span class="op">.</span><span class="nam">router</span> <span class="key">import</span> <span class="nam">router</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">presentation</span><span class="op">.</span><span class="nam">schema</span><span class="op">.</span><span class="nam">user</span> <span class="key">import</span> <span class="nam">QueryUsersRequest</span><span class="op">,</span> <span class="nam">QueryUsersResponse</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t"><span class="key">from</span> <span class="nam">app</span><span class="op">.</span><span class="nam">ddd</span><span class="op">.</span><span class="nam">presentation</span><span class="op">.</span><span class="nam">schema</span><span class="op">.</span><span class="nam">user</span> <span class="key">import</span> <span class="nam">QueryUserRequest</span><span class="op">,</span> <span class="nam">QueryUserResponse</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t"><span class="key">def</span> <span class="nam">__usecase</span><span class="op">(</span><span class="nam">session</span><span class="op">:</span> <span class="nam">Session</span> <span class="op">=</span> <span class="nam">Depends</span><span class="op">(</span><span class="nam">get_session</span><span class="op">)</span><span class="op">)</span> <span class="op">-></span> <span class="nam">QueryUserUseCase</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
@@ -97,16 +97,16 @@
     <p class="pln"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t"><span class="op">@</span><span class="nam">router</span><span class="op">.</span><span class="nam">post</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t">    <span class="nam">path</span><span class="op">=</span><span class="str">"/query/users"</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t18" href="#t18">18</a></span><span class="t">    <span class="nam">response_model</span><span class="op">=</span><span class="nam">QueryUsersResponse</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t18" href="#t18">18</a></span><span class="t">    <span class="nam">response_model</span><span class="op">=</span><span class="nam">QueryUserResponse</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t19" href="#t19">19</a></span><span class="t"><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t20" href="#t20">20</a></span><span class="t"><span class="key">def</span> <span class="nam">query_users</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t21" href="#t21">21</a></span><span class="t">    <span class="nam">request</span><span class="op">:</span> <span class="nam">QueryUsersRequest</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t20" href="#t20">20</a></span><span class="t"><span class="key">def</span> <span class="nam">query_user</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t21" href="#t21">21</a></span><span class="t">    <span class="nam">request</span><span class="op">:</span> <span class="nam">QueryUserRequest</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t22" href="#t22">22</a></span><span class="t">    <span class="nam">usecase</span><span class="op">:</span> <span class="nam">QueryUserUseCase</span> <span class="op">=</span> <span class="nam">Depends</span><span class="op">(</span><span class="nam">__usecase</span><span class="op">)</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t23" href="#t23">23</a></span><span class="t"><span class="op">)</span> <span class="op">-></span> <span class="nam">QueryUsersResponse</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t23" href="#t23">23</a></span><span class="t"><span class="op">)</span> <span class="op">-></span> <span class="nam">QueryUserResponse</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t24" href="#t24">24</a></span><span class="t">    <span class="str">"""&#12518;&#12540;&#12470;&#12434;&#12463;&#12456;&#12522;&#12377;&#12427;."""</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t25" href="#t25">25</a></span><span class="t">    <span class="nam">input_dto</span><span class="op">:</span> <span class="nam">QueryUserInputDTO</span> <span class="op">=</span> <span class="nam">QueryUserInputDTO</span><span class="op">.</span><span class="nam">model_validate</span><span class="op">(</span><span class="nam">request</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t26" href="#t26">26</a></span><span class="t">    <span class="nam">dto</span><span class="op">:</span> <span class="nam">QueryUserOutputDTO</span> <span class="op">=</span> <span class="nam">usecase</span><span class="op">.</span><span class="nam">execute</span><span class="op">(</span><span class="nam">input_dto</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t27" href="#t27">27</a></span><span class="t">    <span class="key">return</span> <span class="nam">QueryUsersResponse</span><span class="op">.</span><span class="nam">model_validate</span><span class="op">(</span><span class="nam">dto</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t27" href="#t27">27</a></span><span class="t">    <span class="key">return</span> <span class="nam">QueryUserResponse</span><span class="op">.</span><span class="nam">model_validate</span><span class="op">(</span><span class="nam">dto</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
 </main>
 <footer>
     <div class="content">
@@ -116,7 +116,7 @@
             <a class="nav" href="z_7c66ddcc68815347_router_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.6.10">coverage.py v7.6.10</a>,
-            created at 2024-12-28 00:30 +0000
+            created at 2024-12-28 01:21 +0000
         </p>
     </div>
 </footer>

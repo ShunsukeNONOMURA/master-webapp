@@ -27,7 +27,7 @@ _filters_example: dict[str, Any] = {
     "userId": "guest",
 }
 
-class QueryUsersRequest(BaseRequest):
+class QueryUserRequest(BaseRequest):
     offset: int = Field(default=0)
     limit: int = Field(default=10)
     query: dict[str,Any] = Field(

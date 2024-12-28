@@ -7,7 +7,7 @@ from app.ddd.domain import UserNotFoundError, UserUpdateConflictError
 from app.ddd.infrastructure.database.db import get_session
 from app.ddd.infrastructure.uow import UserUnitOfWorkImpl
 from app.ddd.presentation.endpoint.user.router import router
-from app.ddd.presentation.schema.user import CreateUsersResponse, PatchUsersRequest
+from app.ddd.presentation.schema.user import PatchUserResponse, PatchUsersRequest
 
 
 def __usecase(session: Session = Depends(get_session)) -> PatchUserUseCase:
@@ -16,7 +16,7 @@ def __usecase(session: Session = Depends(get_session)) -> PatchUserUseCase:
 
 @router.patch(
     path="/users/{userId}",
-    response_model=CreateUsersResponse,
+    response_model=PatchUserResponse,
     responses={
         status.HTTP_404_NOT_FOUND: UserNotFoundError(user_id="dammy").response(),
         status.HTTP_409_CONFLICT: UserUpdateConflictError(user_id="dammy").response(),
@@ -26,7 +26,7 @@ def patch_user(
     request: PatchUsersRequest,
     user_id: str = Path(..., alias="userId"),
     usecase: PatchUserUseCase = Depends(__usecase),
-) -> CreateUsersResponse:
+) -> PatchUserResponse:
     """
     ユーザを更新する.
 
@@ -34,4 +34,4 @@ def patch_user(
     """
     input_dto: PatchUserInputDTO = PatchUserInputDTO.model_validate({"user_id": user_id, **request.model_dump(exclude_unset=True)})
     dto: PatchUserOutputDTO = usecase.execute(input_dto)
-    return CreateUsersResponse.model_validate(dto)
+    return PatchUserResponse.model_validate(dto)

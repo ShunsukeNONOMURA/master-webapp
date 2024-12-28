@@ -65,7 +65,7 @@
             <a id="nextFileLink" class="nav" href="z_04889c708d7aec3a_router_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.6.10">coverage.py v7.6.10</a>,
-            created at 2024-12-28 00:30 +0000
+            created at 2024-12-28 01:21 +0000
         </p>
         <aside class="hidden">
             <button type="button" class="button_next_chunk" data-shortcut="j"></button>
@@ -110,12 +110,12 @@
     <p class="pln"><span class="n"><a id="t28" href="#t28">28</a></span><span class="t">        <span class="com"># status.HTTP_409_CONFLICT: UserDuplicationError(user_id="dammy").response(),</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t29" href="#t29">29</a></span><span class="t">    <span class="op">}</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t30" href="#t30">30</a></span><span class="t"><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t31" href="#t31">31</a></span><span class="t"><span class="key">def</span> <span class="nam">create_users</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t31" href="#t31">31</a></span><span class="t"><span class="key">def</span> <span class="nam">create_user_report</span><span class="op">(</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t32" href="#t32">32</a></span><span class="t">    <span class="nam">request</span><span class="op">:</span> <span class="nam">CreateUserReportRequest</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t33" href="#t33">33</a></span><span class="t">    <span class="nam">user_id</span><span class="op">:</span> <span class="nam">str</span> <span class="op">=</span> <span class="nam">Path</span><span class="op">(</span><span class="op">...</span><span class="op">,</span> <span class="nam">alias</span><span class="op">=</span><span class="str">"userId"</span><span class="op">)</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t34" href="#t34">34</a></span><span class="t">    <span class="nam">usecase</span><span class="op">:</span> <span class="nam">CreateUserReportUseCase</span> <span class="op">=</span> <span class="nam">Depends</span><span class="op">(</span><span class="nam">__usecase</span><span class="op">)</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
     <p class="pln"><span class="n"><a id="t35" href="#t35">35</a></span><span class="t"><span class="op">)</span> <span class="op">-></span> <span class="nam">CreateUserReportResponse</span><span class="op">:</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t36" href="#t36">36</a></span><span class="t">    <span class="str">"""&#12518;&#12540;&#12470;&#12434;&#20316;&#25104;&#12377;&#12427;."""</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t36" href="#t36">36</a></span><span class="t">    <span class="str">"""&#12518;&#12540;&#12470;&#12524;&#12509;&#12540;&#12488;&#12434;&#20316;&#25104;&#12377;&#12427;."""</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t37" href="#t37">37</a></span><span class="t">    <span class="nam">input_dto</span><span class="op">:</span> <span class="nam">CreateUserReportInputDTO</span> <span class="op">=</span> <span class="nam">CreateUserReportInputDTO</span><span class="op">.</span><span class="nam">model_validate</span><span class="op">(</span><span class="op">{</span><span class="str">"user_id"</span><span class="op">:</span> <span class="nam">user_id</span><span class="op">,</span> <span class="op">**</span><span class="nam">request</span><span class="op">.</span><span class="nam">model_dump</span><span class="op">(</span><span class="nam">exclude_unset</span><span class="op">=</span><span class="key">True</span><span class="op">)</span><span class="op">}</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t38" href="#t38">38</a></span><span class="t">    <span class="nam">dto</span><span class="op">:</span> <span class="nam">CreateUserReportOutputDTO</span> <span class="op">=</span> <span class="nam">usecase</span><span class="op">.</span><span class="nam">execute</span><span class="op">(</span><span class="nam">input_dto</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
     <p class="run"><span class="n"><a id="t39" href="#t39">39</a></span><span class="t">    <span class="key">return</span> <span class="nam">CreateUserReportResponse</span><span class="op">.</span><span class="nam">model_validate</span><span class="op">(</span><span class="nam">dto</span><span class="op">)</span>&nbsp;</span><span class="r"></span></p>
@@ -128,7 +128,7 @@
             <a class="nav" href="z_04889c708d7aec3a_router_py.html">&#xbb; next</a>
             &nbsp; &nbsp; &nbsp;
             <a class="nav" href="https://coverage.readthedocs.io/en/7.6.10">coverage.py v7.6.10</a>,
-            created at 2024-12-28 00:30 +0000
+            created at 2024-12-28 01:21 +0000
         </p>
     </div>
 </footer>

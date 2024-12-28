@@ -11,7 +11,7 @@ class GetUserResponse(BaseResponse):
     # user_role_code: str
     user: User
 
-class CreateUsersResponse(BaseResponse):
+class CreateUserResponse(BaseResponse):
     user_id: str
 
 class PatchUserResponse(BaseResponse):
@@ -20,5 +20,5 @@ class PatchUserResponse(BaseResponse):
 class DeleteUserResponse(BaseResponse):
     user_id: str
 
-class QueryUsersResponse(BaseResponse):
+class QueryUserResponse(BaseResponse):
     users: list[User]

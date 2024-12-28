@@ -18,7 +18,8 @@ def test_get_me(db):
     meの取得を行う
 
     - tokenなしの場合認証できていない
-    - TODO(nonomura): tokenありの場合認証できている
+    - tokenありの場合認証できている
+    - tokenが壊れている場合認証できない
 
     TODO(nonomura): jwt関連設計後
     """
@@ -28,11 +29,32 @@ def test_get_me(db):
     )
     assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
+    login_data = {
+        "username": "guest",
+        "password": "guest"
+    }
+    response = client.post(
+        "/token",
+        data=login_data,
+        headers={"Content-Type": "application/x-www-form-urlencoded"}
+    )
+    assert response.status_code == 200
 
+    token = response.json()["access_token"]
+    headers = {"Authorization": f"Bearer {token}"}
+    response = client.get(
+        f"/users/me",
+        headers=headers
+    )
+    assert response.status_code == status.HTTP_200_OK
 
-    # print('response')
-    # # print(response.json()["user"]["user_id"])
-    # assert response.json()["user"]["userId"] == user_id
+    token = "hogehogehoge"
+    headers = {"Authorization": f"Bearer {token}"}
+    response = client.get(
+        f"/users/me",
+        headers=headers
+    )
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
 
 def test_operate_user(db):
     """
