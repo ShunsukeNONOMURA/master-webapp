@@ -3,8 +3,8 @@
 from datetime import datetime
 from typing import Any
 
-from pydantic import validator
-from sqlmodel import Field
+# from sqlmodel import Field
+from pydantic import Field, validator
 
 from app.core.base import BaseRequest
 from app.ddd.infrastructure.util.convert import recursive_to_snake
@@ -22,16 +22,21 @@ class PatchUsersRequest(BaseRequest):
     user_name: str | None = Field(None)
     user_role_code: str | None = Field(None)
 
-_filters_example = {
+
+_filters_example: dict[str, Any] = {
     "userId": "guest",
 }
 
 class QueryUsersRequest(BaseRequest):
-    offset: int = Field(default="0")
-    limit: int = Field(default="10")
-    query: dict[str,Any] = Field(default=_filters_example)
+    offset: int = Field(default=0)
+    limit: int = Field(default=10)
+    query: dict[str,Any] = Field(
+        default={},
+        examples=[_filters_example]
+    )
 
     @validator("query", pre=True, always=True)
     def validate_query(cls, query: dict[str, Any]) -> dict[str, Any]:
         """filtersのcaseをスネークに変換する."""
+        # query = query or {}
         return recursive_to_snake(query)

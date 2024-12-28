@@ -1,9 +1,21 @@
 from datetime import UTC, datetime
 
+# from app.core.exception import DomainException, UseCaseException
+from logging import getLogger
+
 from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware, RequestResponseEndpoint
 
-# from app.core.exception import DomainException, UseCaseException
+# handler_format = Formatter('%(levelname)s:     %(asctime)s - %(name)s - %(message)s')
+
+# stream_handler = StreamHandler()
+# stream_handler.setFormatter(handler_format)
+
+logger = getLogger("main").getChild("logging_middleware")
+# logger.setLevel(DEBUG)
+# logger.addHandler(stream_handler)
+
+
 
 class LoggingMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: RequestResponseEndpoint) -> Response:
@@ -33,8 +45,10 @@ class LoggingMiddleware(BaseHTTPMiddleware):
         response.headers["X-Response-Time"] = str(duration)
 
 
-        # レスポンスについてのログを残す
-        print("log info")
+        # レスポンスについてのシステムログを残す
+        logger.info("info")
+        logger.warning("warn")
+        logger.debug("debug")
         print(request.url)
         print(response.status_code)
         print(f"route response headers: {response.headers}")

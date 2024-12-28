@@ -4,7 +4,7 @@ from collections.abc import Mapping
 from datetime import datetime
 from typing import Any
 
-from pydantic import Field, SecretStr
+from pydantic import Field
 
 from app.core.base import BaseEntity, BaseValueObject
 from app.ddd.domain import UserRoleEnum
@@ -27,7 +27,8 @@ class UserId(BaseValueObject):
 
 class User(BaseEntity):
     user_id: str
-    user_password: SecretStr
+    # user_password: SecretStr
+    user_password: str
     # hashed_password: str = Field("hogehoge")
     user_name: str
     user_role_code: UserRoleEnum
@@ -47,4 +48,6 @@ class User(BaseEntity):
         )
         self.user_reports.append(user_report)
         return user_report
+
+
 

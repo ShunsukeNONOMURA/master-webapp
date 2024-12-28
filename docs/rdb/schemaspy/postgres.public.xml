@@ -19,7 +19,7 @@
             <child column="created_user_id" foreignKey="t_user_report_created_user_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="t_user_report"/>
          </column>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="user_name" nullable="false" remarks="ユーザ名" size="20" type="varchar" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="user_password" nullable="false" remarks="ユーザパスワード" size="20" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="user_password" nullable="false" remarks="ユーザパスワード(BCrypt)" size="60" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="user_role_code" nullable="false" remarks="ユーザロールコード" size="20" type="varchar" typeCode="12">
             <parent column="user_role_code" foreignKey="t_user_user_role_code_fkey" implied="false" onDeleteCascade="false" schema="public" table="m_user_role"/>
          </column>
@@ -33,7 +33,7 @@
          <column autoUpdated="false" defaultValue="null" digits="6" id="1" name="updated_at" nullable="false" remarks="更新日時（UTC）" size="29" type="timestamp" typeCode="93"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="2" name="user_report_id" nullable="false" remarks="ユーザレポートID" size="36" type="varchar" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="3" name="title" nullable="false" remarks="ユーザレポートタイトル" size="20" type="varchar" typeCode="12"/>
-         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="content" nullable="false" remarks="ユーザレポート内容" size="20" type="varchar" typeCode="12"/>
+         <column autoUpdated="false" defaultValue="null" digits="0" id="4" name="content" nullable="false" remarks="ユーザレポート内容" size="2147483647" type="text" typeCode="12"/>
          <column autoUpdated="false" defaultValue="null" digits="0" id="5" name="created_user_id" nullable="false" remarks="外部キー：ユーザID" size="20" type="varchar" typeCode="12">
             <parent column="user_id" foreignKey="t_user_report_created_user_id_fkey" implied="false" onDeleteCascade="false" schema="public" table="t_user"/>
          </column>

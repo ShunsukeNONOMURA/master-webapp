@@ -17,16 +17,22 @@ def test_get_me(db):
     """
     meの取得を行う
 
+    - tokenなしの場合認証できていない
+    - TODO(nonomura): tokenありの場合認証できている
+
     TODO(nonomura): jwt関連設計後
     """
     user_id = "guest"
     response = client.get(
         f"/users/me",
     )
-    assert response.status_code == status.HTTP_200_OK 
-    print('response')
-    # print(response.json()["user"]["user_id"])
-    assert response.json()["user"]["userId"] == user_id
+    assert response.status_code == status.HTTP_401_UNAUTHORIZED
+
+
+
+    # print('response')
+    # # print(response.json()["user"]["user_id"])
+    # assert response.json()["user"]["userId"] == user_id
 
 def test_operate_user(db):
     """

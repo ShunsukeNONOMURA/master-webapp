@@ -14,7 +14,7 @@ class BaseError(Exception):
         Args:
             error_code: ERROR CODE
             status_code: HTTP STATUS CODE
-            description: エラーメッセージ
+            description: エラー内容の説明（parametersでフォーマットさせる）
             parameters: その他パラメータ（エラーメッセージに追加する文言など）
 
         """
@@ -48,8 +48,6 @@ class BaseError(Exception):
     def response(self) -> dict[str, Any]:
         """エラーレスポンスの内容を生成."""
         return {
-            # "model": DynamicModel,
-            # "description":  self.__message["description"], # Discriptionを指定する場合
             "content": {
                 "application/json": {
                     "example": {

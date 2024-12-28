@@ -1,7 +1,7 @@
 from typing import Optional
 
-from pydantic import SecretStr
 from sqlalchemy import Column
+from sqlalchemy.types import Text
 from sqlmodel import Field, Relationship, String
 
 from migrations.models.base import MasterTable, TransactionTable
@@ -11,8 +11,14 @@ class TUserReport(TransactionTable, table=True):
     __tablename__ = "t_user_report"
 
     user_report_id: str = Field(primary_key=True, max_length=36, sa_column_kwargs={"comment": "ユーザレポートID"})
-    title: str = Field(max_length=20, sa_column_kwargs={"comment": "ユーザレポートタイトル"})
-    content: str = Field(max_length=20, sa_column_kwargs={"comment": "ユーザレポート内容"})
+    title: str = Field(max_length=20, nullable = False, sa_column_kwargs={"comment": "ユーザレポートタイトル"})
+    content: str = Field(
+        sa_column=Column(
+            Text,
+            nullable = False,
+            comment = "ユーザレポート内容",
+        )
+    )
     created_user_id: str = Field(
         max_length=20,
         foreign_key="t_user.user_id",
@@ -27,11 +33,11 @@ class TUser(TransactionTable, table=True):
 
     user_id: str = Field(primary_key=True, max_length=20, sa_column_kwargs={"comment": "ユーザID"})
     user_name: str = Field(max_length=20, nullable=False, sa_column_kwargs={"comment": "ユーザ名"})
-    user_password: SecretStr = Field(
+    user_password: str = Field(
         sa_column=Column(
-            String(20),
+            String(60),
             nullable = False,
-            comment = "ユーザパスワード",
+            comment = "ユーザパスワード(BCrypt)",
         )
     )
     # hashed_password: SecretStr = Field(

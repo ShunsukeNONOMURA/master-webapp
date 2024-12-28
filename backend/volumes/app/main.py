@@ -8,6 +8,7 @@ from app.core.middleware import (
     ErrorHandlingMiddleware,
     LoggingMiddleware,
 )
+from app.ddd.infrastructure.log.logger import *  # log設定読み込み
 from app.ddd.presentation.endpoint import main_router
 
 description = """
