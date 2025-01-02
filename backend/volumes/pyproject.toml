@@ -13,7 +13,7 @@ uvicorn = "^0.32.1"
 filetype = "^1.2.0"
 pg8000 = "^1.31.2"
 python-jose = "^3.3.0"
-pyjwt = "^2.10.1"
+pyjwt = {extras = ["crypto"], version = "^2.10.1"}
 bcrypt = "^4.2.1"
 coloredlogs = "^15.0.1"
 

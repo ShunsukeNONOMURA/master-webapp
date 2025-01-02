@@ -28,7 +28,7 @@ def patch_user(
     usecase: PatchUserUseCase = Depends(__usecase),
 ) -> PatchUserResponse:
     """
-    ユーザを更新する.
+    Userを更新する.
 
     更新しない場合、入力しない。
     """

@@ -1,0 +1,75 @@
+{
+  "id": "dev-realm",
+  "realm": "dev-realm",
+  "enabled": true,
+  "clients": [
+    {
+      "clientId": "dev-client",
+      "name": "開発用クライアント",
+      "enabled": true,
+      "protocol": "openid-connect",
+      "publicClient": false,
+      "secret": "example-secret",
+      "directAccessGrantsEnabled": true
+    }
+  ],
+  "users": [
+    {
+      "id": "72005005-399f-4c3f-a766-17337667748c",
+      "username": "dev-user",
+      "enabled": true,
+      "email": "dev-user@example.com",
+      "firstName": "Dev",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ]
+    },
+    {
+      "id": "e09beb82-5854-42b1-a605-cfdc5611fae2",
+      "username": "maintainer-user",
+      "enabled": true,
+      "email": "maintainer@example.com",
+      "firstName": "Maintainer",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "maintainer-password",
+          "temporary": false
+        }
+      ],
+      "groups": ["/maintainer"]
+    },
+    {
+      "id": "c76126e8-e98b-4313-ab2f-3666fea02dca",
+      "username": "general-user",
+      "enabled": true,
+      "email": "general@example.com",
+      "firstName": "General",
+      "lastName": "User",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "general-password",
+          "temporary": false
+        }
+      ],
+      "groups": ["/general"]
+    }
+  ],
+  "groups": [
+    {
+      "name": "maintainer",
+      "path": "/maintainer"
+    },
+    {
+      "name": "general",
+      "path": "/general"
+    }
+  ]
+}

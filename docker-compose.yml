@@ -35,6 +35,27 @@ services:
   #   networks:
   #     - master_webapp_network
 
+  keycloak:
+    build:
+      context: ./sso/keycloak
+      dockerfile: Dockerfile
+    tty: true
+    stdin_open: true
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+      KC_REALM_IMPORT_FILE: /opt/keycloak/data/realm-export.json
+    volumes:
+      - ./sso/keycloak/import:/opt/keycloak/data/import:ro
+    ports:
+      - 38080:8080
+    command:
+      - "--verbose"
+      - "start-dev"
+      - "--import-realm" # 開発モードで起動
+    networks:
+      - master_webapp_network
+
   mkdocs:
     build:
       context: ./documentation/mkdocs

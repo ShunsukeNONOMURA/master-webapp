@@ -52,3 +52,10 @@
     - 止まってられないので、一旦postgresqlで進める。 -->
 
 
+## 検討中：ドメインモデル
+- プロパティ名はモデル名を含める
+    - user_name
+    - group_name
+- 汎用プロパティは共通名
+    - created_at
+    - updated_at

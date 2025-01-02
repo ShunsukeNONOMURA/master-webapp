@@ -21,7 +21,7 @@ def query_user(
     request: QueryUserRequest,
     usecase: QueryUserUseCase = Depends(__usecase),
 ) -> QueryUserResponse:
-    """ユーザをクエリする."""
+    """Userをクエリする."""
     input_dto: QueryUserInputDTO = QueryUserInputDTO.model_validate(request)
     dto: QueryUserOutputDTO = usecase.execute(input_dto)
     return QueryUserResponse.model_validate(dto)

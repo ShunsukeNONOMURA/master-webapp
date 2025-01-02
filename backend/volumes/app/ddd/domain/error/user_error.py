@@ -1,4 +1,3 @@
-from enum import Enum
 
 from fastapi import status
 
@@ -8,12 +7,11 @@ from app.core.base import BaseError
 # status.HTTP_409_CONFLICT
 from app.ddd.domain import ErrorCode
 
-
 # Enumでエラー情報を定義
-class ErrorEnum(Enum):
-    INVALID_INPUT = (4001, status.HTTP_404_NOT_FOUND, "Invalid input provided")
-    USER_NOT_FOUND = (1404, status.HTTP_404_NOT_FOUND, "User with ID {user_id} was not found.")
-    SERVER_ERROR = (5000, status.HTTP_404_NOT_FOUND, "Internal server error")
+# class ErrorEnum(Enum):
+#     INVALID_INPUT = (4001, status.HTTP_404_NOT_FOUND, "Invalid input provided")
+#     USER_NOT_FOUND = (1404, status.HTTP_404_NOT_FOUND, "User with ID {user_id} was not found.")
+#     SERVER_ERROR = (5000, status.HTTP_404_NOT_FOUND, "Internal server error")
 
 class UserNotFoundError(BaseError):
     def __init__(self, user_id: str) -> None:

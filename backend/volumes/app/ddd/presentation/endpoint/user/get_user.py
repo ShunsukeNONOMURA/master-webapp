@@ -12,7 +12,7 @@ from fastapi import Depends, Path, status
 # def get_users(
 #     usecase: GetUsersUseCase = Depends(__t_usecase),
 # ):
-#     """ユーザを一覧する."""
+#     """Userを一覧する."""
 #     dto : GetUserOutputDTO = usecase.execute()
 #     return dto
 from sqlmodel import Session
@@ -61,7 +61,7 @@ def get_user(
     user_id: str = Path(..., alias="userId"),
     usecase: GetUserUseCase = Depends(__usecase),
 ) -> GetUserResponse:
-    """ユーザを取得する."""
+    """Userを取得する."""
     input_dto: GetUserInputDTO = GetUserInputDTO(user_id=user_id)
     dto: GetUserOutputDTO = usecase.execute(input_dto)
     return GetUserResponse.model_validate(dto)

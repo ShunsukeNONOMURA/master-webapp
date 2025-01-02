@@ -18,10 +18,10 @@ Webアプリのバックエンドのベースラインコード実装
 - ヘルスの取得
 
 ## User
-- ユーザの作成
-- ユーザの取得
-- ユーザの一覧
-- ユーザの削除
+- Userの作成
+- Userの取得
+- Userの一覧
+- Userの削除
 """
 
 app = FastAPI(
@@ -39,11 +39,11 @@ app = FastAPI(
         # },
         {
             "name": "user",
-            "description": "ユーザーに関する操作。",
+            "description": "Userーに関する操作。",
         },
         {
             "name": "user-report",
-            "description": "ユーザーレポートに関する操作。",
+            "description": "Userーレポートに関する操作。",
         },
         # {
         #     "name": "/conversation",

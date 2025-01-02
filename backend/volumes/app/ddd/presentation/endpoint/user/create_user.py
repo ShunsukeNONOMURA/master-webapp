@@ -25,7 +25,7 @@ def create_user(
     request: CreateUserRequest,
     usecase: CreateUserUseCase = Depends(__usecase),
 ) -> CreateUserResponse:
-    """ユーザを作成する."""
+    """Userを作成する."""
     input_dto: CreateUserInputDTO = CreateUserInputDTO.model_validate(request)
     dto: CreateUserOutputDTO = usecase.execute(input_dto)
     return CreateUserResponse.model_validate(dto)

@@ -33,7 +33,7 @@ def create_user_report(
     user_id: str = Path(..., alias="userId"),
     usecase: CreateUserReportUseCase = Depends(__usecase),
 ) -> CreateUserReportResponse:
-    """ユーザレポートを作成する."""
+    """Userレポートを作成する."""
     input_dto: CreateUserReportInputDTO = CreateUserReportInputDTO.model_validate({"user_id": user_id, **request.model_dump(exclude_unset=True)})
     dto: CreateUserReportOutputDTO = usecase.execute(input_dto)
     return CreateUserReportResponse.model_validate(dto)

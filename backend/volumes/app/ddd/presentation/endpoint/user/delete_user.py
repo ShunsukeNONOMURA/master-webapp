@@ -37,7 +37,7 @@ def delete_user(
     user_id: str = Path(..., alias="userId"),
     usecase: DeleteUserUseCase = Depends(__usecase),
 ) -> DeleteUserResponse:
-    """ユーザを削除する."""
+    """Userを削除する."""
     input_dto: DeleteUserInputDTO = DeleteUserInputDTO(user_id=user_id)
     dto: DeleteUserOutputDTO = usecase.execute(input_dto)
     return DeleteUserResponse.model_validate(dto)
