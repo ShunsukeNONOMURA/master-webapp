@@ -1,6 +1,28 @@
 # master webapp
 python(fastapi)によるwebアプリ開発用のマスタ。
 
+## TODO
+- 排他制御
+    - https://sqlalchemy.narkive.com/RbfOgJvz/how-to-use-version-id-col
+    - https://weseek.co.jp/tech/525/
+    - https://qiita.com/tatsurou313/items/053cffdfe940a89d7f5a
+- 共通型
+    - enum
+- エラーハンドリング＋ロギング
+    - エラーモデル
+    - API
+- ドキュメンテーション
+    - sphinx
+    - (mkdocs)
+- conflict
+    - sqlmodel, id
+- CI
+    - github action
+- Auth
+    - keycloak連携
+        - https://fastapi-keycloak-middleware.readthedocs.io/en/latest/usage.html
+        - https://qiita.com/KWS_0901/items/bdf60a725064900eaad1
+
 ## Links
 - https://shunsukenonomura.github.io/master-webapp/mkdocs/index.html
     - mkdocsの外部サイト
@@ -9,7 +31,7 @@ python(fastapi)によるwebアプリ開発用のマスタ。
 | パス                          | 役割                                      |
 | ----------------------------- | ----------------------------------------- |
 | app/core                      | 共通で利用するモジュールなどを配置        |
-| app/core/abstract             | 共通で利用する抽象クラス                  |
+| app/core/base                 | 共通で利用する基底クラス                  |
 | app/core/exception            | 共通で利用するException                   |
 | app/core/middleware           | 共通で利用するミドルウェア                |
 | app/ddd                       | DDDを表現する                             |
@@ -29,6 +51,8 @@ python(fastapi)によるwebアプリ開発用のマスタ。
 | migrations/model              | ORM                                       |
 | tests                         | test関連                                  |
 | pyproject.toml                | poetry設定                                |
+| docs                          | ドキュメント                              |
+
 
 ## コマンドシート
 | 操作                                     | コマンド                                                                                                                                                          |

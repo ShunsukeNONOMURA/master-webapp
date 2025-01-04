@@ -1,4 +1,4 @@
-site_name: FastAPI Master MkDocs
+site_name: Webapp FastAPI Master MkDocs
 # mkdocsをルートとする
 site_url: http://0.0.0.0/mkdocs
 theme:

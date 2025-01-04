@@ -152,6 +152,11 @@
                                     <td>
                                         <table border='0' cellspacing='0' cellpadding='0'>
                                             <tr>
+                                                <td title="t_group.group_responsible_user_id references t_user.user_id via t_group_group_responsible_user_id_fkey"><a href='t_group.html'>t_group</a><span class='relatedKey'>.group_responsible_user_id</span></td>
+                                                <td class="constraint detail">t_group_group_responsible_user_id_fkey</td>
+                                                <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
+                                            </tr>
+                                            <tr>
                                                 <td title="t_user_report.created_user_id references t_user.user_id via t_user_report_created_user_id_fkey"><a href='t_user_report.html'>t_user_report</a><span class='relatedKey'>.created_user_id</span></td>
                                                 <td class="constraint detail">t_user_report_created_user_id_fkey</td>
                                                 <td class="constraint detail"><span title='Restrict delete:&#10;Parent cannot be deleted if children exist'>R</span></td>
@@ -278,9 +283,10 @@
                                 <div class="tab-content no-padding">
                                     <div class="chart tab-pane active" id="oneDegreeImg-chart" style="position: relative; overflow-x:auto;">
                                         <map id="oneDegreeRelationshipsDiagram" name="oneDegreeRelationshipsDiagram">
-<area shape="rect" id="node1" href="t_user.html" target="_top" title="t_user" alt="" coords="224,5,517,251">
-<area shape="rect" id="node2" href="m_user_role.html" target="_top" title="m_user_role" alt="" coords="5,155,180,272">
-<area shape="rect" id="node3" href="t_user_report.html" target="_top" title="t_user_report" alt="" coords="561,37,747,184">
+<area shape="rect" id="node1" href="t_group.html" target="_top" title="t_group" alt="" coords="561,5,819,152">
+<area shape="rect" id="node2" href="t_user.html" target="_top" title="t_user" alt="" coords="224,56,517,301">
+<area shape="rect" id="node3" href="m_user_role.html" target="_top" title="m_user_role" alt="" coords="5,205,180,323">
+<area shape="rect" id="node4" href="t_user_report.html" target="_top" title="t_user_report" alt="" coords="597,169,783,316">
 </map>
                                         <a name='diagram'><img id="oneDegreeImg" src="../diagrams/tables/t_user.1degree.png" usemap="#oneDegreeRelationshipsDiagram" class="diagram" border="0" align="left"></a>
                                     </div>
