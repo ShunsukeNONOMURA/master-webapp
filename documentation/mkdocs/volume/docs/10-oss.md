@@ -24,13 +24,5 @@
 
 できるだけ一般知識で更新ができるように、独自実装せずにossは担げる場合は担ぐ。
 
-## OSSライセンス一覧
-| ライセンス                           | コピーレフト                                |
-| ------------------------------------ | ------------------------------------------- |
-| BSD License                          | 非該当                                      |
-| MIT License                          | 非該当                                      |
-| Apache Software License              | 非該当                                      |
-| Mozilla Public License 2.0 (MPL 2.0) | OSSを改変した場合、改変箇所の公開義務が発生 |
-
 ## 参考
 - [DockerでPoetryを使って環境構築しよう](https://book.st-hakky.com/hakky/try-poetry-on-docker/)

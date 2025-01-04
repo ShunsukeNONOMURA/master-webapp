@@ -45,3 +45,18 @@ sqlite_web dev.sqlite3
         - ドキュメント生成：テストカバレッジ
 - 結合評価
 - リリース
+
+## OSSライセンス一覧
+| ライセンス                           | コピーレフト                                |
+| ------------------------------------ | ------------------------------------------- |
+| BSD License                          | 非該当                                      |
+| MIT License                          | 非該当                                      |
+| Apache Software License              | 非該当                                      |
+| Mozilla Public License 2.0 (MPL 2.0) | OSSを改変した場合、改変箇所の公開義務が発生 |
+
+## バグ
+- oracleだとschemaspyでukにfk制約かけると表示されないバグ
+    - 制約自体は設定できるが
+    - 同じ不具合出ている人がいる
+        - https://github.com/schemaspy/schemaspy/issues/1430
+    - 止まってられないので、一旦postgresqlで進める。 
