@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://0.0.0.0/mkdocs/21_design_orm.html">
+        <link rel="canonical" href="http://0.0.0.0/mkdocs/20-design-layer.html">
       
       
-        <link rel="prev" href="20_design.html">
+        <link rel="prev" href="10-oss.html">
       
       
-        <link rel="next" href="22_design_api.html">
+        <link rel="next" href="21-design-orm.html">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>ORM設計 - Webapp FastAPI Master MkDocs</title>
+        <title>全体設計 - Webapp FastAPI Master MkDocs</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#orm" class="md-skip">
+        <a href="#_1" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ORM設計
+              全体設計
             
           </span>
         </div>
@@ -227,31 +227,11 @@
   
   
     <li class="md-nav__item">
-      <a href="10_oss.html" class="md-nav__link">
+      <a href="10-oss.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     OSS
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="20_design.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    全体設計
   </span>
   
 
@@ -280,18 +260,18 @@
           
   
   <span class="md-ellipsis">
-    ORM設計
+    全体設計
   </span>
   
 
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <a href="21_design_orm.html" class="md-nav__link md-nav__link--active">
+      <a href="20-design-layer.html" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    ORM設計
+    全体設計
   </span>
   
 
@@ -315,18 +295,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      全般
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      命名規則
+      全体構成
     </span>
   </a>
   
@@ -335,7 +306,7 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      テーブル名(クラス名)プレフィックス
+      基本フロー
     </span>
   </a>
   
@@ -344,7 +315,7 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      予約プロパティ
+      アプリ開発時に主に利用するもの
     </span>
   </a>
   
@@ -353,7 +324,7 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      検討中：ドメインモデル
+      参考
     </span>
   </a>
   
@@ -374,7 +345,27 @@
   
   
     <li class="md-nav__item">
-      <a href="22_design_api.html" class="md-nav__link">
+      <a href="21-design-orm.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ORM設計
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="22-design-api.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -394,7 +385,27 @@
   
   
     <li class="md-nav__item">
-      <a href="30_test.html" class="md-nav__link">
+      <a href="30-dev-command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンドチートシート
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="40-test.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -436,18 +447,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      全般
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      命名規則
+      全体構成
     </span>
   </a>
   
@@ -456,7 +458,7 @@
         <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      テーブル名(クラス名)プレフィックス
+      基本フロー
     </span>
   </a>
   
@@ -465,7 +467,7 @@
         <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      予約プロパティ
+      アプリ開発時に主に利用するもの
     </span>
   </a>
   
@@ -474,7 +476,7 @@
         <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      検討中：ドメインモデル
+      参考
     </span>
   </a>
   
@@ -495,124 +497,193 @@
                   
 
 
-<h1 id="orm">ORM設計<a class="headerlink" href="#orm" title="Permanent link">&para;</a></h1>
-<h2 id="_1">全般<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="https://sqlmodel.tiangolo.com/">SQLModel</a>を利用<ul>
-<li>FastAPIと同じ作者のsqlalchemyとpydanticのラッパー</li>
-</ul>
-</li>
-<li>必要に応じて基底クラスを作る<ul>
-<li>プレフィックス毎の性質共通化ぐらいまで</li>
-</ul>
-</li>
-<li>SQLModelの基本的な記述だけだと困る場合、schemaspy記述も併用する</li>
-<li><a href="https://sqlmodel.tiangolo.com/tutorial/relationship-attributes/define-relationships-attributes/#define-relationships-attributes">アプリで利用するリレーションは正しく貼る</a><ul>
-<li>単数か複数かは正しく記述すること</li>
-<li>外部キーやback_populates等のオプション記述も必要に応じて正しく記述する</li>
-</ul>
-</li>
-<li>ドキュメントリバース対応としてコメントは入れる。コメントで書ききれないものは別途記述する。</li>
-<li>「ヒストリテーブル」と「通常のトランザクションテーブル/マスタテーブル」の間に外部制約を入れない</li>
-<li>ER図生成による可視化はschemaspyなどを用いてマイグレーション後のDDLからリバースする</li>
-<li>どのように型変換されるかは理解しておくこと<ul>
-<li><a href="https://zenn.dev/re24_1986/articles/8520ac3f9a0187">参考：【SQLAlchemy】Generic Typesと各種DBの型 対応表</a></li>
-</ul>
-</li>
-</ul>
-<h2 id="_2">命名規則<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
-<ul>
-<li>クラス名<ul>
-<li>クラス名PEP8に倣い、CapWords方式で記載する。</li>
-<li>プレフィックスは正しく振ること</li>
-</ul>
-</li>
-<li>テーブル名<ul>
-<li>テーブル名はRDB側はケース・インセンシティブなのでsnake_caseとする。</li>
-<li>プレフィックスは正しく振ること</li>
-</ul>
-</li>
-<li>プロパティ<ul>
-<li>予約プロパティは必要に応じて組み込む</li>
-<li>それ以外のプロパティはシンプルな記述を心がける</li>
-</ul>
-</li>
-</ul>
-<h2 id="_3">テーブル名(クラス名)プレフィックス<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h1 id="_1">全体設計<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <table>
 <thead>
 <tr>
-<th>文字</th>
-<th>意味</th>
+<th>レイヤ</th>
+<th>設計</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>m</td>
-<td>マスタ</td>
+<td>全体アーキテクチャ</td>
+<td>DDD（オニオンアーキテクチャ）</td>
 </tr>
 <tr>
-<td>t</td>
 <td>トランザクション</td>
+<td>Unit of Work</td>
 </tr>
 <tr>
-<td>h</td>
-<td>ヒストリ</td>
+<td>クエリ</td>
+<td><strong>検討</strong>：CQRS</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">予約プロパティ<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_2">全体構成<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="resource/ddd_flow.dio.svg" /></p>
+<h2 id="_3">基本フロー<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>sequenceDiagram
+  autonumber
+
+  actor c as client
+  participant p as Presentation
+  participant a as Application
+  participant d as Domain
+  participant db as DB
+  participant os as Outer Service
+
+  c-&gt;&gt;+p : Request
+  p-&gt;&gt;p: depends : check_access_token
+  p-&gt;&gt;+a : usecase.execute(InputDTO)
+
+loop ユースケース操作
+  alt バックエンド内に閉じる操作
+    a-&gt;&gt;+d : service.method()
+    d-&gt;&gt;-a : domain model
+  else dbに関する操作 (ここではcommitしない)
+    a-&gt;&gt;+d : uow.repository.method()
+    d-&gt;&gt;+db : request
+    db-&gt;&gt;-d : return result
+    d-&gt;&gt;-a : domain model
+  else 外部サービスを利用する操作
+    a-&gt;&gt;+d : service.method()
+    d-&gt;&gt;+os : request
+    os-&gt;&gt;-d : return result
+    d-&gt;&gt;-a : domain model
+  end
+end
+
+opt db永続化実行
+  a-&gt;&gt;+db : uow.commit()
+  db-&gt;&gt;-a : return result
+end
+
+  a-&gt;&gt;-p : OutputDTO
+  p-&gt;&gt;p: middleware : error handling
+  p-&gt;&gt;p: middleware : construct response 
+  p-&gt;&gt;p: middleware : logging
+  p-&gt;&gt;-c: Response</code></pre>
+<h2 id="_4">アプリ開発時に主に利用するもの<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>プロパティ</th>
-<th>Python型ヒント</th>
-<th>sqlmodel.Field の参考</th>
+<th>パス</th>
 <th>役割</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>code</td>
-<td>str</td>
-<td>Field(max_length = 2, nullable=False, unique=True)</td>
-<td>意味のある記号列採番</td>
+<td>app/core</td>
+<td>共通で利用するモジュールなどを配置</td>
 </tr>
 <tr>
-<td>created_at</td>
-<td>datetime</td>
-<td></td>
-<td>作成日</td>
+<td>app/core/base</td>
+<td>各レイヤで利用する基底クラス</td>
 </tr>
 <tr>
-<td>updated_at</td>
-<td>datetime</td>
-<td></td>
-<td>更新日、楽観的ロック</td>
+<td>app/core/middleware</td>
+<td>プレゼン層で利用するミドルウェア</td>
+</tr>
+<tr>
+<td>app/ddd</td>
+<td>DDDを表現する</td>
+</tr>
+<tr>
+<td>app/ddd/presentation</td>
+<td>DDD：プレゼンテーション層</td>
+</tr>
+<tr>
+<td>app/ddd/presentation/schema</td>
+<td>DDD：プレゼンテーション層の入出力スキーマ</td>
+</tr>
+<tr>
+<td>app/ddd/presentation/endpoint</td>
+<td>DDD：プレゼンテーション層のエンドポイント</td>
+</tr>
+<tr>
+<td>app/ddd/application</td>
+<td>DDD：ユースケース層</td>
+</tr>
+<tr>
+<td>app/ddd/application/dto</td>
+<td>DDD：ユースケース層の入出力DTO</td>
+</tr>
+<tr>
+<td>app/ddd/application/uow</td>
+<td>DDD：ユースケース層のUOW</td>
+</tr>
+<tr>
+<td>app/ddd/application/usecase</td>
+<td>DDD：ユースケース層のユースケース</td>
+</tr>
+<tr>
+<td>app/ddd/domain</td>
+<td>DDD：ドメイン層</td>
+</tr>
+<tr>
+<td>app/ddd/domain/model</td>
+<td>DDD：ドメイン層のドメインモデル</td>
+</tr>
+<tr>
+<td>app/ddd/domain/repository</td>
+<td>DDD：ドメイン層のリポジトリ（IF）</td>
+</tr>
+<tr>
+<td>app/ddd/domain/error</td>
+<td>DDD：ドメイン層のエラー</td>
+</tr>
+<tr>
+<td>app/ddd/domain/enum</td>
+<td>DDD：ドメイン層の列挙型</td>
+</tr>
+<tr>
+<td>app/ddd/infrastructure</td>
+<td>DDD：インフラ層</td>
+</tr>
+<tr>
+<td>app/ddd/infrastructure/database</td>
+<td>DDD：インフラ層のデータベース実装</td>
+</tr>
+<tr>
+<td>app/ddd/infrastructure/repository</td>
+<td>DDD：インフラ層のリポジトリ実装</td>
+</tr>
+<tr>
+<td>app/main.py</td>
+<td>起動ファイル</td>
+</tr>
+<tr>
+<td>migrations</td>
+<td>ORMやマイグレーション</td>
+</tr>
+<tr>
+<td>migrations/model</td>
+<td>ORM</td>
+</tr>
+<tr>
+<td>tests</td>
+<td>test関連</td>
+</tr>
+<tr>
+<td>pyproject.toml</td>
+<td>poetry設定</td>
+</tr>
+<tr>
+<td>documentation/mkdocs/volume/docs</td>
+<td>mkdocsで編集するmdファイル群</td>
+</tr>
+<tr>
+<td>docs</td>
+<td>自動生成されるドキュメント</td>
 </tr>
 </tbody>
 </table>
-<!-- ## 予約プロパティ
-
-
-
-## バグ
-- oracleだとschemaspyでukにfk制約かけると表示されないバグ
-    - 制約自体は晴れている
-    - 同じ不具合出ている人がいる
-        - https://github.com/schemaspy/schemaspy/issues/1430
-    - 止まってられないので、一旦postgresqlで進める。 -->
-
-<h2 id="_5">検討中：ドメインモデル<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">参考<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <ul>
-<li>プロパティ名はモデル名を含める<ul>
-<li>user_name</li>
-<li>group_name</li>
-</ul>
-</li>
-<li>汎用プロパティは共通名<ul>
-<li>created_at</li>
-<li>updated_at</li>
+<li><a href="https://techtekt.persol-career.co.jp/entry/tech/231220_02">PythonでDDDやってみた</a><ul>
+<li>fastapiでオニオンアーキテクチャする例</li>
+<li>全体構成参考：細かいところは不完全なため実装変更する。</li>
 </ul>
 </li>
 </ul>

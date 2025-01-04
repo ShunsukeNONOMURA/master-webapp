@@ -14,7 +14,7 @@ services:
     extra_hosts: # linux環境の場合にhost.docker.internalでhost上にアクセスするために必要
       - "host.docker.internal:host-gateway"
     networks:
-      - master_webapp_network
+      - webapp_fastapi_master_network
   postgres:
     build: ./rdb/postgresql
     # restart: always
@@ -27,13 +27,13 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     networks:
-      - master_webapp_network
+      - webapp_fastapi_master_network
   # tika: 
   #   image: imixs/tika
   #   ports:
   #     - "9998:9998"
   #   networks:
-  #     - master_webapp_network
+  #     - webapp_fastapi_master_network
 
   keycloak:
     build:
@@ -54,7 +54,7 @@ services:
       - "start-dev"
       - "--import-realm" # 開発モードで起動
     networks:
-      - master_webapp_network
+      - webapp_fastapi_master_network
 
   mkdocs:
     build:
@@ -75,5 +75,5 @@ services:
         target: "/root/projects/volume/site"
 
 networks:
-  master_webapp_network:
+  webapp_fastapi_master_network:
     driver: bridge

@@ -9,8 +9,8 @@ services:
     extra_hosts: # linux環境の場合にhost.docker.internalでhost上にアクセスするために必要
       - "host.docker.internal:host-gateway"
     networks:
-      - master-webapp_master_webapp_network
+      - webapp-fastapi-master_webapp_fastapi_master_network
 
 networks:
-  master-webapp_master_webapp_network:
+  webapp-fastapi-master_webapp_fastapi_master_network:
     external: true

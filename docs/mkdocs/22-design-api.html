@@ -8,11 +8,13 @@
       
       
       
-        <link rel="canonical" href="http://0.0.0.0/mkdocs/30_test.html">
+        <link rel="canonical" href="http://0.0.0.0/mkdocs/22-design-api.html">
       
       
-        <link rel="prev" href="22_design_api.html">
+        <link rel="prev" href="21-design-orm.html">
       
+      
+        <link rel="next" href="30-dev-command.html">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -20,7 +22,7 @@
     
     
       
-        <title>テスト - Webapp FastAPI Master MkDocs</title>
+        <title>API設計 - Webapp FastAPI Master MkDocs</title>
       
     
     
@@ -70,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#_1" class="md-skip">
+        <a href="#api" class="md-skip">
           コンテンツにスキップ
         </a>
       
@@ -110,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              テスト
+              API設計
             
           </span>
         </div>
@@ -225,7 +227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="10_oss.html" class="md-nav__link">
+      <a href="10-oss.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -245,7 +247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="20_design.html" class="md-nav__link">
+      <a href="20-design-layer.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -265,31 +267,11 @@
   
   
     <li class="md-nav__item">
-      <a href="21_design_orm.html" class="md-nav__link">
+      <a href="21-design-orm.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     ORM設計
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="22_design_api.html" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    API設計
   </span>
   
 
@@ -314,7 +296,116 @@
         
       
       
-      <a href="30_test.html" class="md-nav__link md-nav__link--active">
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    API設計
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="22-design-api.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    API設計
+  </span>
+  
+
+      </a>
+      
+        
+
+  
+
+<nav class="md-nav md-nav--secondary" aria-label="目次">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本方針
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      パス設計
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作一覧
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      設計例
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="30-dev-command.html" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    コマンドチートシート
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="40-test.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -323,7 +414,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -350,6 +440,50 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目次
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      基本方針
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      パス設計
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      操作一覧
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      設計例
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -363,15 +497,193 @@
                   
 
 
-<h1 id="_1">テスト<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<h1 id="api">API設計<a class="headerlink" href="#api" title="Permanent link">&para;</a></h1>
+<h2 id="_1">基本方針<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
-<li>ruff (linters + formatters) + mypy（typecheck）+ pytest<ul>
-<li><a href="https://docs.astral.sh/ruff/rules/">参考：Ruff Rules</a></li>
+<li>RESTful(リソース＋操作)でサービスを表現する<ul>
+<li>REpresentational State Transfer<ul>
+<li><a href="https://aws.amazon.com/jp/what-is/restful-api/">参考：AWS RESTful API とは?</a></li>
 </ul>
 </li>
-<li>APIレイヤでのテストを主に作成し、pytest-covが100%に近くなるようにする。</li>
-<li>TODO(nonomura): 負荷テスト</li>
+<li>例：GET <code>/users</code></li>
+<li>採用しない方式<ul>
+<li>RPC : Remote Procedure Call<ul>
+<li>POST <code>/getUsers</code></li>
+<li><a href="https://aws.amazon.com/jp/compare/the-difference-between-rpc-and-rest/">参考 : RPC と REST の違いはなんですか?</a></li>
 </ul>
+</li>
+<li>BFF : Backend For Frontend<ul>
+<li>GET <code>/dashboard/users</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>openapi(FastAPIで自動生成)でドキュメンテーションする</li>
+</ul>
+<h2 id="_2">パス設計<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>パスは<code>spinal-case</code>で記述する<ul>
+<li>パラメータはjs利用前提を考慮する場合、<code>camelCase</code>で記述する。</li>
+</ul>
+</li>
+<li>シングルトンかマルチプルかは単数形か複数形かで正しく表現する<ul>
+<li>特定の一人のユーザ<ul>
+<li><code>user</code></li>
+</ul>
+</li>
+<li>複数のユーザ<ul>
+<li><code>users</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>リソースをうまく表現する<ul>
+<li>例：ユーザ同期リソースのステータスプロパティを表現する<ul>
+<li>× <code>user/sync/status</code><ul>
+<li>ユーザ(<code>user</code>)が持つ同期(<code>sync</code>)が持つステータス(<code>status</code>)とも取れる</li>
+<li>ユーザ同期 ≠ ユーザではないことが分かりにくい。</li>
+</ul>
+</li>
+<li>〇 <code>user-sync/status</code><ul>
+<li>ユーザ同期<code>userSync</code>が持つステータス(<code>status</code>)を表現するので誤解を与えにくい。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>バージョンはメジャーバージョンのみ記載</li>
+</ul>
+<h2 id="_3">操作一覧<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">操作名</th>
+<th style="text-align: left;">コード</th>
+<th style="text-align: left;">HTTPメソッド</th>
+<th style="text-align: left;">説明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Get</td>
+<td style="text-align: left;">0</td>
+<td style="text-align: left;">GET</td>
+<td style="text-align: left;">単一のリソース（シングルトン）を取得する操作。</td>
+</tr>
+<tr>
+<td style="text-align: left;">List</td>
+<td style="text-align: left;">1</td>
+<td style="text-align: left;">GET</td>
+<td style="text-align: left;">全リソースを絞り込まずに一覧する操作。ページングは動作想定。複雑なフィルタ等行う際はQueryにすることを検討する。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Create</td>
+<td style="text-align: left;">2</td>
+<td style="text-align: left;">POST</td>
+<td style="text-align: left;">リソースを新規に作成する操作。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Patch</td>
+<td style="text-align: left;">3</td>
+<td style="text-align: left;">PATCH</td>
+<td style="text-align: left;">既存リソースを部分的に変更する操作。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Upsert</td>
+<td style="text-align: left;">4</td>
+<td style="text-align: left;">PUT</td>
+<td style="text-align: left;">リソース置換操作。既存リソースがなければ作成する操作。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Delete</td>
+<td style="text-align: left;">5</td>
+<td style="text-align: left;">DELETE</td>
+<td style="text-align: left;">リソースを削除する操作。</td>
+</tr>
+<tr>
+<td style="text-align: left;">Query</td>
+<td style="text-align: left;">7</td>
+<td style="text-align: left;">POST</td>
+<td style="text-align: left;">特定の問い合わせ処理を要求する。フィルタ条件を隠蔽化したいときなど。検索結果などをレスポンスに含めること。</td>
+</tr>
+</tbody>
+</table>
+<!-- ## HTTPステータスコード
+- 実行結果に対して正しいコードでレスポンスすること
+- **TBD**
+
+| コード | メッセージ         | GET            | POST           | PATCH          | PUT            | DELETE         |
+| ------ | ------------------ | -------------- | -------------- | -------------- | -------------- | -------------- |
+| 200    | OK                 | 取得成功       | 投函成功       | 更新成功       | 置換成功       | 削除成功       |
+| 400    | Bad Request        | リクエストミス |                |                |                |                |
+| 401    | Unauthorized       | 認証が必要     | 認証が必要     | 認証が必要     | 認証が必要     | 認証が必要     |
+| 403    | Forbidden          | 権限が必要     | 権限が必要     | 権限が必要     | 権限が必要     | 権限が必要     |
+| 404    | Not Found          | リソースがない |                | リソースがない |                | リソースがない |
+| 405    | Method Not Allowed | 不許可メソッド | 不許可メソッド | 不許可メソッド | 不許可メソッド | 不許可メソッド |
+| 409    | Conflict           | -              |                |                | 競合している   |                |
+
+## 設計例
+- **TBD** -->
+
+<h2 id="_4">設計例<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>APIアクションコード（RRA）</th>
+<th>APIアクション</th>
+<th>HTTP Method</th>
+<th>URI</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0000</td>
+<td>GetHealth</td>
+<td>GET</td>
+<td>/health</td>
+<td>ヘルス取得</td>
+</tr>
+<tr>
+<td>1000</td>
+<td>GetUser</td>
+<td>GET</td>
+<td>/users/{userId}</td>
+<td>ユーザ取得</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>CreateUser</td>
+<td>POST</td>
+<td>/users</td>
+<td>ユーザ作成</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>PatchUser</td>
+<td>PATCH</td>
+<td>/users</td>
+<td>ユーザ作成</td>
+</tr>
+<tr>
+<td>1005</td>
+<td>DeleteUser</td>
+<td>DELETE</td>
+<td>/users/{userId}</td>
+<td>ユーザ削除</td>
+</tr>
+<tr>
+<td>1007</td>
+<td>QueryUser</td>
+<td>POST</td>
+<td>/query/users</td>
+<td>ユーザ検索</td>
+</tr>
+</tbody>
+</table>
 
 
 

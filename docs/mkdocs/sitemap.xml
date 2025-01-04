@@ -2,26 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>http://0.0.0.0/mkdocs/index.html</loc>
-         <lastmod>2025-01-03</lastmod>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
-         <loc>http://0.0.0.0/mkdocs/10_oss.html</loc>
-         <lastmod>2025-01-03</lastmod>
+         <loc>http://0.0.0.0/mkdocs/10-oss.html</loc>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
-         <loc>http://0.0.0.0/mkdocs/20_design.html</loc>
-         <lastmod>2025-01-03</lastmod>
+         <loc>http://0.0.0.0/mkdocs/20-design-layer.html</loc>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
-         <loc>http://0.0.0.0/mkdocs/21_design_orm.html</loc>
-         <lastmod>2025-01-03</lastmod>
+         <loc>http://0.0.0.0/mkdocs/21-design-orm.html</loc>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
-         <loc>http://0.0.0.0/mkdocs/22_design_api.html</loc>
-         <lastmod>2025-01-03</lastmod>
+         <loc>http://0.0.0.0/mkdocs/22-design-api.html</loc>
+         <lastmod>2025-01-04</lastmod>
     </url>
     <url>
-         <loc>http://0.0.0.0/mkdocs/30_test.html</loc>
-         <lastmod>2025-01-03</lastmod>
+         <loc>http://0.0.0.0/mkdocs/30-dev-command.html</loc>
+         <lastmod>2025-01-04</lastmod>
+    </url>
+    <url>
+         <loc>http://0.0.0.0/mkdocs/40-test.html</loc>
+         <lastmod>2025-01-04</lastmod>
     </url>
 </urlset>
