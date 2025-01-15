@@ -64,7 +64,7 @@
 | 0000                       | GetHealth     | GET         | /health         | ヘルス取得 |
 | 1000                       | GetUser       | GET         | /users/{userId} | ユーザ取得 |
 | 1002                       | CreateUser    | POST        | /users          | ユーザ作成 |
-| 1003                       | PatchUser     | PATCH       | /users          | ユーザ作成 |
+| 1003                       | PatchUser     | PATCH       | /users/{userId} | ユーザ更新 |
 | 1005                       | DeleteUser    | DELETE      | /users/{userId} | ユーザ削除 |
 | 1007                       | QueryUser     | POST        | /query/users    | ユーザ検索 |
 
