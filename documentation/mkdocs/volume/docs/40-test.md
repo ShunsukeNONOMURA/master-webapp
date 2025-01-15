@@ -98,7 +98,7 @@ plugins = ["pydantic.mypy"]
 - ユニットテストを行うツール
 - APIテストは[Fastapi (TestClient)](https://fastapi.tiangolo.com/ja/tutorial/testing/)  経由で実行可能
 - pytest-covと合わせてカバレッジ出力を行う
-- プレゼンレイヤでのテストを主に作成し、pytest-covが100%に近くなるようにする。
+- プレゼンレイヤでのテストを主に作成し、pytest-covが100%に近くなるようにしておくことでデグレ影響をチェックして変更性を担保する。
 - あまり本質的ではないcoverageの省略
 
 設定例
