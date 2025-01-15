@@ -11,9 +11,11 @@
         - BFF : Backend For Frontend
             - GET `/dashboard/users`
 - openapi(FastAPIで自動生成)でドキュメンテーションする
+- [参考：翻訳: WebAPI 設計のベストプラクティス](https://qiita.com/mserizawa/items/b833e407d89abd21ee72)
 
 ## パス設計
 - パスは`spinal-case`で記述する
+    - [Google推奨形式](https://developers.google.com/search/docs/crawling-indexing/url-structure?hl=ja#:~:text=%E6%8E%A8%E5%A5%A8%E3%81%95%E3%82%8C%E3%82%8B%3A%20%E3%83%8F%E3%82%A4%E3%83%95%E3%83%B3%EF%BC%88%2D%EF%BC%89%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%80%82)
     - パラメータはjs利用前提を考慮する場合、`camelCase`で記述する。
 - シングルトンかマルチプルかは単数形か複数形かで正しく表現する
     - 特定の一人のユーザ
@@ -26,7 +28,7 @@
             - ユーザ(`user`)が持つ同期(`sync`)が持つステータス(`status`)とも取れる
             - ユーザ同期 ≠ ユーザではないことが分かりにくい。
         - 〇 `user-sync/status`
-            - ユーザ同期`userSync`が持つステータス(`status`)を表現するので誤解を与えにくい。
+            - ユーザ同期`user-sync`が持つステータス(`status`)を表現するので誤解を与えにくいはず。
 - バージョンはメジャーバージョンのみ記載
 
 ## 操作一覧
@@ -65,3 +67,7 @@
 | 1003                       | PatchUser     | PATCH       | /users          | ユーザ作成 |
 | 1005                       | DeleteUser    | DELETE      | /users/{userId} | ユーザ削除 |
 | 1007                       | QueryUser     | POST        | /query/users    | ユーザ検索 |
+
+### 複製操作
+- Createのエンドポイントに複製元のidを渡すという設計が可能
+- [Backend Engineerに贈る初めてのREST APIのURI設計 : リソースの新規作成のバリエーション](https://qiita.com/alstrocrack/items/d53029b8c5d3edcb7a25#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E6%96%B0%E8%A6%8F%E4%BD%9C%E6%88%90%E3%81%AE%E3%83%90%E3%83%AA%E3%82%A8%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)

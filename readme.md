@@ -21,13 +21,14 @@ python(fastapi)によるwebアプリ開発用のマスタ。
         - https://fastapi-keycloak-middleware.readthedocs.io/en/latest/usage.html
         - https://qiita.com/KWS_0901/items/bdf60a725064900eaad1
 
+## 一時メモ
 ```
 python db.py
 sqlite3 dev.sqlite3
 sqlite_web dev.sqlite3
 ```
 
-## 開発フロー
+### 開発フロー
 - 要求解析
 - モデリング
     - **情報設計 / 集約設計**
@@ -46,15 +47,7 @@ sqlite_web dev.sqlite3
 - 結合評価
 - リリース
 
-## OSSライセンス一覧
-| ライセンス                           | コピーレフト                                |
-| ------------------------------------ | ------------------------------------------- |
-| BSD License                          | 非該当                                      |
-| MIT License                          | 非該当                                      |
-| Apache Software License              | 非該当                                      |
-| Mozilla Public License 2.0 (MPL 2.0) | OSSを改変した場合、改変箇所の公開義務が発生 |
-
-## バグ
+### バグ
 - oracleだとschemaspyでukにfk制約かけると表示されないバグ
     - 制約自体は設定できるが
     - 同じ不具合出ている人がいる

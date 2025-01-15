@@ -277,16 +277,34 @@
         <li class="md-nav__item">
   <a href="#oss_1" class="md-nav__link">
     <span class="md-ellipsis">
-      主要OSS
+      主要OSS一覧
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#poetry" class="md-nav__link">
     <span class="md-ellipsis">
-      参考
+      Poetry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqlmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQLModel
     </span>
   </a>
   
@@ -367,11 +385,11 @@
   
   
     <li class="md-nav__item">
-      <a href="30-dev-command.html" class="md-nav__link">
+      <a href="40-test.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    コマンドチートシート
+    テスト
   </span>
   
 
@@ -387,11 +405,11 @@
   
   
     <li class="md-nav__item">
-      <a href="40-test.html" class="md-nav__link">
+      <a href="90-dev-command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    テスト
+    コマンドチートシート
   </span>
   
 
@@ -431,16 +449,34 @@
         <li class="md-nav__item">
   <a href="#oss_1" class="md-nav__link">
     <span class="md-ellipsis">
-      主要OSS
+      主要OSS一覧
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#poetry" class="md-nav__link">
     <span class="md-ellipsis">
-      参考
+      Poetry
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fastapi" class="md-nav__link">
+    <span class="md-ellipsis">
+      FastAPI
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sqlmodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQLModel
     </span>
   </a>
   
@@ -462,7 +498,11 @@
 
 
 <h1 id="oss">OSS<a class="headerlink" href="#oss" title="Permanent link">&para;</a></h1>
-<h2 id="oss_1">主要OSS<a class="headerlink" href="#oss_1" title="Permanent link">&para;</a></h2>
+<p>主に利用しているOSSについて記述する。<br />
+自動化できるところは自動化できるようにする。<br />
+できるだけ一般知識で更新ができるように、ossは担げる場合は担ぐ方式を取る。<br />
+テスト、解析、可視化のよう開発環境のみ必要になるものは特にOSSを担ぎたい。  </p>
+<h2 id="oss_1">主要OSS一覧<a class="headerlink" href="#oss_1" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
@@ -509,19 +549,19 @@
 </tr>
 <tr>
 <td>Linter,Formatter</td>
-<td><a href="https://docs.astral.sh/ruff/https://docs.astral.sh/ruff/">Ruff</a></td>
+<td><a href="https://docs.astral.sh/ruff/">Ruff</a></td>
 </tr>
 <tr>
 <td>型チェック</td>
-<td>mypy</td>
+<td><a href="https://mypy.readthedocs.io/en/stable/#">mypy</a></td>
 </tr>
 <tr>
-<td>APIテスト</td>
+<td>APIユニットテスト</td>
 <td><a href="https://fastapi.tiangolo.com/ja/tutorial/testing/">Fastapi (TestClient)</a></td>
 </tr>
 <tr>
 <td>負荷テスト</td>
-<td><strong>検討中</strong>：Locust?</td>
+<td><strong>検討中</strong>：Locust</td>
 </tr>
 <tr>
 <td>クラスドキュメンテーション</td>
@@ -537,7 +577,7 @@
 </tr>
 <tr>
 <td>OSSドキュメンテーション</td>
-<td>pip-license, pipdeptree</td>
+<td><a href="https://pypi.org/project/pip-licenses/">pip-license</a>, <a href="https://pypi.org/project/pipdeptree/">pipdeptree</a></td>
 </tr>
 <tr>
 <td>MDドキュメンテーション</td>
@@ -545,10 +585,33 @@
 </tr>
 </tbody>
 </table>
-<p>できるだけ一般知識で更新ができるように、独自実装せずにossは担げる場合は担ぐ。</p>
-<h2 id="_1">参考<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h2 id="poetry">Poetry<a class="headerlink" href="#poetry" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/ShunsukeNONOMURA/webapp-fastapi-master/blob/main/backend/volumes/pyproject.toml">pyproject.toml</a>に下記の諸情報を記載し、実行環境を管理するもの。</p>
 <ul>
-<li><a href="https://book.st-hakky.com/hakky/try-poetry-on-docker/">DockerでPoetryを使って環境構築しよう</a></li>
+<li>依存OSS</li>
+<li>静的解析設定</li>
+</ul>
+<p><a href="https://book.st-hakky.com/hakky/try-poetry-on-docker/">参考：DockerでPoetryを使って環境構築しよう</a></p>
+<h2 id="fastapi">FastAPI<a class="headerlink" href="#fastapi" title="Permanent link">&para;</a></h2>
+<ul>
+<li>PythonWebフレームワーク</li>
+<li>ASGIサーバー(uvicornなど)経由で起動する</li>
+<li><a href="https://fastapi.tiangolo.com/ja/python-types/?h=#pydantic">pydantic標準対応</a><ul>
+<li>型チェックやバリデーションが可能</li>
+</ul>
+</li>
+<li><a href="https://fastapi.tiangolo.com/ja/features/#_3">openapi標準対応</a><ul>
+<li>swaggerやredocといった実行ツールやドキュメンテーションを自動生成</li>
+<li>endpointの実装があればIF設計できる</li>
+</ul>
+</li>
+<li>DI, CORS, バックグラウンドタスクあたりの実装も可能</li>
+</ul>
+<h2 id="sqlmodel">SQLModel<a class="headerlink" href="#sqlmodel" title="Permanent link">&para;</a></h2>
+<ul>
+<li>FastAPIと開発元が同じsclalchemyのPydanticラッパー</li>
+<li>FastAPIとPydanticに対する親和性が高いので採用</li>
+<li>基本的にはSQModelの提供機能（pydanticライクな記述）で設定可能だが、一部の細かい設定を行う場合はsqlalchemyの記述を利用する必要がある</li>
 </ul>
 
 

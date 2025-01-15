@@ -14,7 +14,7 @@
         <link rel="prev" href="21-design-orm.html">
       
       
-        <link rel="next" href="30-dev-command.html">
+        <link rel="next" href="40-test.html">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -368,6 +368,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="設計例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      複製操作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -385,11 +400,11 @@
   
   
     <li class="md-nav__item">
-      <a href="30-dev-command.html" class="md-nav__link">
+      <a href="40-test.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    コマンドチートシート
+    テスト
   </span>
   
 
@@ -405,11 +420,11 @@
   
   
     <li class="md-nav__item">
-      <a href="40-test.html" class="md-nav__link">
+      <a href="90-dev-command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    テスト
+    コマンドチートシート
   </span>
   
 
@@ -480,6 +495,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="設計例">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      複製操作
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -521,10 +551,12 @@
 </ul>
 </li>
 <li>openapi(FastAPIで自動生成)でドキュメンテーションする</li>
+<li><a href="https://qiita.com/mserizawa/items/b833e407d89abd21ee72">参考：翻訳: WebAPI 設計のベストプラクティス</a></li>
 </ul>
 <h2 id="_2">パス設計<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li>パスは<code>spinal-case</code>で記述する<ul>
+<li><a href="https://developers.google.com/search/docs/crawling-indexing/url-structure?hl=ja#:~:text=%E6%8E%A8%E5%A5%A8%E3%81%95%E3%82%8C%E3%82%8B%3A%20%E3%83%8F%E3%82%A4%E3%83%95%E3%83%B3%EF%BC%88%2D%EF%BC%89%E3%82%92%E4%BD%BF%E7%94%A8%E3%81%99%E3%82%8B%E3%80%82">Google推奨形式</a></li>
 <li>パラメータはjs利用前提を考慮する場合、<code>camelCase</code>で記述する。</li>
 </ul>
 </li>
@@ -547,7 +579,7 @@
 </ul>
 </li>
 <li>〇 <code>user-sync/status</code><ul>
-<li>ユーザ同期<code>userSync</code>が持つステータス(<code>status</code>)を表現するので誤解を与えにくい。</li>
+<li>ユーザ同期<code>user-sync</code>が持つステータス(<code>status</code>)を表現するので誤解を与えにくいはず。</li>
 </ul>
 </li>
 </ul>
@@ -683,6 +715,11 @@
 </tr>
 </tbody>
 </table>
+<h3 id="_5">複製操作<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Createのエンドポイントに複製元のidを渡すという設計が可能</li>
+<li><a href="https://qiita.com/alstrocrack/items/d53029b8c5d3edcb7a25#%E3%83%AA%E3%82%BD%E3%83%BC%E3%82%B9%E3%81%AE%E6%96%B0%E8%A6%8F%E4%BD%9C%E6%88%90%E3%81%AE%E3%83%90%E3%83%AA%E3%82%A8%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3">Backend Engineerに贈る初めてのREST APIのURI設計 : リソースの新規作成のバリエーション</a></li>
+</ul>
 
 
 

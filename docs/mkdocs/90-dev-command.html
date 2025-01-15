@@ -8,13 +8,11 @@
       
       
       
-        <link rel="canonical" href="http://0.0.0.0/mkdocs/30-dev-command.html">
+        <link rel="canonical" href="http://0.0.0.0/mkdocs/90-dev-command.html">
       
       
-        <link rel="prev" href="22-design-api.html">
+        <link rel="prev" href="40-test.html">
       
-      
-        <link rel="next" href="40-test.html">
       
       
       <link rel="icon" href="assets/images/favicon.png">
@@ -304,36 +302,6 @@
       
   
   
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="30-dev-command.html" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    コマンドチートシート
-  </span>
-  
-
-      </a>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
   
   
     <li class="md-nav__item">
@@ -346,6 +314,36 @@
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="90-dev-command.html" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    コマンドチートシート
+  </span>
+  
+
+      </a>
+      
     </li>
   
 
@@ -388,7 +386,11 @@
 <h1 id="_1">コマンドチートシート<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <ul>
 <li>rootディレクトリを作業ディレクトリとする</li>
-<li><code>./scripts</code>以下にある程度まとめている</li>
+<li>exec経由実行をメインにしている</li>
+<li><code>./scripts</code>以下にある程度まとめている<ul>
+<li>検討中：poetry実行周りを<code>tool.poetry.scripts</code>に移管</li>
+</ul>
+</li>
 </ul>
 <table>
 <thead>
@@ -415,12 +417,12 @@
 <td><code>docker compose exec backend poetry add {lib}</code></td>
 </tr>
 <tr>
-<td>バックエンド起動</td>
-<td><code>docker compose exec backend poetry run uvicorn app.main:app --reload</code></td>
+<td>開発用RDB初期化</td>
+<td><code>docker compose exec backend poetry run python3 ./migrate.py</code></td>
 </tr>
 <tr>
-<td>マイグレーション</td>
-<td><code>docker compose exec backend poetry run python3 db.py</code></td>
+<td>開発用バックエンド起動</td>
+<td><code>docker compose exec backend poetry run uvicorn app.main:app --reload</code></td>
 </tr>
 <tr>
 <td>テスト</td>
@@ -455,12 +457,16 @@
 <td><code>docker compose exec backend pip-licenses --order=license --format=html --with-urls  --with-description --output-file=/root/docs/backend/oss.html</code></td>
 </tr>
 <tr>
-<td>lint, format, typecheck</td>
-<td><code>docker compose exec backend poetry run ruff .</code></td>
+<td>ruff(lint, format)</td>
+<td><code>docker compose exec backend poetry run ruff check .</code></td>
 </tr>
 <tr>
-<td>lint, format, typecheck</td>
-<td><code>docker compose exec backend poetry run ruff . --fix</code></td>
+<td>ruff(lint, format) (強制fix)</td>
+<td><code>docker compose exec backend poetry run ruff check . --fix --unsafe-fixes</code></td>
+</tr>
+<tr>
+<td>mypy(typecheck)</td>
+<td><code>docker compose exec backend poetry run mypy .</code></td>
 </tr>
 <tr>
 <td>ドキュメント生成（ER図）</td>

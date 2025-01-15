@@ -89,6 +89,9 @@ ignore_missing_imports = true
 # 未使用の型ヒントを警告
 warn_unused_ignores = true
 
+# pydantic用の設定追加
+plugins = ["pydantic.mypy"]
+
 [tool.pytest.ini_options]
 filterwarnings = [
     "ignore::DeprecationWarning" # Deprecatedによる警告を無視する
@@ -100,4 +103,7 @@ exclude_lines = [
     "pass",
     "raise NotImplementedError",
     "if TYPE_CHECKING:",
+]
+omit = [
+    "app/ddd/presentation/endpoint/page/*" # デバッグ用の簡易フロントエンドなので無視
 ]

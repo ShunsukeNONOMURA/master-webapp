@@ -350,15 +350,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      検討中：ドメインモデル
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -394,11 +385,11 @@
   
   
     <li class="md-nav__item">
-      <a href="30-dev-command.html" class="md-nav__link">
+      <a href="40-test.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    コマンドチートシート
+    テスト
   </span>
   
 
@@ -414,11 +405,11 @@
   
   
     <li class="md-nav__item">
-      <a href="40-test.html" class="md-nav__link">
+      <a href="90-dev-command.html" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    テスト
+    コマンドチートシート
   </span>
   
 
@@ -491,15 +482,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      検討中：ドメインモデル
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -528,12 +510,14 @@
 </li>
 <li>SQLModelの基本的な記述だけだと困る場合、schemaspy記述も併用する</li>
 <li><a href="https://sqlmodel.tiangolo.com/tutorial/relationship-attributes/define-relationships-attributes/#define-relationships-attributes">アプリで利用するリレーションは正しく貼る</a><ul>
-<li>単数か複数かは正しく記述すること</li>
+<li>単数系か複数系かで1:nの関係を正しく記述すること</li>
 <li>外部キーやback_populates等のオプション記述も必要に応じて正しく記述する</li>
 </ul>
 </li>
 <li>ドキュメントリバース対応としてコメントは入れる。コメントで書ききれないものは別途記述する。</li>
-<li>「ヒストリテーブル」と「通常のトランザクションテーブル/マスタテーブル」の間に外部制約を入れない</li>
+</ul>
+<!-- - 「ヒストリテーブル」と「通常のトランザクションテーブル/マスタテーブル」の間に外部制約を入れない -->
+<ul>
 <li>ER図生成による可視化はschemaspyなどを用いてマイグレーション後のDDLからリバースする</li>
 <li>どのように型変換されるかは理解しておくこと<ul>
 <li><a href="https://zenn.dev/re24_1986/articles/8520ac3f9a0187">参考：【SQLAlchemy】Generic Typesと各種DBの型 対応表</a></li>
@@ -543,13 +527,13 @@
 <h2 id="_2">命名規則<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <ul>
 <li>クラス名<ul>
-<li>クラス名PEP8に倣い、CapWords方式で記載する。</li>
-<li>プレフィックスは正しく振ること</li>
+<li>クラス名<a href="https://pep8-ja.readthedocs.io/ja/latest/#id31">PEP8</a>に倣い、CapWords方式で記載する。</li>
+<li>mやtのような役割プレフィックスは正しく振ること</li>
 </ul>
 </li>
 <li>テーブル名<ul>
 <li>テーブル名はRDB側はケース・インセンシティブなのでsnake_caseとする。</li>
-<li>プレフィックスは正しく振ること</li>
+<li>mやtのような役割プレフィックスは正しく振ること</li>
 </ul>
 </li>
 <li>プロパティ<ul>
@@ -623,19 +607,13 @@
         - https://github.com/schemaspy/schemaspy/issues/1430
     - 止まってられないので、一旦postgresqlで進める。 -->
 
-<h2 id="_5">検討中：ドメインモデル<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<ul>
-<li>プロパティ名はモデル名を含める<ul>
-<li>user_name</li>
-<li>group_name</li>
-</ul>
-</li>
-<li>汎用プロパティは共通名<ul>
-<li>created_at</li>
-<li>updated_at</li>
-</ul>
-</li>
-</ul>
+<!-- ## 検討中：ドメインモデル
+- プロパティ名はモデル名を含める
+    - user_name
+    - group_name
+- 汎用プロパティは共通名
+    - created_at
+    - updated_at -->
 
 
 

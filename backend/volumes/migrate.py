@@ -31,10 +31,13 @@ def init_ddl() -> None:
 # レコードの初期化
 def init_records() -> None:
     with get_session_context() as session:
+        # マスタレコード登録
         for user_role in UserRoleEnum:
             session.add(
                 MUserRole(user_role_code=user_role.value, user_role_name=user_role.name)
             )
+        
+        ## 初期レコード登録
         user = TUser(
             user_id = "admin",
             user_name = "admin",

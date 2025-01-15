@@ -171,6 +171,7 @@ def test_operate_user(db):
     assert response.status_code == status.HTTP_200_OK 
     # assert response.json()["user"]["userId"] == test_user['userId']
     # assert response.json()["user"]["userName"] == patch_user['userName'] # 更新されているかチェック
+    # 更新日が更新されているかチェック
 
     # テストユーザ更新に失敗する（古い日付で更新に失敗する(楽観的ロックの確認)）
     response = client.patch(
