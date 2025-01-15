@@ -15,12 +15,12 @@
 | DI                         | [FastAPI (Depends)](https://fastapi.tiangolo.com/ja/tutorial/dependencies/)                               |
 | ORM                        | [SQLModel](https://sqlmodel.tiangolo.com/)                                                                |
 | RDB                        | [SQLite](https://www.sqlite.org/), [postgresql](https://www.postgresql.org/)                              |
-| マイグレーション           | **検討中**：Alembic                                                                                       |
+| マイグレーション           | **検討中**：[Alembic](https://alembic.sqlalchemy.org/en/latest/)                                          |
 | Linter,Formatter           | [Ruff](https://docs.astral.sh/ruff/)                                                                      |
 | 型チェック                 | [mypy](https://mypy.readthedocs.io/en/stable/#)                                                           |
 | APIユニットテスト          | [Fastapi (TestClient)](https://fastapi.tiangolo.com/ja/tutorial/testing/)                                 |
-| 負荷テスト                 | **検討中**：Locust                                                                                        |
-| クラスドキュメンテーション | **検討中**：sphinx                                                                                        |
+| 負荷テスト                 | **検討中**：[Locust](https://locust.io/)                                                                  |
+| クラスドキュメンテーション | **検討中**：[Sphinx](https://www.sphinx-doc.org/ja/master/)                                               |
 | APIドキュメンテーション    | [FastAPI (swagger, redoc)](https://fastapi.tiangolo.com/ja/features/)                                     |
 | DDLドキュメンテーション    | [schemaspy](https://schemaspy.org/)                                                                       |
 | OSSドキュメンテーション    | [pip-license](https://pypi.org/project/pip-licenses/), [pipdeptree](https://pypi.org/project/pipdeptree/) |
